@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D7CEC7"
+    tools:context=".Empleado.Buscar_Empleado_Activity">
+
+    <include
+        layout="@layout/action_bar_toolbar"/>
+
+    <TextView
+        android:id="@+id/txvEmpleadoID2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="70dp"
+        android:text="Empleado Id"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txvNombreEmplea2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="39dp"
+        android:text="Nombre"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvEmpleadoID2" />
+
+    <TextView
+        android:id="@+id/txvDireEmplea2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:text="Direccion"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvNombreEmplea2" />
+
+    <TextView
+        android:id="@+id/txvTelEmplea2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="38dp"
+        android:text="Telefono"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvDireEmplea2" />
+
+    <TextView
+        android:id="@+id/txvSalarioEmplea2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="38dp"
+        android:text="Salario"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvTelEmplea2" />
+
+    <TextView
+        android:id="@+id/txvPuestoEmplea2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="38dp"
+        android:text="Puesto"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvSalarioEmplea2" />
+
+    <TextView
+        android:id="@+id/txvFechaNaciEmple2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="37dp"
+        android:text="Nacimiento"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvContratacionEmple2" />
+
+    <TextView
+        android:id="@+id/txvContratacionEmple2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="37dp"
+        android:text="Contratacion"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvPuestoEmplea2" />
+
+    <EditText
+        android:id="@+id/txvMostrarEmpleID2"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="85dp"
+        android:layout_marginBottom="29dp"
+        android:ems="8"
+        android:inputType="number"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/txvNombreEmplea2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvEmpleadoID2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txvMostrarEmpleNombre2"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="51dp"
+        android:layout_marginBottom="58dp"
+        android:ems="8"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/txtMostrarDireccionEmple2"
+        app:layout_constraintStart_toStartOf="@+id/txvMostrarEmpleID2"
+        app:layout_constraintTop_toTopOf="@+id/txvMostrarEmpleID2" />
+
+    <TextView
+        android:id="@+id/txtMostrarDireccionEmple2"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="69dp"
+        android:layout_marginBottom="68dp"
+        android:ems="8"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/txvMostrarTelEmple2"
+        app:layout_constraintStart_toStartOf="@+id/txvMostrarEmpleNombre2"
+        app:layout_constraintTop_toBottomOf="@+id/txvMostrarEmpleID2" />
+
+    <TextView
+        android:id="@+id/txvMostrarTelEmple2"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="209dp"
+        android:layout_marginBottom="208dp"
+        android:ems="8"
+        android:inputType="number"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/txvFechaNaciEmple2"
+        app:layout_constraintStart_toStartOf="@+id/txtMostrarDireccionEmple2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txvMostrarSalarioEmple2"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="60dp"
+        android:ems="8"
+        android:inputType="numberDecimal"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/txcMostrarPuestoEmple2"
+        app:layout_constraintStart_toStartOf="@+id/txvMostrarTelEmple2"
+        app:layout_constraintTop_toTopOf="@+id/txvMostrarTelEmple2" />
+
+    <TextView
+        android:id="@+id/txcMostrarPuestoEmple2"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginBottom="110dp"
+        android:ems="8"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/txvFechaNaciEmple2"
+        app:layout_constraintStart_toStartOf="@+id/txvMostrarSalarioEmple2"
+        app:layout_constraintTop_toTopOf="@+id/txvTelEmplea2" />
+
+    <TextView
+        android:id="@+id/txvMostrarFechaContraEmple2"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="59dp"
+        android:layout_marginBottom="60dp"
+        android:ems="8"
+        android:inputType="date"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/txvMostrarFechaNaciEmple2"
+        app:layout_constraintStart_toStartOf="@+id/txcMostrarPuestoEmple2"
+        app:layout_constraintTop_toTopOf="@+id/txcMostrarPuestoEmple2" />
+
+    <TextView
+        android:id="@+id/txvMostrarFechaNaciEmple2"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="51dp"
+        android:ems="8"
+        android:inputType="date"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/txvContraseñaEmple2"
+        app:layout_constraintStart_toStartOf="@+id/txvMostrarFechaContraEmple2"
+        app:layout_constraintTop_toTopOf="@+id/txvContratacionEmple2" />
+
+    <TextView
+        android:id="@+id/txvContraseñaEmple2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="38dp"
+        android:text="Contraseña"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvFechaNaciEmple2" />
+
+    <TextView
+        android:id="@+id/txvMostrarContraEmple2"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:ems="8"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/txvMostrarFechaNaciEmple2"
+        app:layout_constraintTop_toBottomOf="@+id/txvMostrarFechaNaciEmple2" />
+
+    <Button
+        android:id="@+id/btnBuscarFabrica"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="#52658F"
+        android:text="Buscar"
+        android:textSize="20dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnEliminarEmpleado"
+        app:layout_constraintEnd_toStartOf="@+id/txvMostrarContraEmple2"
+        app:layout_constraintStart_toStartOf="@+id/txvNombreEmplea2" />
+
+    <Button
+        android:id="@+id/btnEliminarEmpleado"
+        android:layout_width="175dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="90dp"
+        android:layout_marginBottom="88dp"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="#52658F"
+        android:text="Eliminar"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnBuscarFabrica"
+        app:layout_constraintTop_toTopOf="@+id/txvMostrarContraEmple2" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

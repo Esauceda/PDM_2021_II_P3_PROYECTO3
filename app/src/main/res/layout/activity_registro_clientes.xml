@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F5E6"
+    tools:context=".Cliente.Registro_Clientes_Activity">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/action_bar_toolbar"/>
+
+    <TextView
+        android:id="@+id/txvFabricaID2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="90dp"
+        android:text="Cliente Id"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txvTelefonoFabrica2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="17dp"
+        android:layout_marginBottom="36dp"
+        android:text="Nombre Compañia"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txvProduccionFabrica2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txvProduccionFabrica2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="212dp"
+        android:text="Nombre Cliente"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txvDireccionFabrica2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:text="Telefono"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvProduccionFabrica2" />
+
+    <TextView
+        android:id="@+id/txvEncargadoFabrica2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:text="Correo"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvDireccionFabrica2" />
+
+    <TextView
+        android:id="@+id/txvPaisCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="44dp"
+        android:text="Pais"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvEncargadoFabrica2" />
+
+    <TextView
+        android:id="@+id/txvCategoriaCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
+        android:text="Categoria"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvDireccionCliente" />
+
+    <TextView
+        android:id="@+id/txvDireccionCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="49dp"
+        android:text="Direccion"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvPaisCliente" />
+
+    <EditText
+        android:id="@+id/txtMostrarFabricaID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:ems="8"
+        android:hint="Ingrese id"
+        android:inputType="number"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/txvMostrarTelefonoFabrica"
+        app:layout_constraintStart_toStartOf="@+id/txvMostrarTelefonoFabrica" />
+
+    <EditText
+        android:id="@+id/txvMostrarTelefonoFabrica"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="12dp"
+        android:ems="8"
+        android:hint="Ingrese nombre "
+        android:inputType="textPersonName"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/txvMostrarProduccionFabrica"
+        app:layout_constraintEnd_toEndOf="@+id/txvMostrarProduccionFabrica" />
+
+    <EditText
+        android:id="@+id/txvMostrarProduccionFabrica"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="37dp"
+        android:ems="8"
+        android:hint="Ingrese nombre"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvTelefonoFabrica2" />
+
+    <EditText
+        android:id="@+id/txvMostrarDireccionFabrica"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:ems="8"
+        android:hint="Ingrese telefono"
+        android:inputType="number"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/txvMostrarProduccionFabrica"
+        app:layout_constraintTop_toBottomOf="@+id/txvMostrarProduccionFabrica" />
+
+    <EditText
+        android:id="@+id/txvMostrarEncargadoFabrica"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:ems="8"
+        android:hint="Ingrese corre"
+        android:inputType="numberDecimal"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/txvMostrarDireccionFabrica"
+        app:layout_constraintTop_toBottomOf="@+id/txvMostrarDireccionFabrica" />
+
+    <EditText
+        android:id="@+id/txtPuesto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:ems="8"
+        android:hint="Ingrese puesto"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/txvMostrarEncargadoFabrica"
+        app:layout_constraintTop_toBottomOf="@+id/txvMostrarEncargadoFabrica" />
+
+    <EditText
+        android:id="@+id/editTextDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="37dp"
+        android:ems="8"
+        android:hint="Ingrese direccion"
+        android:inputType="date"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPuesto" />
+
+    <EditText
+        android:id="@+id/txtFechaNacimiento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="37dp"
+        android:ems="8"
+        android:hint="Ingrese categoria"
+        android:inputType="date"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
+
+    <Button
+        android:id="@+id/btnGuardarCliente"
+        android:layout_width="144dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="35dp"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="#52658F"
+        android:text="Guardar"
+        android:textSize="17dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnActuCliente"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnActuCliente"
+        android:layout_width="0dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="65dp"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="#52658F"
+        android:text="Actualizar"
+        android:textSize="17dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnGuardarCliente"
+        app:layout_constraintTop_toBottomOf="@+id/txtFechaNacimiento" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

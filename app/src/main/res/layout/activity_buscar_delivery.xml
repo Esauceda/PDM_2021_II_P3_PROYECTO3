@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F5E6"
+    tools:context=".Delivery.Buscar_Delivery_Activity">
+
+    <include
+        layout="@layout/action_bar_toolbar"/>
+
+    <TextView
+        android:id="@+id/txvDeliveryId2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="73dp"
+        android:layout_marginBottom="41dp"
+        android:text="Delivery Id"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txvOrdenId2"
+        app:layout_constraintEnd_toStartOf="@+id/txtDeliId2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txvOrdenId2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="45dp"
+        android:text="Orden Id"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txvNombreDeliverComp2"
+        app:layout_constraintEnd_toStartOf="@+id/txvMostrarOrdernDeliver"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvDeliveryId2" />
+
+    <TextView
+        android:id="@+id/txvNombreDeliverComp2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="43dp"
+        android:text="Nombre Compañia"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txvDeliverTel2"
+        app:layout_constraintEnd_toStartOf="@+id/txvMostrarNombreComDeliver"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvOrdenId2" />
+
+    <TextView
+        android:id="@+id/txvDeliverTel2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="105dp"
+        android:layout_marginBottom="43dp"
+        android:text="Telefono"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txvDeliverCorreo2"
+        app:layout_constraintEnd_toStartOf="@+id/txvMostrarTelDeliver"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvNombreDeliverComp2" />
+
+    <TextView
+        android:id="@+id/txvDeliverCorreo2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="120dp"
+        android:layout_marginBottom="44dp"
+        android:text="Correo"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txvDeliverFecha2"
+        app:layout_constraintEnd_toStartOf="@+id/txvMostrarCorreoDeliver"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvDeliverTel2" />
+
+    <TextView
+        android:id="@+id/txvDeliverFecha2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="62dp"
+        android:text="Fecha entrega"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnBuscarDeliver"
+        app:layout_constraintEnd_toStartOf="@+id/txvMostrarFechaEntreDeliver"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvDeliverCorreo2" />
+
+    <EditText
+        android:id="@+id/txtDeliId2"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="48dp"
+        android:ems="8"
+        android:hint="Ingrese id"
+        android:inputType="number"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/txvMostrarOrdernDeliver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvDeliveryId2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txvMostrarNombreComDeliver"
+        android:layout_width="140dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginBottom="43dp"
+        android:ems="8"
+        android:inputType="textPersonName"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/txvMostrarTelDeliver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvNombreDeliverComp2"
+        app:layout_constraintTop_toBottomOf="@+id/txvMostrarOrdernDeliver" />
+
+    <TextView
+        android:id="@+id/txvMostrarOrdernDeliver"
+        android:layout_width="140dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginBottom="43dp"
+        android:ems="8"
+        android:inputType="textPersonName"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/txvMostrarNombreComDeliver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvOrdenId2"
+        app:layout_constraintTop_toBottomOf="@+id/txtDeliId2" />
+
+    <TextView
+        android:id="@+id/txvMostrarTelDeliver"
+        android:layout_width="140dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="43dp"
+        android:ems="8"
+        android:inputType="number"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/txvMostrarCorreoDeliver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvDeliverTel2"
+        app:layout_constraintTop_toBottomOf="@+id/txvMostrarNombreComDeliver" />
+
+    <TextView
+        android:id="@+id/txvMostrarCorreoDeliver"
+        android:layout_width="140dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="51dp"
+        android:layout_marginBottom="49dp"
+        android:ems="8"
+        android:inputType="numberDecimal"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/txvMostrarFechaEntreDeliver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvDeliverCorreo2"
+        app:layout_constraintTop_toBottomOf="@+id/txvMostrarTelDeliver" />
+
+
+    <TextView
+        android:id="@+id/txvMostrarFechaEntreDeliver"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="51dp"
+        android:layout_marginBottom="68dp"
+        android:ems="10"
+        android:inputType="date"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/btnEliminarDeliver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvDeliverFecha2"
+        app:layout_constraintTop_toBottomOf="@+id/txvMostrarCorreoDeliver" />
+
+    <Button
+        android:id="@+id/btnBuscarDeliver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="53dp"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="#52658F"
+        android:text="Buscar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnEliminarDeliver"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvDeliverFecha2" />
+
+    <Button
+        android:id="@+id/btnEliminarDeliver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="53dp"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="#52658F"
+        android:text="Eliminar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnBuscarDeliver"
+        app:layout_constraintTop_toBottomOf="@+id/txvMostrarFechaEntreDeliver" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

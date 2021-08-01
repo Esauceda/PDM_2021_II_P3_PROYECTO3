@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F5E6"
+    tools:context=".Cliente.Buscar_Cliente_Activity">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/action_bar_toolbar"/>
+
+    <TextView
+        android:id="@+id/txvClienteId2"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="97dp"
+        android:layout_marginEnd="25dp"
+        android:text="Cliente Id"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/txtClienteId2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txvNombreCompañia2"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="14dp"
+        android:text="Nombre Compañia"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/txvMostrarCompCli"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvClienteId2" />
+
+    <TextView
+        android:id="@+id/txvNombreCliente2"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="14dp"
+        android:text="Nombre Cliente"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/txvMostrarNomCli"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvNombreCompañia2" />
+
+    <TextView
+        android:id="@+id/txvTelefonoCliente2"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="14dp"
+        android:text="Telefono"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/txvMostrarTelCli"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvNombreCliente2" />
+
+    <TextView
+        android:id="@+id/txvCorreoCliente2"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="14dp"
+        android:text="Correo"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/txvMostrarCorrCli"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvTelefonoCliente2" />
+
+    <TextView
+        android:id="@+id/txvPaisCliente2"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="14dp"
+        android:text="Pais"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/txvMostrarPaisCli"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvCorreoCliente2" />
+
+    <TextView
+        android:id="@+id/txvCategoriaCliente2"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="13dp"
+        android:text="Categoria"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/txvMostrarCatCli"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvPaisCliente2" />
+
+    <TextView
+        android:id="@+id/txvDireccionCliente2"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="14dp"
+        android:text="Direccion"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/txvMostrarDirCli"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvCategoriaCliente2" />
+
+    <EditText
+        android:id="@+id/txtClienteId2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="14dp"
+        android:ems="10"
+        android:hint="Ingrese ID"
+        android:textColor="@color/black"
+        android:inputType="number"
+        android:textColorHint="#050505"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txvClienteId2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvClienteId2" />
+
+    <Button
+        android:id="@+id/btnBuscarCli"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="29dp"
+        android:background="@drawable/button_rounded"
+        android:text="Buscar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/txvDireccionCliente2" />
+
+    <Button
+        android:id="@+id/btnEliminarCli"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="29dp"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="#52658F"
+        android:text="Eliminar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/txvMostrarDirCli" />
+
+    <TextView
+        android:id="@+id/txvMostrarCompCli"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="44dp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvNombreCompañia2"
+        app:layout_constraintTop_toBottomOf="@+id/txtClienteId2" />
+
+    <TextView
+        android:id="@+id/txvMostrarCorrCli"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="44dp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvCorreoCliente2"
+        app:layout_constraintTop_toBottomOf="@+id/txvMostrarTelCli" />
+
+    <TextView
+        android:id="@+id/txvMostrarTelCli"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="44dp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvTelefonoCliente2"
+        app:layout_constraintTop_toBottomOf="@+id/txvMostrarNomCli" />
+
+    <TextView
+        android:id="@+id/txvMostrarPaisCli"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="44dp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvPaisCliente2"
+        app:layout_constraintTop_toBottomOf="@+id/txvMostrarCorrCli" />
+
+    <TextView
+        android:id="@+id/txvMostrarCatCli"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="44dp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvCategoriaCliente2"
+        app:layout_constraintTop_toBottomOf="@+id/txvMostrarPaisCli" />
+
+    <TextView
+        android:id="@+id/txvMostrarNomCli"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="44dp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvNombreCliente2"
+        app:layout_constraintTop_toBottomOf="@+id/txvMostrarCompCli" />
+
+    <TextView
+        android:id="@+id/txvMostrarDirCli"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="44dp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvDireccionCliente2"
+        app:layout_constraintTop_toBottomOf="@+id/txvMostrarCatCli" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

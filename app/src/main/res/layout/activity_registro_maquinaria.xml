@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F5E6"
+    tools:context=".Maquinaria.Registro_Maquinaria_Activity">
+
+    <include
+        layout="@layout/action_bar_toolbar"/>
+
+    <TextView
+        android:id="@+id/txvMaquinariaId"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="114dp"
+        android:layout_marginEnd="79dp"
+        android:layout_marginBottom="40dp"
+        android:text="Maquinaria Id"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/MaquiFabricaId"
+        app:layout_constraintEnd_toStartOf="@+id/txtMaquinariaId"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/MaquiFabricaId"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="40dp"
+        android:text="Fabrica Id"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txvMarca"
+        app:layout_constraintEnd_toStartOf="@+id/spFarbicaID"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvMaquinariaId" />
+
+    <TextView
+        android:id="@+id/txvMarca"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="39dp"
+        android:layout_marginBottom="42dp"
+        android:text="Nombre Marca"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txvHorasUso"
+        app:layout_constraintEnd_toStartOf="@+id/txtNombreMarca"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MaquiFabricaId" />
+
+    <TextView
+        android:id="@+id/txvHorasUso"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="105dp"
+        android:layout_marginBottom="226dp"
+        android:text="Telefono"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegisMaqui"
+        app:layout_constraintEnd_toStartOf="@+id/txtTelefonoMaqui"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvMarca" />
+
+    <EditText
+        android:id="@+id/txtMaquinariaId"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="99dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="42dp"
+        android:ems="8"
+        android:hint="Ingrese id"
+        android:inputType="number"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/spFarbicaID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvMaquinariaId"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txtNombreMarca"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="43dp"
+        android:ems="8"
+        android:hint="Ingrese nombre"
+        android:inputType="textPersonName"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/txtTelefonoMaqui"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvMarca"
+        app:layout_constraintTop_toBottomOf="@+id/spFarbicaID" />
+
+    <EditText
+        android:id="@+id/txtTelefonoMaqui"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="244dp"
+        android:ems="8"
+        android:hint="Ingrese telefono"
+        android:inputType="number"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/btnActuMaqui"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvHorasUso"
+        app:layout_constraintTop_toBottomOf="@+id/txtNombreMarca" />
+
+    <Spinner
+        android:id="@+id/spFarbicaID"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="34dp"
+        android:backgroundTint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/txtNombreMarca"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/MaquiFabricaId"
+        app:layout_constraintTop_toBottomOf="@+id/txtMaquinariaId" />
+
+    <Button
+        android:id="@+id/btnRegisMaqui"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="53dp"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="#52658F"
+        android:text="Registrar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnActuMaqui"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvHorasUso" />
+
+    <Button
+        android:id="@+id/btnActuMaqui"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="53dp"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="#52658F"
+        android:text="Actualizar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnRegisMaqui"
+        app:layout_constraintTop_toBottomOf="@+id/txtTelefonoMaqui" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

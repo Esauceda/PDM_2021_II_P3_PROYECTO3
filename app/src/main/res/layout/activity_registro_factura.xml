@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F5E6"
+    tools:context=".Factura.Registro_Factura_Activity">
+
+    <include
+        layout="@layout/action_bar_toolbar"/>
+
+    <TextView
+        android:id="@+id/txvFacturaId"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="114dp"
+        android:layout_marginEnd="81dp"
+        android:layout_marginBottom="40dp"
+        android:text="Factura Id"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txvOrdenIdFac"
+        app:layout_constraintEnd_toStartOf="@+id/txtFacturaId"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txvOrdenIdFac"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginBottom="40dp"
+        android:text="Orden Id"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txvFechaFac"
+        app:layout_constraintEnd_toStartOf="@+id/spFacturaOrdenID"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvFacturaId" />
+
+    <TextView
+        android:id="@+id/txvFechaFac"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="39dp"
+        android:layout_marginBottom="42dp"
+        android:text="Fecha factura"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txvTotalFac"
+        app:layout_constraintEnd_toStartOf="@+id/txtFechaFac"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvOrdenIdFac" />
+
+    <TextView
+        android:id="@+id/txvTotalFac"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="105dp"
+        android:layout_marginBottom="226dp"
+        android:text="Total"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegisFac"
+        app:layout_constraintEnd_toStartOf="@+id/txtTotalFac"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvFechaFac" />
+
+    <EditText
+        android:id="@+id/txtFacturaId"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="94dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="47dp"
+        android:ems="8"
+        android:hint="Ingrese id"
+        android:inputType="number"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/spFacturaOrdenID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvFacturaId"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txtFechaFac"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="41dp"
+        android:ems="8"
+        android:hint="Ingrese fecha"
+        android:inputType="date"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/txtTotalFac"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvFechaFac"
+        app:layout_constraintTop_toBottomOf="@+id/spFacturaOrdenID" />
+
+    <EditText
+        android:id="@+id/txtTotalFac"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="244dp"
+        android:ems="8"
+        android:hint="Ingrese total"
+        android:inputType="number"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/btnActuFac"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvTotalFac"
+        app:layout_constraintTop_toBottomOf="@+id/txtFechaFac" />
+
+    <Spinner
+        android:id="@+id/spFacturaOrdenID"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="36dp"
+        android:backgroundTint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/txtFechaFac"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvOrdenIdFac"
+        app:layout_constraintTop_toBottomOf="@+id/txtFacturaId" />
+
+    <Button
+        android:id="@+id/btnRegisFac"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="53dp"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="#52658F"
+        android:text="Registrar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnActuFac"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvTotalFac" />
+
+    <Button
+        android:id="@+id/btnActuFac"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="53dp"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="#52658F"
+        android:text="Actualizar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnRegisFac"
+        app:layout_constraintTop_toBottomOf="@+id/txtTotalFac" />
+</androidx.constraintlayout.widget.ConstraintLayout>
