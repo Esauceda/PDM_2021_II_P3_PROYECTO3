@@ -12,7 +12,7 @@
         layout="@layout/action_bar_toolbar"/>
 
     <TextView
-        android:id="@+id/txvFabricaID2"
+        android:id="@+id/txvFabricaID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -25,7 +25,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txvTelefonoFabrica2"
+        android:id="@+id/txvTelefonoFabrica"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="17dp"
@@ -34,11 +34,11 @@
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/txvProduccionFabrica2"
+        app:layout_constraintBottom_toTopOf="@+id/txvProduccionFabrica"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/txvProduccionFabrica2"
+        android:id="@+id/txvProduccionFabrica"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -51,7 +51,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txvDireccionFabrica2"
+        android:id="@+id/txvDireccionFabrica"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -61,10 +61,10 @@
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvProduccionFabrica2" />
+        app:layout_constraintTop_toBottomOf="@+id/txvProduccionFabrica" />
 
     <TextView
-        android:id="@+id/txvEncargadoFabrica2"
+        android:id="@+id/txvEncargadoFabrica"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -74,7 +74,7 @@
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvDireccionFabrica2" />
+        app:layout_constraintTop_toBottomOf="@+id/txvDireccionFabrica" />
 
     <TextView
         android:id="@+id/txvPaisCliente"
@@ -87,7 +87,7 @@
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvEncargadoFabrica2" />
+        app:layout_constraintTop_toBottomOf="@+id/txvEncargadoFabrica" />
 
     <TextView
         android:id="@+id/txvCategoriaCliente"
@@ -154,7 +154,7 @@
         android:textColorHint="@color/black"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvTelefonoFabrica2" />
+        app:layout_constraintTop_toBottomOf="@+id/txvTelefonoFabrica" />
 
     <EditText
         android:id="@+id/txvMostrarDireccionFabrica"

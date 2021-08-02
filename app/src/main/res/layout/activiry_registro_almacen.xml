@@ -12,7 +12,7 @@
         layout="@layout/action_bar_toolbar"/>
 
     <TextView
-        android:id="@+id/txvAlmacenID2"
+        android:id="@+id/txvAlmacenID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -25,7 +25,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txvTelefonoAlmacen2"
+        android:id="@+id/txvTelefonoAlmacen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -35,10 +35,10 @@
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvAlmacenID2" />
+        app:layout_constraintTop_toBottomOf="@+id/txvAlmacenID" />
 
     <TextView
-        android:id="@+id/txvProductoAlmacenado2"
+        android:id="@+id/txvProductoAlmacenado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -48,10 +48,10 @@
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvTelefonoAlmacen2" />
+        app:layout_constraintTop_toBottomOf="@+id/txvTelefonoAlmacen" />
 
     <TextView
-        android:id="@+id/txvDireccionAlmacen2"
+        android:id="@+id/txvDireccionAlmacen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -61,10 +61,10 @@
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvProductoAlmacenado2" />
+        app:layout_constraintTop_toBottomOf="@+id/txvProductoAlmacenado" />
 
     <TextView
-        android:id="@+id/txvEncargado2"
+        android:id="@+id/txvEncargado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -74,7 +74,7 @@
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvDireccionAlmacen2" />
+        app:layout_constraintTop_toBottomOf="@+id/txvDireccionAlmacen" />
 
     <EditText
         android:id="@+id/txtMostrarAlmacenID"
@@ -91,7 +91,7 @@
         app:layout_constraintTop_toBottomOf="@+id/include" />
 
     <EditText
-        android:id="@+id/txvMostrarTelefonoAlmacen"
+        android:id="@+id/txtTelefonoAlmacen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
@@ -102,12 +102,12 @@
         android:inputType="textPersonName"
         android:textColorHint="@color/black"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/txvMostrarProductoAlmacenado"
+        app:layout_constraintBottom_toTopOf="@+id/txtProductoAlmacenado"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtMostrarAlmacenID" />
 
     <EditText
-        android:id="@+id/txvMostrarProductoAlmacenado"
+        android:id="@+id/txtProductoAlmacenado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -118,10 +118,10 @@
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvMostrarTelefonoAlmacen" />
+        app:layout_constraintTop_toBottomOf="@+id/txtTelefonoAlmacen" />
 
     <EditText
-        android:id="@+id/txvMostrarDireccionAlmacen"
+        android:id="@+id/txtDireccionAlmacen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -130,11 +130,11 @@
         android:inputType="number"
         android:textColorHint="@color/black"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/txvMostrarProductoAlmacenado"
-        app:layout_constraintTop_toBottomOf="@+id/txvMostrarProductoAlmacenado" />
+        app:layout_constraintStart_toStartOf="@+id/txtProductoAlmacenado"
+        app:layout_constraintTop_toBottomOf="@+id/txtProductoAlmacenado" />
 
     <EditText
-        android:id="@+id/txvMostrarEncargado"
+        android:id="@+id/txtEncargado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="11dp"
@@ -143,11 +143,11 @@
         android:inputType="numberDecimal"
         android:textColorHint="@color/black"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/txvMostrarDireccionAlmacen"
-        app:layout_constraintTop_toBottomOf="@+id/txvMostrarDireccionAlmacen" />
+        app:layout_constraintStart_toStartOf="@+id/txtDireccionAlmacen"
+        app:layout_constraintTop_toBottomOf="@+id/txtDireccionAlmacen" />
 
     <Button
-        android:id="@+id/btnEliminarFabrica"
+        android:id="@+id/btnEliminarAlmacen"
         android:layout_width="146dp"
         android:layout_height="49dp"
         android:layout_marginEnd="45dp"
@@ -160,7 +160,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/btnBuscarFabrica"
+        android:id="@+id/btnBuscarAlmacen"
         android:layout_width="146dp"
         android:layout_height="49dp"
         android:layout_marginStart="45dp"

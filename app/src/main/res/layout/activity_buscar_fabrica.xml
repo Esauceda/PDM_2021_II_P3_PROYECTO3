@@ -5,19 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F7F5E6"
-    tools:context=".Almacen.Buscar_Almacen_Activity">
+    tools:context=".Fabrica.Buscar_Fabrica_Activity">
 
     <include
-        android:id="@+id/include"
-        layout="@layout/action_bar_toolbar"/>
+        android:id="@+id/include2"
+        layout="@layout/action_bar_toolbar" />
 
     <TextView
-        android:id="@+id/txvAlmacenID2"
+        android:id="@+id/txvFabricaID2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="100dp"
-        android:text="Almacen ID"
+        android:layout_marginTop="90dp"
+        android:text="Fabrica ID"
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
@@ -25,126 +25,125 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txvTelefonoAlmacen2"
+        android:id="@+id/txvTelefonoFabrica2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="17dp"
+        android:layout_marginBottom="36dp"
+        android:text="Telefono Fabrica"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txvProduccionFabrica2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txvProduccionFabrica2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
-        android:text="Telefono Almacen"
+        android:layout_marginTop="212dp"
+        android:text="Produccion Fabrica"
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvAlmacenID2" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txvProductoAlmacenado2"
+        android:id="@+id/txvDireccionFabrica2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="36dp"
-        android:text="Producto Almacenado"
+        android:text="Direccion Fabrica"
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvTelefonoAlmacen2" />
+        app:layout_constraintTop_toBottomOf="@+id/txvProduccionFabrica2" />
 
     <TextView
-        android:id="@+id/txvDireccionAlmacen2"
+        android:id="@+id/txvEncargadoFabrica2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="36dp"
-        android:text="Direccion Almacen"
+        android:text="Encargado Fabrica"
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvProductoAlmacenado2" />
-
-    <TextView
-        android:id="@+id/txvEncargado2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
-        android:text="Encargado"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvDireccionAlmacen2" />
+        app:layout_constraintTop_toBottomOf="@+id/txvDireccionFabrica2" />
 
     <EditText
-
-        android:id="@+id/txtMostrarAlmacenID"
+        android:id="@+id/txtMostrarFabricaID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="10dp"
         android:ems="8"
-        android:hint="Ingrese ID"
+        android:hint="Ingrese iD"
         android:inputType="number"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include" />
+        app:layout_constraintTop_toBottomOf="@+id/include2" />
 
     <TextView
-        android:id="@+id/txvMostrarTelefonoAlmacen"
+        android:id="@+id/txvMostrarTelefonoFabrica"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="12dp"
-        android:ems="8"
-        android:inputType="textPersonName"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/txvMostrarProductoAlmacenado"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtMostrarAlmacenID" />
-
-    <TextView
-        android:id="@+id/txvMostrarProductoAlmacenado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="40dp"
         android:ems="8"
         android:inputType="textPersonName"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvMostrarTelefonoAlmacen" />
+        app:layout_constraintTop_toBottomOf="@+id/txtMostrarFabricaID" />
 
     <TextView
-        android:id="@+id/txvMostrarDireccionAlmacen"
+        android:id="@+id/txvMostrarProduccionFabrica"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="40dp"
+        android:ems="8"
+        android:inputType="textPersonName"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvMostrarTelefonoFabrica" />
+
+    <TextView
+        android:id="@+id/txvMostrarDireccionFabrica"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="40dp"
         android:ems="8"
         android:inputType="number"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/txvMostrarProductoAlmacenado"
-        app:layout_constraintTop_toBottomOf="@+id/txvMostrarProductoAlmacenado" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvMostrarProduccionFabrica" />
 
     <TextView
-        android:id="@+id/txvMostrarEncargado"
+        android:id="@+id/txvMostrarEncargadoFabrica"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="40dp"
         android:ems="8"
         android:inputType="numberDecimal"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/txvMostrarDireccionAlmacen"
-        app:layout_constraintTop_toBottomOf="@+id/txvMostrarDireccionAlmacen" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvMostrarDireccionFabrica" />
 
     <Button
-        android:id="@+id/btnEliminarAlmacen"
+        android:id="@+id/btnEliminarFabrica"
         android:layout_width="146dp"
         android:layout_height="49dp"
         android:layout_marginEnd="45dp"
@@ -157,7 +156,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/btnBuscarAlmacen"
+        android:id="@+id/btnBuscarFabrica"
         android:layout_width="146dp"
         android:layout_height="49dp"
         android:layout_marginStart="45dp"

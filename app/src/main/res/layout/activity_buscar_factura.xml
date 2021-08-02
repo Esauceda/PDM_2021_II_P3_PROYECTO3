@@ -5,167 +5,151 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F7F5E6"
-    tools:context=".Fabrica.Buscar_Fabrica_Activity">
+    tools:context=".Factura.Buscar_Factura_Activity">
 
     <include
-        android:id="@+id/include2"
-        layout="@layout/action_bar_toolbar" />
+        layout="@layout/action_bar_toolbar"/>
 
     <TextView
-        android:id="@+id/txvFabricaID2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="90dp"
-        android:text="Fabrica ID"
+        android:id="@+id/txvFacturaId2"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="114dp"
+        android:layout_marginEnd="81dp"
+        android:text="Factura Id"
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/txtFacturaId2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txvTelefonoFabrica2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="17dp"
-        android:layout_marginBottom="36dp"
-        android:text="Telefono Fabrica"
+        android:id="@+id/txvOrdenIdFac2"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="82dp"
+        android:layout_marginEnd="70dp"
+        android:layout_marginBottom="82dp"
+        android:text="Orden Id"
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/txvProduccionFabrica2"
+        app:layout_constraintBottom_toBottomOf="@+id/txvFechaFac2"
+        app:layout_constraintEnd_toStartOf="@+id/txvMostrarFacOrdenId"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txvFacturaId2" />
+
+    <TextView
+        android:id="@+id/txvFechaFac2"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="39dp"
+        android:text="Fecha factura"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txvMostrarFechaFac"
+        app:layout_constraintEnd_toStartOf="@+id/txvMostrarFechaFac"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/txvProduccionFabrica2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="212dp"
-        android:text="Produccion Fabrica"
+        android:id="@+id/txvTotalFac2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="105dp"
+        android:text="Total"
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/txvMostrarTotalFac"
+        app:layout_constraintEnd_toStartOf="@+id/txvMostrarTotalFac"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txvMostrarTotalFac" />
+
+    <EditText
+        android:id="@+id/txtMostrarFacturaId"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginTop="107dp"
+        android:layout_marginEnd="19dp"
+        android:ems="8"
+        android:hint="Ingrese id"
+        android:inputType="number"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvFacturaId"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txvDireccionFabrica2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
-        android:text="Direccion Fabrica"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvProduccionFabrica2" />
-
-    <TextView
-        android:id="@+id/txvEncargadoFabrica2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
-        android:text="Encargado Fabrica"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvDireccionFabrica2" />
-
-    <EditText
-        android:id="@+id/txtMostrarFabricaID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
-        android:layout_marginEnd="10dp"
-        android:ems="8"
-        android:hint="Ingrese iD"
-        android:inputType="number"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include2" />
-
-    <TextView
-        android:id="@+id/txvMostrarTelefonoFabrica"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:id="@+id/txvMostrarFechaFac"
+        android:layout_width="140dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="280dp"
         android:layout_marginEnd="40dp"
         android:ems="8"
-        android:inputType="textPersonName"
+        android:inputType="date"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtMostrarFabricaID" />
+        app:layout_constraintStart_toEndOf="@+id/txvFechaFac2"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txvMostrarProduccionFabrica"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="38dp"
-        android:layout_marginEnd="40dp"
-        android:ems="8"
-        android:inputType="textPersonName"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvMostrarTelefonoFabrica" />
-
-    <TextView
-        android:id="@+id/txvMostrarDireccionFabrica"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="38dp"
+        android:id="@+id/txvMostrarTotalFac"
+        android:layout_width="140dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="41dp"
         android:layout_marginEnd="40dp"
         android:ems="8"
         android:inputType="number"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvMostrarProduccionFabrica" />
+        app:layout_constraintStart_toEndOf="@+id/txvTotalFac2"
+        app:layout_constraintTop_toBottomOf="@+id/txvMostrarFechaFac" />
+
 
     <TextView
-        android:id="@+id/txvMostrarEncargadoFabrica"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="38dp"
-        android:layout_marginEnd="40dp"
+        android:id="@+id/txvMostrarFacOrdenId"
+        android:layout_width="140dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="38dp"
         android:ems="8"
-        android:inputType="numberDecimal"
+        android:inputType="number"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/txvOrdenIdFac2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvMostrarDireccionFabrica" />
+        app:layout_constraintStart_toEndOf="@+id/txvOrdenIdFac2"
+        app:layout_constraintTop_toTopOf="@+id/txvOrdenIdFac2" />
 
     <Button
-        android:id="@+id/btnEliminarFabrica"
-        android:layout_width="146dp"
-        android:layout_height="49dp"
-        android:layout_marginEnd="45dp"
-        android:layout_marginBottom="120dp"
-        android:background="@drawable/button_rounded"
-        android:backgroundTint="#52658F"
-        android:text="Eliminar"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/btnBuscarFabrica"
-        android:layout_width="146dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="45dp"
-        android:layout_marginBottom="120dp"
+        android:id="@+id/btnBuscarFac"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="78dp"
         android:background="@drawable/button_rounded"
         android:backgroundTint="#52658F"
         android:text="Buscar"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnEliminarFac"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnEliminarFac"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="92dp"
+        android:layout_marginBottom="53dp"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="#52658F"
+        android:text="Eliminar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

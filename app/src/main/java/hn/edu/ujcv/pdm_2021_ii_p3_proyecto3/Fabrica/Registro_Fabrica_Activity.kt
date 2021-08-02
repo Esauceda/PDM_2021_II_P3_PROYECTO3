@@ -12,7 +12,7 @@ import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Toolbar.MyToolbar
 class Registro_Fabrica_Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_registor_factura)
+        setContentView(R.layout.activity_registro_fabrica)
 
         MyToolbar().show(this,"Registrar Fabrica", false)
     }
