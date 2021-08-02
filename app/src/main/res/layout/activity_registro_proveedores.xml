@@ -5,19 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F7F5E6"
-    tools:context=".Cliente.Registro_Clientes_Activity">
+    tools:context=".Proveedores.Registro_Proveedores_Activity">
 
     <include
-        android:id="@+id/include"
         layout="@layout/action_bar_toolbar"/>
 
     <TextView
-        android:id="@+id/txvClienteID"
+        android:id="@+id/txvProveedorID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="90dp"
-        android:text="Cliente Id"
+        android:text="Proveedor Id"
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
@@ -25,33 +24,33 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txvNombreCompaniaCli"
+        android:id="@+id/txvNombreCompañiaProveedor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="17dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginTop="42dp"
         android:text="Nombre Compañia"
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/txvNombreCli"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvProveedorID" />
 
     <TextView
-        android:id="@+id/txvNombreCli"
+        android:id="@+id/txvNombreContactoProveedor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="212dp"
-        android:text="Nombre Cliente"
+        android:layout_marginTop="35dp"
+        android:text="Nombre Contacto"
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/txvTelefonoProveedor"
+        app:layout_constraintStart_toEndOf="@+id/txvTelefonoProveedor"
+        app:layout_constraintTop_toBottomOf="@+id/txvNombreCompañiaProveedor" />
 
     <TextView
-        android:id="@+id/txvTelefonoCli"
+        android:id="@+id/txvTelefonoProveedor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -61,10 +60,10 @@
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvNombreCli" />
+        app:layout_constraintTop_toBottomOf="@+id/txvNombreContactoProveedor" />
 
     <TextView
-        android:id="@+id/txvCorreoCli"
+        android:id="@+id/txvCorreoProveedor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -74,10 +73,10 @@
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvTelefonoCli" />
+        app:layout_constraintTop_toBottomOf="@+id/txvTelefonoProveedor" />
 
     <TextView
-        android:id="@+id/txvPaisCliente"
+        android:id="@+id/txvPaisProveedor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -87,23 +86,11 @@
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvCorreoCli" />
+        app:layout_constraintTop_toBottomOf="@+id/txvCorreoProveedor" />
+
 
     <TextView
-        android:id="@+id/txvCategoriaCliente"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="48dp"
-        android:text="Categoria"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvDireccionCliente" />
-
-    <TextView
-        android:id="@+id/txvDireccionCliente"
+        android:id="@+id/txvDireccionProveedor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -113,143 +100,143 @@
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvPaisCliente" />
+        app:layout_constraintTop_toBottomOf="@+id/txvPaisProveedor" />
 
     <EditText
-        android:id="@+id/txtClienteID"
+        android:id="@+id/txtProveedorID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:ems="8"
         android:hint="Ingrese id"
         android:inputType="number"
-        android:textColorHint="@color/black"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/txtNombreCompaniaCli"
-        app:layout_constraintStart_toStartOf="@+id/txtNombreCompaniaCli" />
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/txtNombreCompañiaProveedor"
+        app:layout_constraintStart_toStartOf="@+id/txtNombreCompañiaProveedor" />
 
     <EditText
-        android:id="@+id/txtNombreCompaniaCli"
+        android:id="@+id/txtNombreCompañiaProveedor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="2dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="11dp"
         android:ems="8"
-        android:hint="Ingrese compañia"
+        android:hint="Ingrese nombre "
         android:inputType="textPersonName"
-        android:textColorHint="@color/black"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/txtNombreCli"
-        app:layout_constraintEnd_toEndOf="@+id/txtNombreCli" />
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/txtContactoProveedor"
+        app:layout_constraintEnd_toEndOf="@+id/txtContactoProveedor" />
 
     <EditText
-        android:id="@+id/txtNombreCli"
+        android:id="@+id/txtContactoProveedor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="37dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="34dp"
         android:ems="8"
         android:hint="Ingrese nombre"
-        android:inputType="textPersonName"
-        android:textColorHint="@color/black"
+        android:inputType="text"
         android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvNombreCompaniaCli" />
+        app:layout_constraintTop_toBottomOf="@+id/txvNombreCompañiaProveedor" />
 
     <EditText
-        android:id="@+id/txtTelefonoCli"
+        android:id="@+id/txtTelefonoProveedor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="13dp"
         android:ems="8"
         android:hint="Ingrese telefono"
         android:inputType="number"
-        android:textColorHint="@color/black"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/txtNombreCli"
-        app:layout_constraintTop_toBottomOf="@+id/txtNombreCli" />
+        android:textColorHint="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/txtContactoProveedor"
+        app:layout_constraintTop_toBottomOf="@+id/txtContactoProveedor" />
 
     <EditText
-        android:id="@+id/txtCorreoCli"
+        android:id="@+id/txtCorreoProveedor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="11dp"
+        android:layout_marginTop="13dp"
         android:ems="8"
-        android:hint="Ingrese correo"
-        android:inputType="numberDecimal"
-        android:textColorHint="@color/black"
+        android:hint="Ingrese corre"
+        android:inputType="text"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/txtTelefonoCli"
-        app:layout_constraintTop_toBottomOf="@+id/txtTelefonoCli" />
+        android:textColorHint="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/txtTelefonoProveedor"
+        app:layout_constraintTop_toBottomOf="@+id/txtTelefonoProveedor" />
 
     <EditText
-        android:id="@+id/txtPais"
+        android:id="@+id/txtPaisProveedor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="21dp"
         android:ems="8"
-        android:hint="Ingrese pais"
+        android:hint="Ingrese puesto"
         android:inputType="textPersonName"
-        android:textColorHint="@color/black"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/txtCorreoCli"
-        app:layout_constraintTop_toBottomOf="@+id/txtCorreoCli" />
+        android:textColorHint="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/txtCorreoProveedor"
+        app:layout_constraintTop_toBottomOf="@+id/txtCorreoProveedor" />
 
     <EditText
-        android:id="@+id/txtDireccionCli"
+        android:id="@+id/txtDireccionProveedor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="27dp"
-        android:layout_marginEnd="37dp"
+        android:layout_marginEnd="34dp"
         android:ems="8"
         android:hint="Ingrese direccion"
-        android:inputType="date"
-        android:textColorHint="@color/black"
+        android:inputType="textPersonName"
         android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPais" />
+        app:layout_constraintTop_toBottomOf="@+id/txtPaisProveedor" />
 
-    <EditText
-        android:id="@+id/txtCategoriaCli"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="37dp"
-        android:ems="8"
-        android:hint="Ingrese categoria"
-        android:inputType="date"
-        android:textColorHint="@color/black"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtDireccionCli" />
 
     <Button
-        android:id="@+id/btnGuardarCliente"
-        android:layout_width="144dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="35dp"
-        android:background="@drawable/button_rounded"
-        android:backgroundTint="#52658F"
-        android:text="Guardar"
-        android:textSize="17dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btnActuCliente"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btnActuCliente"
-        android:layout_width="0dp"
+        android:id="@+id/btnActuProveedor"
+        android:layout_width="153dp"
         android:layout_height="43dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="65dp"
         android:layout_marginEnd="38dp"
-        android:layout_marginBottom="65dp"
         android:background="@drawable/button_rounded"
         android:backgroundTint="#52658F"
         android:text="Actualizar"
         android:textSize="17dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnGuardarProveedor"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btnGuardarProveedor"
+        android:layout_width="153dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="122dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="124dp"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="#52658F"
+        android:text="Guardar"
+        android:textSize="17dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnActuProveedor"
+        app:layout_constraintTop_toTopOf="@+id/txtDireccionProveedor" />
+
+    <Button
+        android:id="@+id/btnBuscarProveedor"
+        android:layout_width="153dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="64dp"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="#52658F"
+        android:text="Buscar"
+        android:textSize="17dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnGuardarCliente"
-        app:layout_constraintTop_toBottomOf="@+id/txtCategoriaCli" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnActuProveedor" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

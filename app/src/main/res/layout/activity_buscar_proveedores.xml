@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F5E6"
+    tools:context=".Proveedores.Buscar_Proveedores_Activity">
+
+    <include
+        layout="@layout/action_bar_toolbar"/>
+
+    <TextView
+        android:id="@+id/txvProveedorID2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="97dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="37dp"
+        android:text="Cliente Id"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txvNombreCompañiaProveedor2"
+        app:layout_constraintEnd_toStartOf="@+id/txtProveedorID2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txvNombreCompañiaProveedor2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="36dp"
+        android:text="Nombre Compañia"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txvNombreContactoProveedor2"
+        app:layout_constraintEnd_toStartOf="@+id/txvMostrarNombreProveedor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvProveedorID2" />
+
+    <TextView
+        android:id="@+id/txvNombreContactoProveedor2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="40dp"
+        android:text="Nombre Contacto"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txvTelefonoProveedor2"
+        app:layout_constraintEnd_toStartOf="@+id/txvMostrarNombreContactoProveedor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvNombreCompañiaProveedor2" />
+
+    <TextView
+        android:id="@+id/txvTelefonoProveedor2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="34dp"
+        android:text="Telefono"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txvCorreoProveedor2"
+        app:layout_constraintEnd_toStartOf="@+id/txvMostrarTelProveedor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvNombreContactoProveedor2" />
+
+    <TextView
+        android:id="@+id/txvCorreoProveedor2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="37dp"
+        android:text="Correo"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txvPaisProveedor2"
+        app:layout_constraintEnd_toStartOf="@+id/txvMostrarCorrProveedor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvTelefonoProveedor2" />
+
+    <TextView
+        android:id="@+id/txvPaisProveedor2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="36dp"
+        android:text="Pais"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txvDireccionProveedor2"
+        app:layout_constraintEnd_toStartOf="@+id/txvMostrarPaisProveedor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvCorreoProveedor2" />
+
+    <TextView
+        android:id="@+id/txvDireccionProveedor2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="176dp"
+        android:text="Direccion"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/txvMostrarDireccionProveedor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvPaisProveedor2" />
+
+
+    <EditText
+        android:id="@+id/txtProveedorID2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="85dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="39dp"
+        android:ems="10"
+        android:hint="Ingrese ID"
+        android:inputType="number"
+        android:textColor="@color/black"
+        android:textColorHint="#050505"
+        app:layout_constraintBottom_toTopOf="@+id/txvMostrarNombreProveedor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvProveedorID2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnBuscarProveedor2"
+        android:layout_width="0dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="67dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="63dp"
+        android:background="@drawable/button_rounded"
+        android:text="Buscar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnEliminarCli"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvMostrarDireccionProveedor" />
+
+    <Button
+        android:id="@+id/btnEliminarCli"
+        android:layout_width="0dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="70dp"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="#52658F"
+        android:text="Eliminar"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnBuscarProveedor2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnBuscarProveedor2" />
+
+    <TextView
+        android:id="@+id/txvMostrarNombreProveedor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="33dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/txvMostrarNombreContactoProveedor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvNombreCompañiaProveedor2"
+        app:layout_constraintTop_toBottomOf="@+id/txtProveedorID2" />
+
+    <TextView
+        android:id="@+id/txvMostrarCorrProveedor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="35dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/txvMostrarPaisProveedor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvCorreoProveedor2"
+        app:layout_constraintTop_toBottomOf="@+id/txvMostrarTelProveedor" />
+
+    <TextView
+        android:id="@+id/txvMostrarTelProveedor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="30dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/txvMostrarCorrProveedor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvTelefonoProveedor2"
+        app:layout_constraintTop_toBottomOf="@+id/txvMostrarNombreContactoProveedor" />
+
+    <TextView
+        android:id="@+id/txvMostrarPaisProveedor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="34dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/txvMostrarDireccionProveedor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvPaisProveedor2"
+        app:layout_constraintTop_toBottomOf="@+id/txvMostrarCorrProveedor" />
+
+    <TextView
+        android:id="@+id/txvMostrarDireccionProveedor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="77dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/btnBuscarProveedor2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvDireccionProveedor2"
+        app:layout_constraintTop_toBottomOf="@+id/txvMostrarPaisProveedor" />
+
+    <TextView
+        android:id="@+id/txvMostrarNombreContactoProveedor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="38dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/txvMostrarTelProveedor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvNombreContactoProveedor2"
+        app:layout_constraintTop_toBottomOf="@+id/txvMostrarNombreProveedor" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

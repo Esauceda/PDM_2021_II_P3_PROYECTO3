@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F5E6"
+    tools:context=".MateriaPrima.Registro_MateriaPrima_Activity">
+
+    <include
+        layout="@layout/action_bar_toolbar"/>
+
+    <TextView
+        android:id="@+id/txvMateriaID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="100dp"
+        android:text="Materia Prima ID"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txvMateriaProveedorID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="Proveedor ID"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvMateriaID" />
+
+    <TextView
+        android:id="@+id/txvMateriaAlmacenID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="44dp"
+        android:text="Almacen ID"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvMateriaProveedorID" />
+
+    <TextView
+        android:id="@+id/txvMateriaDescripcion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:text="Descripcion"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvMateriaAlmacenID" />
+
+    <TextView
+        android:id="@+id/txvMateriaCantidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:text="Cantidad"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvMateriaDescripcion" />
+
+    <EditText
+        android:id="@+id/txtMateriaPrimaID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="81dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="82dp"
+        android:ems="8"
+        android:hint="Ingrese ID"
+        android:inputType="number"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/spMateriaAlmacen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Spinner
+        android:id="@+id/spMateriaProveedor"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="61dp"
+        android:layout_marginBottom="66dp"
+        android:backgroundTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/spMateriaAlmacen"
+        app:layout_constraintEnd_toEndOf="@+id/txtMateriaPrimaID"
+        app:layout_constraintStart_toStartOf="@+id/txtMateriaPrimaID"
+        app:layout_constraintTop_toTopOf="@+id/txtMateriaPrimaID" />
+
+    <Spinner
+        android:id="@+id/spMateriaAlmacen"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginBottom="108dp"
+        android:backgroundTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/txvMateriaCantidad"
+        app:layout_constraintEnd_toEndOf="@+id/txtMateriaDescripcion"
+        app:layout_constraintStart_toStartOf="@+id/txtMateriaDescripcion"
+        app:layout_constraintTop_toTopOf="@+id/txvMateriaID" />
+
+    <EditText
+        android:id="@+id/txtMateriaDescripcion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="38dp"
+        android:ems="8"
+        android:hint="Direccion Almacen"
+        android:inputType="number"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spMateriaAlmacen" />
+
+    <EditText
+        android:id="@+id/txtCantidadMateria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:ems="8"
+        android:hint="Ingrese cantidad"
+        android:inputType="text"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/txtMateriaDescripcion"
+        app:layout_constraintTop_toBottomOf="@+id/txtMateriaDescripcion" />
+
+    <Button
+        android:id="@+id/btnActualizarMateria"
+        android:layout_width="130dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="38dp"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="#52658F"
+        android:text="Actualizar"
+        android:textSize="17dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnGuardarMateria"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnGuardarMateria" />
+
+    <Button
+        android:id="@+id/btnGuardarMateria"
+        android:layout_width="130dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="46dp"
+        android:layout_marginBottom="139dp"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="#52658F"
+        android:text="Guardar"
+        android:textSize="17dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnBuscarMateria"
+        android:layout_width="130dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="#52658F"
+        android:text="Buscar"
+        android:textSize="17dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnActualizarMateria" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

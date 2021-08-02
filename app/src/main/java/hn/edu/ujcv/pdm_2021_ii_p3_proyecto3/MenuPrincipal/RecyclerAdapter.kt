@@ -1,6 +1,5 @@
 package hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.MenuPrincipal
 
-import android.content.Context
 import android.content.Intent
 import androidx.recyclerview.widget.RecyclerView
 import  android.view.LayoutInflater
@@ -8,9 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
 import com.google.android.material.snackbar.Snackbar
-import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Almacen.Buscar_Almacen_Activity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Almacen.Registro_Almacen_Activity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Cliente.Registro_Clientes_Activity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Delivery.Registro_Delivery_Activity
@@ -18,6 +15,9 @@ import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Empleado.Actualizar_Empleado_Activit
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Fabrica.Registro_Fabrica_Activity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Factura.Registro_Factura_Activity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Maquinaria.Registro_Maquinaria_Activity
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.MateriaPrima.Registro_MateriaPrima_Activity
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Producto.Registro_Producto_Activity
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Proveedores.Registro_Proveedores_Activity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.R
 
 class RecyclerAdapter: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
@@ -78,17 +78,17 @@ class RecyclerAdapter: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
                     val intent = Intent(prueba, Registro_Maquinaria_Activity::class.java)
                     prueba.startActivity(intent)
                 }else if (position == 8){
-                    /*val intent = Intent(prueba, Registro_MateriaPrima_Activity::class.java)
-                    prueba.startActivity(intent)*/
+                    val intent = Intent(prueba, Registro_MateriaPrima_Activity::class.java)
+                    prueba.startActivity(intent)
                 }else if (position == 9){
                     /*val intent = Intent(prueba, Registro_Ordenes_Activity::class.java)
                     prueba.startActivity(intent)*/
                 }else if (position == 10){
-                    /*val intent = Intent(prueba, Registro_Productos_Activity::class.java)
-                    prueba.startActivity(intent)*/
+                    val intent = Intent(prueba, Registro_Producto_Activity::class.java)
+                    prueba.startActivity(intent)
                 }else if (position == 11){
-                    /*val intent = Intent(prueba, Registro_Proveedores_Activity::class.java)
-                    prueba.startActivity(intent)*/
+                    val intent = Intent(prueba, Registro_Proveedores_Activity::class.java)
+                    prueba.startActivity(intent)
                 }
             }
         }

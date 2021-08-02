@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F5E6"
+    tools:context=".Producto.Buscar_Producto_Activity">
+
+    <include
+        layout="@layout/action_bar_toolbar"/>
+
+    <TextView
+        android:id="@+id/txvProductoId2"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="20dp"
+        android:text="Producto Id"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/txtProduID2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txvProductoFabricaID2"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="24dp"
+        android:text="Fabrica ID"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txvNombreProducto2"
+        app:layout_constraintEnd_toStartOf="@+id/txvMostrarProduFabricaID"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvProductoId2" />
+
+    <TextView
+        android:id="@+id/txvNombreProducto2"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="116dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="116dp"
+        android:text="Nombre Producto"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/txvProduPrecio2"
+        app:layout_constraintEnd_toStartOf="@+id/txvMostrarNomProducto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txvProductoId2" />
+
+    <TextView
+        android:id="@+id/txvDescripcionProdu2"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="175dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="175dp"
+        android:text="Descripcion"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/txvUnidadesMin2"
+        app:layout_constraintEnd_toStartOf="@+id/txvMostrarDescripProdu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txvProductoId2" />
+
+    <TextView
+        android:id="@+id/txvProduPrecio2"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="58dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="58dp"
+        android:text="Precio"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/txvUnidadesAlmacen2"
+        app:layout_constraintEnd_toStartOf="@+id/txvMostrarPrecioProdu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txvDescripcionProdu2" />
+
+    <TextView
+        android:id="@+id/txvUnidadesAlmacen2"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="14dp"
+        android:text="Unidades en Almacen"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/txvMostrarUnidadesAlmacen"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txvUnidadesMin2"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="58dp"
+        android:text="Unidades Min"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/txvUnidadesMax2"
+        app:layout_constraintEnd_toStartOf="@+id/txvMostrarUnidadesMin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txvUnidadesAlmacen2" />
+
+    <TextView
+        android:id="@+id/txvUnidadesMax2"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="237dp"
+        android:text="Unidades Max"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/txvMostrarUnidadesMax"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/txtProduID2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="14dp"
+        android:ems="10"
+        android:hint="Ingrese ID"
+        android:inputType="number"
+        android:textColor="@color/black"
+        android:textColorHint="#050505"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txvProductoId2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvProductoId2" />
+
+    <Button
+        android:id="@+id/btnBuscarProducto2"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="73dp"
+        android:background="@drawable/button_rounded"
+        android:text="Buscar"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnEliminarProducto"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnEliminarProducto"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginBottom="93dp"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="#52658F"
+        android:text="Eliminar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnBuscarProducto2"
+        app:layout_constraintTop_toBottomOf="@+id/txvUnidadesMax2" />
+
+    <TextView
+        android:id="@+id/txvMostrarProduFabricaID"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginEnd="44dp"
+        android:textColor="@color/black"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txvProductoFabricaID2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvProductoFabricaID2" />
+
+    <TextView
+        android:id="@+id/txvMostrarPrecioProdu"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginEnd="44dp"
+        android:textColor="@color/black"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txvProduPrecio2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvProduPrecio2" />
+
+    <TextView
+        android:id="@+id/txvMostrarDescripProdu"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginEnd="44dp"
+        android:textColor="@color/black"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txvDescripcionProdu2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvDescripcionProdu2" />
+
+    <TextView
+        android:id="@+id/txvMostrarUnidadesAlmacen"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginEnd="44dp"
+        android:textColor="@color/black"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txvUnidadesAlmacen2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvUnidadesAlmacen2" />
+
+    <TextView
+        android:id="@+id/txvMostrarUnidadesMin"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="57dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="58dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/txvMostrarUnidadesMax"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvUnidadesMin2"
+        app:layout_constraintTop_toTopOf="@+id/txvMostrarUnidadesAlmacen" />
+
+    <TextView
+        android:id="@+id/txvMostrarNomProducto"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginEnd="44dp"
+        android:textColor="@color/black"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txvNombreProducto2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvNombreProducto2" />
+
+    <TextView
+        android:id="@+id/txvMostrarUnidadesMax"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="4dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/txvUnidadesMax2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvUnidadesMax2"
+        app:layout_constraintTop_toBottomOf="@+id/txvUnidadesMin2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

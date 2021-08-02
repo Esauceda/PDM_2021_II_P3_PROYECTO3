@@ -22,7 +22,7 @@
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/txtClienteId2"
+        app:layout_constraintEnd_toStartOf="@+id/txtMostrarClienteId"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -132,7 +132,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txvCategoriaCliente2" />
 
     <EditText
-        android:id="@+id/txtClienteId2"
+        android:id="@+id/txtMostrarClienteId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="14dp"
@@ -177,7 +177,7 @@
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txvNombreCompañia2"
-        app:layout_constraintTop_toBottomOf="@+id/txtClienteId2" />
+        app:layout_constraintTop_toBottomOf="@+id/txtMostrarClienteId" />
 
     <TextView
         android:id="@+id/txvMostrarCorrCli"

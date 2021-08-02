@@ -39,7 +39,7 @@
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/txvMarca"
-        app:layout_constraintEnd_toStartOf="@+id/spFarbicaID"
+        app:layout_constraintEnd_toStartOf="@+id/spMaquiFarbicaID"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txvMaquinariaId" />
 
@@ -65,8 +65,8 @@
         android:layout_height="0dp"
         android:layout_marginStart="18dp"
         android:layout_marginEnd="105dp"
-        android:layout_marginBottom="226dp"
-        android:text="Telefono"
+        android:layout_marginBottom="110dp"
+        android:text="Horas uso"
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
@@ -87,7 +87,7 @@
         android:inputType="number"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/spFarbicaID"
+        app:layout_constraintBottom_toTopOf="@+id/spMaquiFarbicaID"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txvMaquinariaId"
         app:layout_constraintTop_toTopOf="parent" />
@@ -99,23 +99,23 @@
         android:layout_marginEnd="23dp"
         android:layout_marginBottom="43dp"
         android:ems="8"
-        android:hint="Ingrese nombre"
+        android:hint="Ingrese marca"
         android:inputType="textPersonName"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/txtTelefonoMaqui"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txvMarca"
-        app:layout_constraintTop_toBottomOf="@+id/spFarbicaID" />
+        app:layout_constraintTop_toBottomOf="@+id/spMaquiFarbicaID" />
 
     <EditText
         android:id="@+id/txtTelefonoMaqui"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginEnd="23dp"
-        android:layout_marginBottom="244dp"
+        android:layout_marginBottom="120dp"
         android:ems="8"
-        android:hint="Ingrese telefono"
+        android:hint="Ingrese horas"
         android:inputType="number"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
@@ -125,7 +125,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtNombreMarca" />
 
     <Spinner
-        android:id="@+id/spFarbicaID"
+        android:id="@+id/spMaquiFarbicaID"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginEnd="40dp"
@@ -138,31 +138,46 @@
 
     <Button
         android:id="@+id/btnRegisMaqui"
-        android:layout_width="wrap_content"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="18dp"
-        android:layout_marginBottom="53dp"
+        android:layout_marginBottom="180dp"
         android:background="@drawable/button_rounded"
         android:backgroundTint="#52658F"
+        android:textSize="17dp"
         android:text="Registrar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnActuMaqui"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvHorasUso" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnActuMaqui"
-        android:layout_width="wrap_content"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="53dp"
+        android:layout_marginBottom="180dp"
         android:background="@drawable/button_rounded"
         android:backgroundTint="#52658F"
+        android:textSize="17dp"
         android:text="Actualizar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnRegisMaqui"
-        app:layout_constraintTop_toBottomOf="@+id/txtTelefonoMaqui" />
+        app:layout_constraintStart_toEndOf="@+id/btnRegisMaqui" />
+
+    <Button
+        android:id="@+id/btnbBuscarMaqui"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="132dp"
+        android:layout_marginBottom="53dp"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="#52658F"
+        android:text="Buscar"
+        android:textSize="17dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTelefonoMaqui"
+        app:layout_constraintVertical_bias="0.821" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
