@@ -139,7 +139,7 @@
         android:layout_marginTop="43dp"
         android:ems="8"
         android:hint="Ingrese correo"
-        android:inputType="numberDecimal"
+        android:inputType="text"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         app:layout_constraintStart_toEndOf="@+id/txvDeliverCorreo"

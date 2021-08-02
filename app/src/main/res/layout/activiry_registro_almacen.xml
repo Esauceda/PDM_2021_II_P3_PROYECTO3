@@ -9,20 +9,48 @@
 
     <include
         android:id="@+id/include"
-        layout="@layout/action_bar_toolbar"/>
+        layout="@layout/action_bar_toolbar" />
+
+    <EditText
+        android:id="@+id/txtTelefonoAlmacen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="39dp"
+        android:ems="8"
+        android:hint="Ingrese Telefono"
+        android:inputType="number"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMostrarAlmacenID" />
+
+    <EditText
+        android:id="@+id/txtDireccionAlmacen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="39dp"
+        android:ems="8"
+        android:hint="Direccion Almacen"
+        android:inputType="textPersonName"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtProductoAlmacenado" />
 
     <TextView
-        android:id="@+id/txvAlmacenID"
+        android:id="@+id/txvDireccionAlmacen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="100dp"
-        android:text="Almacen ID"
+        android:layout_marginTop="40dp"
+        android:text="Direccion Almacen"
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/txvProductoAlmacenado" />
 
     <TextView
         android:id="@+id/txvTelefonoAlmacen"
@@ -38,37 +66,11 @@
         app:layout_constraintTop_toBottomOf="@+id/txvAlmacenID" />
 
     <TextView
-        android:id="@+id/txvProductoAlmacenado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
-        android:text="Producto Almacenado"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvTelefonoAlmacen" />
-
-    <TextView
-        android:id="@+id/txvDireccionAlmacen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
-        android:text="Direccion Almacen"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvProductoAlmacenado" />
-
-    <TextView
         android:id="@+id/txvEncargado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="40dp"
         android:text="Encargado"
         android:textColor="@color/black"
         android:textSize="16dp"
@@ -77,41 +79,65 @@
         app:layout_constraintTop_toBottomOf="@+id/txvDireccionAlmacen" />
 
     <EditText
-        android:id="@+id/txtMostrarAlmacenID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="40dp"
-        android:ems="8"
-        android:hint="Ingrese ID"
-        android:inputType="number"
-        android:textColorHint="@color/black"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include" />
-
-    <EditText
-        android:id="@+id/txtTelefonoAlmacen"
+        android:id="@+id/txtEncargado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="39dp"
         android:ems="8"
-        android:hint="Ingrese Telefono"
+        android:hint="Ingrese Encargado"
         android:inputType="textPersonName"
-        android:textColorHint="@color/black"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/txtProductoAlmacenado"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtMostrarAlmacenID" />
+        app:layout_constraintTop_toBottomOf="@+id/txtDireccionAlmacen" />
+
+    <TextView
+        android:id="@+id/txvAlmacenID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="80dp"
+        android:text="Almacen ID"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include" />
+
+    <EditText
+        android:id="@+id/txtMostrarAlmacenID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="39dp"
+        android:ems="8"
+        android:hint="Ingrese ID"
+        android:inputType="number"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include" />
+
+    <TextView
+        android:id="@+id/txvProductoAlmacenado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
+        android:text="Producto Almacenado"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvTelefonoAlmacen" />
 
     <EditText
         android:id="@+id/txtProductoAlmacenado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="39dp"
         android:ems="8"
         android:hint="Ingrese Producto"
         android:inputType="textPersonName"
@@ -119,32 +145,6 @@
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTelefonoAlmacen" />
-
-    <EditText
-        android:id="@+id/txtDireccionAlmacen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="8"
-        android:hint="Direccion Almacen"
-        android:inputType="number"
-        android:textColorHint="@color/black"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/txtProductoAlmacenado"
-        app:layout_constraintTop_toBottomOf="@+id/txtProductoAlmacenado" />
-
-    <EditText
-        android:id="@+id/txtEncargado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="11dp"
-        android:ems="8"
-        android:hint="Ingrese Encargado"
-        android:inputType="numberDecimal"
-        android:textColorHint="@color/black"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/txtDireccionAlmacen"
-        app:layout_constraintTop_toBottomOf="@+id/txtDireccionAlmacen" />
 
     <Button
         android:id="@+id/btnGuardarAlmacen"
@@ -155,7 +155,7 @@
         android:background="@drawable/button_rounded"
         android:backgroundTint="#52658F"
         android:text="Guardar"
-        android:textSize="20dp"
+        android:textSize="17dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
