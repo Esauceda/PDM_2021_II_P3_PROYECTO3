@@ -114,12 +114,12 @@
         app:layout_constraintTop_toBottomOf="@+id/txvEstadoOrden2" />
 
 
-    <TextView
+    <EditText
         android:id="@+id/txvMostrarOrdenID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginEnd="10dp"
         android:ems="8"
         android:hint="Ingrese id"
         android:inputType="number"

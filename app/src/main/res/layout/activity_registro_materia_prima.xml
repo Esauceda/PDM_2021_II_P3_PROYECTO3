@@ -147,21 +147,21 @@
         android:id="@+id/btnActualizarMateria"
         android:layout_width="130dp"
         android:layout_height="42dp"
-        android:layout_marginEnd="38dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="140dp"
         android:background="@drawable/button_rounded"
         android:backgroundTint="#52658F"
         android:text="Actualizar"
         android:textSize="17dp"
-        app:layout_constraintBottom_toBottomOf="@+id/btnGuardarMateria"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnGuardarMateria" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/btnGuardarMateria"
         android:layout_width="130dp"
         android:layout_height="42dp"
-        android:layout_marginStart="46dp"
-        android:layout_marginBottom="139dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginBottom="140dp"
         android:background="@drawable/button_rounded"
         android:backgroundTint="#52658F"
         android:text="Guardar"
@@ -173,13 +173,13 @@
         android:id="@+id/btnBuscarMateria"
         android:layout_width="130dp"
         android:layout_height="42dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginStart="135dp"
+        android:layout_marginBottom="70dp"
         android:background="@drawable/button_rounded"
         android:backgroundTint="#52658F"
         android:text="Buscar"
         android:textSize="17dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnActualizarMateria" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
