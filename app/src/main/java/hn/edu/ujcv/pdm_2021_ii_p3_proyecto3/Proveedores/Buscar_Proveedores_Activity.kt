@@ -14,7 +14,7 @@ class Buscar_Proveedores_Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_buscar_proveedores)
 
-        MyToolbar().show(this,"Registrar Proveedores", false)
+        MyToolbar().show(this,"Buscar Proveedores", false)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

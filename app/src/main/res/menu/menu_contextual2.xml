@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/option_one"
+        android:title="Registrar o Actualizar Encabezado"/>
+    <item
+        android:id="@+id/option_two"
+        android:title="Eliminar o Buscar Encabezado"/>
+
+    <item
+        android:id="@+id/option_three"
+        android:title="Registrar o Actualizar Detalle"/>
+    <item
+        android:id="@+id/option_four"
+        android:title="Eliminar o Buscar Detalle"/>
+
+    <item
+        android:id="@+id/option_five"
+        android:title="Menu Principal"/>
+
+</menu>

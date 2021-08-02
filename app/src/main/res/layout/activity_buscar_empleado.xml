@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D7CEC7"
+    android:background="#F7F5E6"
     tools:context=".Empleado.Buscar_Empleado_Activity">
 
     <include
@@ -265,13 +265,14 @@
         android:textSize="20dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnEliminarEmpleado"
         app:layout_constraintEnd_toStartOf="@+id/txvMostrarContraEmple2"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/txvNombreEmplea2" />
 
     <Button
         android:id="@+id/btnEliminarEmpleado"
         android:layout_width="175dp"
         android:layout_height="45dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="90dp"
         android:layout_marginBottom="88dp"
         android:background="@drawable/button_rounded"
@@ -280,7 +281,8 @@
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnBuscarFabrica"
-        app:layout_constraintTop_toTopOf="@+id/txvMostrarContraEmple2" />
+        app:layout_constraintTop_toTopOf="@+id/txvMostrarContraEmple2"
+        app:layout_constraintVertical_bias="0.482" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

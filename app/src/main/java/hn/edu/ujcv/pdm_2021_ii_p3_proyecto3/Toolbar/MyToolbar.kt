@@ -9,4 +9,5 @@ class MyToolbar {
         activities.supportActionBar?.title = title
         activities.supportActionBar?.setDisplayHomeAsUpEnabled(upButton)
     }
+
 }
