@@ -8,27 +8,43 @@
     tools:context=".Empleado.Registro_Empleado_Activity">
 
     <include
-        layout="@layout/action_bar_toolbar"/>
+        android:id="@+id/include6"
+        layout="@layout/action_bar_toolbar"
+        tools:layout_editor_absoluteX="134dp"
+        tools:layout_editor_absoluteY="16dp" />
 
     <TextView
         android:id="@+id/txvEmpleadoID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="85dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="38dp"
         android:text="Empleado Id"
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/include6" />
+
+    <EditText
+        android:id="@+id/txtEmpleID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="40dp"
+        android:ems="8"
+        android:hint="Ingrese id"
+        android:inputType="number"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include6" />
 
     <TextView
         android:id="@+id/txvNombreEmplea"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="38dp"
         android:text="Nombre"
         android:textColor="@color/black"
         android:textSize="16dp"
@@ -40,8 +56,8 @@
         android:id="@+id/txvDireEmplea"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="38dp"
         android:text="Direccion"
         android:textColor="@color/black"
         android:textSize="16dp"
@@ -53,8 +69,8 @@
         android:id="@+id/txvTelEmplea"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="38dp"
         android:text="Telefono"
         android:textColor="@color/black"
         android:textSize="16dp"
@@ -66,8 +82,8 @@
         android:id="@+id/txvSalarioEmplea"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="38dp"
         android:text="Salario"
         android:textColor="@color/black"
         android:textSize="16dp"
@@ -79,8 +95,8 @@
         android:id="@+id/txvPuestoEmplea"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="38dp"
         android:text="Puesto"
         android:textColor="@color/black"
         android:textSize="16dp"
@@ -93,7 +109,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="38dp"
         android:text="Nacimiento"
         android:textColor="@color/black"
         android:textSize="16dp"
@@ -105,8 +121,8 @@
         android:id="@+id/txvContratacionEmple"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="51dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="38dp"
         android:text="Contratacion"
         android:textColor="@color/black"
         android:textSize="16dp"
@@ -115,101 +131,94 @@
         app:layout_constraintTop_toBottomOf="@+id/txvPuestoEmplea" />
 
     <EditText
-        android:id="@+id/txtEmpleID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:ems="8"
-        android:hint="Ingrese id"
-        android:inputType="number"
-        android:textColorHint="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/txtEmpleNombre"
-        app:layout_constraintStart_toStartOf="@+id/txtEmpleNombre" />
-
-    <EditText
         android:id="@+id/txtEmpleNombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="2dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="40dp"
         android:ems="8"
         android:hint="Ingrese nombre"
         android:inputType="textPersonName"
         android:textColorHint="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/txtDireccionEmple"
-        app:layout_constraintEnd_toEndOf="@+id/txtDireccionEmple" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtEmpleID" />
 
     <EditText
         android:id="@+id/txtDireccionEmple"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="190dp"
-        android:layout_marginEnd="42dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="40dp"
         android:ems="8"
         android:hint="Ingrese direccion"
         android:inputType="textPersonName"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/txtEmpleNombre" />
 
     <EditText
         android:id="@+id/txtTelEmple"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="40dp"
         android:ems="8"
         android:hint="Ingrese telefono"
         android:inputType="number"
         android:textColorHint="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/txtDireccionEmple"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtDireccionEmple" />
 
     <EditText
         android:id="@+id/txtSalarioEmple"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="11dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="40dp"
         android:ems="8"
         android:hint="Ingrese salario"
         android:inputType="numberDecimal"
         android:textColorHint="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/txtTelEmple"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTelEmple" />
 
     <EditText
         android:id="@+id/PuestoEmple"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="40dp"
         android:ems="8"
         android:hint="Ingrese puesto"
         android:inputType="textPersonName"
         android:textColorHint="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/txtSalarioEmple"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtSalarioEmple" />
 
     <EditText
         android:id="@+id/txtFechaContraEmple"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="40dp"
         android:ems="8"
         android:hint="Ingrese fecha"
         android:inputType="date"
         android:textColorHint="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/PuestoEmple"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PuestoEmple" />
 
     <EditText
         android:id="@+id/txtFechaNaciEmple"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="40dp"
         android:ems="8"
         android:hint="Ingrese fecha"
         android:inputType="date"
         android:textColorHint="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/txtFechaContraEmple"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtFechaContraEmple" />
 
 
@@ -218,7 +227,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="38dp"
         android:text="Contraseña"
         android:textColor="@color/black"
         android:textSize="16dp"
@@ -230,13 +239,12 @@
         android:id="@+id/txtContraEmple"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="41dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="40dp"
         android:ems="8"
         android:hint="Ingrese contraseña"
         android:inputType="textPersonName"
         android:textColorHint="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/btnActualizarEmpleado"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtFechaNaciEmple" />
 
