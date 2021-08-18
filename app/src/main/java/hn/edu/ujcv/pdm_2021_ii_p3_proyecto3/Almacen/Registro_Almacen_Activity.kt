@@ -14,6 +14,7 @@ import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Toolbar.MyToolbar
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.AlmacenDataCollectionItem
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.RestApiError
 import kotlinx.android.synthetic.main.activiry_registro_almacen.*
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -23,8 +24,8 @@ class Registro_Almacen_Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activiry_registro_almacen)
         btnActualizarAlmacen.setOnClickListener { callServicePutAlmacen() }
-        btnGuardarAlmacen.setOnClickListener { callServicePostPerson() }
-        btnBuscarAlmacen.setOnClickListener { callServiceGetPerson() }
+        btnGuardarAlmacen.setOnClickListener { callServicePostAlmacen() }
+        btnBuscarAlmacen.setOnClickListener { callServiceGetAlmacen() }
 
 
         MyToolbar().show(this,"Registro Almacen", false)
@@ -64,7 +65,7 @@ class Registro_Almacen_Activity : AppCompatActivity() {
         })
     }
 
-    private fun callServicePostPerson() {
+    private fun callServicePostAlmacen() {
         val almancenInfo = AlmacenDataCollectionItem(
             almacenId = txtMostrarAlmacenID.text.toString().toInt(),
             telefono = txtTelefonoAlmacen.text.toString().toInt(),
@@ -81,7 +82,7 @@ class Registro_Almacen_Activity : AppCompatActivity() {
         }
     }
 
-    private fun callServiceGetPerson() {
+    private fun callServiceGetAlmacen() {
         val almacenService:AlmacenService = RestEngine.buildService().create(AlmacenService::class.java)
         var result: Call<AlmacenDataCollectionItem> = almacenService.getAlmacenById(txtMostrarAlmacenID.text.toString().toInt())
 
@@ -94,6 +95,10 @@ class Registro_Almacen_Activity : AppCompatActivity() {
                 call: Call<AlmacenDataCollectionItem>,
                 response: Response<AlmacenDataCollectionItem>
             ) {
+                txtMostrarAlmacenID.setText(response.body()!!.almacenId.toString())
+                txtTelefonoAlmacen.setText(response.body()!!.telefono.toString())
+                txtDireccionAlmacen.setText(response.body()!!.direccion)
+                txtEncargado.setText(response.body()!!.encargado)
                 Toast.makeText(this@Registro_Almacen_Activity,"OK"+response.body()!!.encargado,Toast.LENGTH_LONG).show()
             }
         })
@@ -132,6 +137,32 @@ class Registro_Almacen_Activity : AppCompatActivity() {
 
         }
         )
+    }
+
+    private fun callServiceDeletePerson() {
+        val personService:AlmacenService = RestEngine.buildService().create(AlmacenService::class.java)
+        var result: Call<ResponseBody> = personService.deleteAlmacen(txtMostrarAlmacenID.text.toString().toInt())
+
+        result.enqueue(object :  Callback<ResponseBody> {
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                Toast.makeText(this@Registro_Almacen_Activity,"Error",Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(
+                call: Call<ResponseBody>,
+                response: Response<ResponseBody>
+            ) {
+                if (response.isSuccessful) {
+                    Toast.makeText(this@Registro_Almacen_Activity,"DELETE",Toast.LENGTH_LONG).show()
+                }
+                else if (response.code() == 401){
+                    Toast.makeText(this@Registro_Almacen_Activity,"Sesion expirada",Toast.LENGTH_LONG).show()
+                }
+                else{
+                    Toast.makeText(this@Registro_Almacen_Activity,"Fallo al traer el item",Toast.LENGTH_LONG).show()
+                }
+            }
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
