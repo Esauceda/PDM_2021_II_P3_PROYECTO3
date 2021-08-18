@@ -11,7 +11,7 @@ import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.R
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.RestEngine
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Toolbar.MyToolbar
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.AlmacenDataCollectionItem
-import kotlinx.android.synthetic.main.activiry_registro_almacen.*
+import kotlinx.android.synthetic.main.activity_buscar_almacen.*
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -21,6 +21,8 @@ class Buscar_Almacen_Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_buscar_almacen)
+        btnEliminarAlmacen.setOnClickListener { callServiceDeleteAlmacen() }
+        btnBuscarAlmacen2.setOnClickListener { callServiceGetAlmacen() }
 
         MyToolbar().show(this,"Buscar Almacen", false)
     }
@@ -44,9 +46,9 @@ class Buscar_Almacen_Activity : AppCompatActivity() {
                 response: Response<AlmacenDataCollectionItem>
             ) {
                 txtMostrarAlmacenID.setText(response.body()!!.almacenId.toString())
-                txtTelefonoAlmacen.setText(response.body()!!.telefono.toString())
-                txtDireccionAlmacen.setText(response.body()!!.direccion)
-                txtEncargado.setText(response.body()!!.encargado)
+                txvMostrarTelefonoAlmacen.setText(response.body()!!.telefono.toString())
+                txvMostrarDireccionAlmacen.setText(response.body()!!.direccion)
+                txvMostrarEncargado.setText(response.body()!!.encargado)
                 Toast.makeText(this@Buscar_Almacen_Activity,"OK"+response.body()!!.encargado,Toast.LENGTH_LONG).show()
             }
         })
