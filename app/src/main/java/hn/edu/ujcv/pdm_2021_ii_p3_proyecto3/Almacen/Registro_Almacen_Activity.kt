@@ -25,7 +25,7 @@ class Registro_Almacen_Activity : AppCompatActivity() {
         setContentView(R.layout.activiry_registro_almacen)
         btnActualizarAlmacen.setOnClickListener { callServicePutAlmacen() }
         btnGuardarAlmacen.setOnClickListener { callServicePostAlmacen() }
-        btnBuscarAlmacen.setOnClickListener { callServiceGetAlmacen() }
+        btnBuscarAlmacen2.setOnClickListener { callServiceGetAlmacen() }
 
 
         MyToolbar().show(this,"Registro Almacen", false)
@@ -137,32 +137,6 @@ class Registro_Almacen_Activity : AppCompatActivity() {
 
         }
         )
-    }
-
-    private fun callServiceDeletePerson() {
-        val personService:AlmacenService = RestEngine.buildService().create(AlmacenService::class.java)
-        var result: Call<ResponseBody> = personService.deleteAlmacen(txtMostrarAlmacenID.text.toString().toInt())
-
-        result.enqueue(object :  Callback<ResponseBody> {
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Toast.makeText(this@Registro_Almacen_Activity,"Error",Toast.LENGTH_LONG).show()
-            }
-
-            override fun onResponse(
-                call: Call<ResponseBody>,
-                response: Response<ResponseBody>
-            ) {
-                if (response.isSuccessful) {
-                    Toast.makeText(this@Registro_Almacen_Activity,"DELETE",Toast.LENGTH_LONG).show()
-                }
-                else if (response.code() == 401){
-                    Toast.makeText(this@Registro_Almacen_Activity,"Sesion expirada",Toast.LENGTH_LONG).show()
-                }
-                else{
-                    Toast.makeText(this@Registro_Almacen_Activity,"Fallo al traer el item",Toast.LENGTH_LONG).show()
-                }
-            }
-        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

@@ -173,7 +173,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btnBuscarAlmacen"
+        android:id="@+id/btnBuscarAlmacen2"
         android:layout_width="146dp"
         android:layout_height="49dp"
         android:layout_marginStart="135dp"

@@ -5,18 +5,79 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.MateriaPrima.Buscar_Materia_Prima_Activity
-import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.MateriaPrima.Registro_MateriaPrima_Activity
+import android.widget.Toast
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.MenuPrincipal.MenuActivity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.R
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.RestEngine
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Toolbar.MyToolbar
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.ProductoDataCollectionItem
+import kotlinx.android.synthetic.main.activity_buscar_producto.*
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class Buscar_Producto_Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_buscar_producto)
+        btnBuscarProducto2.setOnClickListener { callServiceGetProducto() }
+        btnEliminarProducto.setOnClickListener { callServiceDeleteDelivery() }
 
         MyToolbar().show(this,"Buscar Producto", false)
+    }
+
+    private fun callServiceGetProducto() {
+        val productoService: ProductoService = RestEngine.buildService().create(ProductoService::class.java)
+        var result: Call<ProductoDataCollectionItem> = productoService.getProductoById(txtProduID2.text.toString().toInt())
+
+        result.enqueue(object : Callback<ProductoDataCollectionItem> {
+            override fun onFailure(call: Call<ProductoDataCollectionItem>, t: Throwable) {
+                Toast.makeText(this@Buscar_Producto_Activity,"Error", Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(
+                call: Call<ProductoDataCollectionItem>,
+                response: Response<ProductoDataCollectionItem>
+            ) {
+                txtProduID2.setText(response.body()!!.productoId.toString())
+                //falta fabrica id
+                txvMostrarNomProducto.setText(response.body()!!.nombreProducto)
+                txvMostrarDescripProdu.setText(response.body()!!.descripcion)
+                txvMostrarPrecioProdu.setText(response.body()!!.precio.toString())
+                txvMostrarUnidadesAlmacen.setText(response.body()!!.unidadesEnAlmacen.toString())
+                txvMostrarUnidadesMax.setText(response.body()!!.unidadesMaximas.toString())
+                txvMostrarUnidadesMin.setText(response.body()!!.unidadesMinimas.toString())
+                Toast.makeText(this@Buscar_Producto_Activity,"OK"+response.body()!!.nombreProducto,
+                    Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+
+    private fun callServiceDeleteDelivery() {
+        val deliveryService: ProductoService = RestEngine.buildService().create(ProductoService::class.java)
+        var result: Call<ResponseBody> = deliveryService.deleteProducto(txtProduID2.text.toString().toInt())
+
+        result.enqueue(object : Callback<ResponseBody> {
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                Toast.makeText(this@Buscar_Producto_Activity,"Error", Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(
+                call: Call<ResponseBody>,
+                response: Response<ResponseBody>
+            ) {
+                if (response.isSuccessful) {
+                    Toast.makeText(this@Buscar_Producto_Activity,"DELETE", Toast.LENGTH_LONG).show()
+                }
+                else if (response.code() == 401){
+                    Toast.makeText(this@Buscar_Producto_Activity,"Sesion expirada", Toast.LENGTH_LONG).show()
+                }
+                else{
+                    Toast.makeText(this@Buscar_Producto_Activity,"Fallo al traer el item", Toast.LENGTH_LONG).show()
+                }
+            }
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

@@ -23,7 +23,7 @@
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/txvOrdenId2"
-        app:layout_constraintEnd_toStartOf="@+id/txtDeliId2"
+        app:layout_constraintEnd_toStartOf="@+id/txtDeliveryId2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -108,7 +108,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txvDeliverCorreo2" />
 
     <EditText
-        android:id="@+id/txtDeliId2"
+        android:id="@+id/txtDeliveryId2"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="84dp"
@@ -152,7 +152,7 @@
         app:layout_constraintBottom_toTopOf="@+id/txvMostrarNombreComDeliver"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txvOrdenId2"
-        app:layout_constraintTop_toBottomOf="@+id/txtDeliId2" />
+        app:layout_constraintTop_toBottomOf="@+id/txtDeliveryId2" />
 
     <TextView
         android:id="@+id/txvMostrarTelDeliver"

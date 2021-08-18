@@ -7,151 +7,160 @@
     android:background="#F7F5E6"
     tools:context=".MateriaPrima.Buscar_Materia_Prima_Activity">
 
-    <include
-        layout="@layout/action_bar_toolbar"/>
+    <TextView
+        android:id="@+id/txvNombreMateria2"
+        android:layout_width="139dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="22dp"
+        android:text="Nombre Materia"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txvMateriaProveedorID2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtMostrarNombreMateria"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="53dp"
+        android:layout_marginBottom="27dp"
+        android:ems="8"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/txtMostrarMateriaProveedor"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <include layout="@layout/action_bar_toolbar" />
 
     <TextView
         android:id="@+id/txvMateriaID2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="101dp"
-        android:layout_marginBottom="102dp"
+        android:layout_marginBottom="32dp"
         android:text="Materia Prima ID"
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/txtMostrarMateriaAlmacen"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/txvNombreMateria2"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/txvMateriaProveedorID2"
-        android:layout_width="0dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginBottom="59dp"
-        android:text="Proveedor ID"
+    <EditText
+        android:id="@+id/txtMostrarMateriaPrimaID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="24dp"
+        android:ems="8"
+        android:hint="Ingrese ID"
+        android:inputType="number"
         android:textColor="@color/black"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/txtMostrarMateriaAlmacen"
-        app:layout_constraintEnd_toEndOf="@+id/txvMateriaDescripcion2"
-        app:layout_constraintStart_toStartOf="@+id/txvMateriaAlmacenID2"
-        app:layout_constraintTop_toTopOf="@+id/txvMateriaID2" />
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/txtMostrarNombreMateria"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 
     <TextView
-        android:id="@+id/txvMateriaAlmacenID2"
-        android:layout_width="0dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="29dp"
-        android:layout_marginBottom="30dp"
-        android:text="Almacen ID"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/txvMateriaDescripcion2"
-        app:layout_constraintEnd_toEndOf="@+id/txvMateriaDescripcion2"
-        app:layout_constraintStart_toStartOf="@+id/txvMateriaDescripcion2"
-        app:layout_constraintTop_toBottomOf="@+id/txvMateriaProveedorID2" />
-
-    <TextView
-        android:id="@+id/txvMateriaDescripcion2"
-        android:layout_width="0dp"
-        android:layout_height="31dp"
-        android:layout_marginTop="33dp"
+        android:id="@+id/txtMostrarMateriaAlmacen"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="54dp"
         android:layout_marginBottom="32dp"
-        android:text="Descripcion"
+        android:ems="8"
         android:textColor="@color/black"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/txvMateriaCantidad2"
-        app:layout_constraintEnd_toEndOf="@+id/txvMateriaCantidad2"
-        app:layout_constraintStart_toStartOf="@+id/txvMateriaID2"
-        app:layout_constraintTop_toBottomOf="@+id/txtMostrarMateriaAlmacen" />
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/txtMostrarMateriaDescripcion"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/txvMateriaCantidad2"
         android:layout_width="140dp"
         android:layout_height="35dp"
         android:layout_marginStart="17dp"
+        android:layout_marginBottom="134dp"
         android:text="Cantidad"
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/txtMostrarMateriaPrimaID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="35dp"
-        android:layout_marginBottom="30dp"
-        android:ems="8"
-        android:hint="Ingrese ID"
-        android:inputType="number"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/txtMostrarMateriaProveedor"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-
-    <TextView
-        android:id="@+id/txtMostrarMateriaProveedor"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="53dp"
-        android:layout_marginTop="160dp"
-        android:layout_marginEnd="53dp"
-        android:layout_marginBottom="161dp"
-        android:ems="8"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/txtMostrarCantidadMateria"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txvMateriaProveedorID2"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/txtMostrarMateriaAlmacen"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="65dp"
-        android:layout_marginBottom="63dp"
-        android:ems="8"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/txtMostrarMateriaDescripcion"
-        app:layout_constraintEnd_toEndOf="@+id/txtMostrarMateriaDescripcion"
-        app:layout_constraintStart_toStartOf="@+id/txtMostrarMateriaDescripcion"
-        app:layout_constraintTop_toTopOf="@+id/txtMostrarMateriaProveedor" />
-
-    <TextView
-        android:id="@+id/txtMostrarMateriaDescripcion"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
-        android:layout_marginBottom="33dp"
-        android:ems="8"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/txtMostrarCantidadMateria"
-        app:layout_constraintEnd_toEndOf="@+id/txtMostrarCantidadMateria"
-        app:layout_constraintStart_toStartOf="@+id/txtMostrarCantidadMateria" />
+        app:layout_constraintBottom_toTopOf="@+id/btnBuscarMateria"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/txtMostrarCantidadMateria"
         android:layout_width="150dp"
         android:layout_height="30dp"
         android:layout_marginEnd="54dp"
+        android:layout_marginBottom="136dp"
         android:ems="8"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/btnEliminarMateria"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/txvMateriaDescripcion2"
+        android:layout_width="141dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="30dp"
+        android:text="Descripcion"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txvMateriaCantidad2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtMostrarMateriaProveedor"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="53dp"
+        android:layout_marginBottom="35dp"
+        android:ems="8"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/txtMostrarMateriaAlmacen"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/txvMateriaProveedorID2"
+        android:layout_width="139dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="28dp"
+        android:text="Proveedor ID"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txvMateriaAlmacenID2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txvMateriaAlmacenID2"
+        android:layout_width="141dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="30dp"
+        android:text="Almacen ID"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txvMateriaDescripcion2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtMostrarMateriaDescripcion"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="54dp"
+        android:layout_marginBottom="32dp"
+        android:ems="8"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/txtMostrarCantidadMateria"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/btnEliminarMateria"

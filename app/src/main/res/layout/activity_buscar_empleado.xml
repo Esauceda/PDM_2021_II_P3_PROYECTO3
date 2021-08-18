@@ -184,12 +184,12 @@
         android:inputType="numberDecimal"
         android:textColorHint="@color/black"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/txcMostrarPuestoEmple2"
+        app:layout_constraintBottom_toBottomOf="@+id/txvMostrarPuestoEmple2"
         app:layout_constraintStart_toStartOf="@+id/txvMostrarTelEmple2"
         app:layout_constraintTop_toTopOf="@+id/txvMostrarTelEmple2" />
 
     <TextView
-        android:id="@+id/txcMostrarPuestoEmple2"
+        android:id="@+id/txvMostrarPuestoEmple2"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_marginTop="110dp"
@@ -213,8 +213,8 @@
         android:textColorHint="@color/black"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/txvMostrarFechaNaciEmple2"
-        app:layout_constraintStart_toStartOf="@+id/txcMostrarPuestoEmple2"
-        app:layout_constraintTop_toTopOf="@+id/txcMostrarPuestoEmple2" />
+        app:layout_constraintStart_toStartOf="@+id/txvMostrarPuestoEmple2"
+        app:layout_constraintTop_toTopOf="@+id/txvMostrarPuestoEmple2" />
 
     <TextView
         android:id="@+id/txvMostrarFechaNaciEmple2"

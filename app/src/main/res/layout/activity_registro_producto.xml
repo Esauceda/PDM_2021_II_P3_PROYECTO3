@@ -48,7 +48,7 @@
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/txvNombreProdu"
+        app:layout_constraintBottom_toBottomOf="@+id/txtNombreProdu"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -138,13 +138,13 @@
         android:layout_marginTop="62dp"
         android:layout_marginBottom="58dp"
         android:backgroundTint="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/txvNombreProdu"
-        app:layout_constraintEnd_toEndOf="@+id/txvNombreProdu"
-        app:layout_constraintStart_toStartOf="@+id/txvNombreProdu"
+        app:layout_constraintBottom_toBottomOf="@+id/txtNombreProdu"
+        app:layout_constraintEnd_toEndOf="@+id/txtNombreProdu"
+        app:layout_constraintStart_toStartOf="@+id/txtNombreProdu"
         app:layout_constraintTop_toTopOf="@+id/txtProduID" />
 
     <EditText
-        android:id="@+id/txvNombreProdu"
+        android:id="@+id/txtNombreProdu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="189dp"
@@ -167,8 +167,8 @@
         android:inputType="text"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/txvNombreProdu"
-        app:layout_constraintTop_toBottomOf="@+id/txvNombreProdu" />
+        app:layout_constraintStart_toStartOf="@+id/txtNombreProdu"
+        app:layout_constraintTop_toBottomOf="@+id/txtNombreProdu" />
 
     <EditText
         android:id="@+id/txtPrecioProdu"
