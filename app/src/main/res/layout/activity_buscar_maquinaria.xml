@@ -20,8 +20,8 @@
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
-        app:layout_constraintBaseline_toBaselineOf="@+id/txtMaquinariaId"
-        app:layout_constraintEnd_toStartOf="@+id/txtMaquinariaId"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtMostrarMaquinariaId"
+        app:layout_constraintEnd_toStartOf="@+id/txtMostrarMaquinariaId"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -29,29 +29,24 @@
         android:layout_width="0dp"
         android:layout_height="42dp"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="34dp"
+        android:layout_marginTop="48dp"
         android:text="Fabrica Id"
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
-        app:layout_constraintBaseline_toBaselineOf="@+id/txvMostrarFarbicaId"
-        app:layout_constraintEnd_toStartOf="@+id/txvMostrarFarbicaId"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvMaquinariaId" />
 
     <TextView
         android:id="@+id/txvMarca"
         android:layout_width="0dp"
         android:layout_height="42dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="77dp"
-        android:layout_marginEnd="29dp"
-        android:layout_marginBottom="78dp"
+        android:layout_marginTop="92dp"
         android:text="Nombre Marca"
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/txvHorasUso"
-        app:layout_constraintEnd_toStartOf="@+id/txvMostrarNombreMarca"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/FarbicaId" />
 
@@ -60,77 +55,74 @@
         android:layout_width="0dp"
         android:layout_height="42dp"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="63dp"
-        android:text="Telefono"
+        android:text="Horas de uso"
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/txvMostrarTelefonoMaqui"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.525" />
 
     <EditText
-        android:id="@+id/txtMaquinariaId"
-        android:layout_width="0dp"
+        android:id="@+id/txtMostrarMaquinariaId"
+        android:layout_width="150dp"
         android:layout_height="42dp"
         android:layout_marginTop="98dp"
-        android:layout_marginEnd="69dp"
+        android:layout_marginEnd="50dp"
         android:ems="8"
         android:hint="Ingrese id"
         android:inputType="number"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txvMaquinariaId"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txvMostrarNombreMarca"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="27dp"
+        android:layout_width="150dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="58dp"
+        android:layout_marginEnd="50dp"
         android:ems="8"
         android:inputType="textPersonName"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/txvMostrarTelefonoMaqui"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txvMarca"
-        app:layout_constraintTop_toTopOf="@+id/txvMarca" />
-
-    <TextView
-        android:id="@+id/txvMostrarTelefonoMaqui"
-        android:layout_width="0dp"
-        android:layout_height="42dp"
-        android:layout_marginEnd="82dp"
-        android:ems="8"
-        android:inputType="number"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txvHorasUso"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/txvMostrarFarbicaId"
-        android:layout_width="0dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="53dp"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/FarbicaId"
-        app:layout_constraintTop_toBottomOf="@+id/txtMaquinariaId" />
+        app:layout_constraintTop_toBottomOf="@+id/txvMostrarFarbicaId" />
+
+    <TextView
+        android:id="@+id/txvMostrarHorasUsoMaqui"
+        android:layout_width="150dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="61dp"
+        android:layout_marginEnd="50dp"
+        android:ems="8"
+        android:inputType="number"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvMostrarNombreMarca" />
+
+    <TextView
+        android:id="@+id/txvMostrarFarbicaId"
+        android:layout_width="150dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="50dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMostrarMaquinariaId" />
 
     <Button
-        android:id="@+id/btnBuscarMaqui"
+        android:id="@+id/btnBuscarMaqui2"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="65dp"
@@ -152,5 +144,32 @@
         android:text="Eliminar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/TipoMaquina2"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="125dp"
+        android:text="Tipo Maquina"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnBuscarMaqui2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txvMostrarTipoMaquina"
+        android:layout_width="150dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="50dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvMostrarHorasUsoMaqui" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
