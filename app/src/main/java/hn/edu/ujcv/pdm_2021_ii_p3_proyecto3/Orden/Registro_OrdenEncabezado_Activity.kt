@@ -35,7 +35,8 @@ class Registro_OrdenEncabezado_Activity : AppCompatActivity() {
         btnBuscarOrdenEncabezado.setOnClickListener { callServiceGetOrdenEncabezado() }
         btnActualizarOrdenEncabezado.setOnClickListener { callServicePutOrdenEncabezado() }
     }
-
+        var empleados = ArrayList<String>()
+        val clientes = ArrayList<String>()
     //-----
 
     //POST
@@ -142,6 +143,8 @@ class Registro_OrdenEncabezado_Activity : AppCompatActivity() {
     private fun callServiceGetOrdenEncabezado() {
         val ordenEncabezadoService:OrdenEncabezadoService = RestEngine.buildService().create(OrdenEncabezadoService::class.java)
         var result: Call<OrdenEncabezadoDataCollectionItem> = ordenEncabezadoService.getOrdenEncabezadoById(txtOrdenID.text.toString().toLong())
+        var contadorEmpleados = 0
+        var contadorClientes  = 0
 
         result.enqueue(object :  Callback<OrdenEncabezadoDataCollectionItem> {
             override fun onFailure(call: Call<OrdenEncabezadoDataCollectionItem>, t: Throwable) {
@@ -153,8 +156,21 @@ class Registro_OrdenEncabezado_Activity : AppCompatActivity() {
                 response: Response<OrdenEncabezadoDataCollectionItem>
             ) {
                 txtOrdenID.setText(response.body()!!.ordenId.toString())
-                //empleado
-                //cliente
+
+                for (item in empleados){
+                    if (item == response.body()!!.empleadoId.toString()){
+                        spOrdenEmpleadoID.setSelection(contadorEmpleados)
+                    }
+                    contadorEmpleados++
+                }
+
+                for (item in clientes){
+                    if (item == response.body()!!.clienteId.toString()){
+                        spClienteIDOrden.setSelection(contadorClientes)
+                    }
+                    contadorClientes++
+                }
+
                 txtFechaOrden.setText(response.body()!!.fechaOrden)
                 txtFechaEnvio.setText(response.body()!!.fechaEnvio)
                 txtDireccionEnvioOrden.setText(response.body()!!.direccionEnvio)
@@ -193,7 +209,7 @@ class Registro_OrdenEncabezado_Activity : AppCompatActivity() {
     private fun callServiceGetEmpleados() {
         val empleadoService:EmpleadoService = RestEngine.buildService().create(EmpleadoService::class.java)
         var result: Call<List<EmpleadoDataCollectionItem>> = empleadoService.listEmpleado()
-        var empleados = ArrayList<String>()
+
 
         result.enqueue(object :  Callback<List<EmpleadoDataCollectionItem>> {
             override fun onFailure(call: Call<List<EmpleadoDataCollectionItem>>, t: Throwable) {
@@ -221,7 +237,6 @@ class Registro_OrdenEncabezado_Activity : AppCompatActivity() {
     private fun callServiceGetClientes() {
         val clienteService:ClienteService = RestEngine.buildService().create(ClienteService::class.java)
         var result: Call<List<ClienteDataCollectionItem>> = clienteService.listCliente()
-        val clientes = ArrayList<String>()
 
         result.enqueue(object :  Callback<List<ClienteDataCollectionItem>> {
             override fun onFailure(call: Call<List<ClienteDataCollectionItem>>, t: Throwable) {

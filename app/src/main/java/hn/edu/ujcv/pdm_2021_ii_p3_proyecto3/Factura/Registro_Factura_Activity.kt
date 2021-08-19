@@ -74,9 +74,9 @@ class Registro_Factura_Activity : AppCompatActivity() {
                     val addedFactura = response.body()!!
                     onResult(addedFactura)
                 }
-                else if (response.code() == 401){
+                /*else if (response.code() == 401){
                     Toast.makeText(this@Registro_Factura_Activity,"Sesion expirada",Toast.LENGTH_LONG).show()
-                }
+                }*/
                 else if (response.code() == 500){
                     //val gson = Gson()
                     //val type = object : TypeToken<RestApiError>() {}.type

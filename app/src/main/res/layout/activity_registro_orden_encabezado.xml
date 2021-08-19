@@ -140,6 +140,8 @@
         android:inputType="textPersonName"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
+        android:backgroundTint="@color/black"
+        android:popupBackground="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtOrdenID" />
 
@@ -154,6 +156,8 @@
         android:inputType="textPersonName"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
+        android:backgroundTint="@color/black"
+        android:popupBackground="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spOrdenEmpleadoID" />
 
