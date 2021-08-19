@@ -41,7 +41,7 @@ class Buscar_Producto_Activity : AppCompatActivity() {
                 response: Response<ProductoDataCollectionItem>
             ) {
                 txtProduID.setText(response.body()!!.productoId.toString())
-                //fabrica
+                txvMostrarProduFabricaID.setText(response.body()!!.fabricaId.toString())
                 txtNombreProdu.setText(response.body()!!.nombreProducto)
                 txtDescripProdu.setText(response.body()!!.descripcion)
                 txtPrecioProdu.setText(response.body()!!.precio.toString())

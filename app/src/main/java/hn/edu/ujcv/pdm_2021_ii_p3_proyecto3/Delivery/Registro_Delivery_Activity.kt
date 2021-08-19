@@ -17,6 +17,7 @@ import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.DeliveryDataCollecionItem
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.OrdenEncabezadoDataCollectionItem
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.RestApiError
 import kotlinx.android.synthetic.main.activity_registro_delivery.*
+import kotlinx.android.synthetic.main.activity_registro_materia_prima.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -92,6 +93,7 @@ class Registro_Delivery_Activity : AppCompatActivity() {
     private fun callServiceGetDelivery() {
         val deliveryService: DeliveryService = RestEngine.buildService().create(DeliveryService::class.java)
         var result: Call<DeliveryDataCollecionItem> = deliveryService.getDeliveryById(txtDeliveryId.text.toString().toInt())
+        var ordenesContador:Int = 0
 
         result.enqueue(object : Callback<DeliveryDataCollecionItem> {
             override fun onFailure(call: Call<DeliveryDataCollecionItem>, t: Throwable) {
@@ -103,7 +105,12 @@ class Registro_Delivery_Activity : AppCompatActivity() {
                 response: Response<DeliveryDataCollecionItem>
             ) {
                 txtDeliveryId.setText(response.body()!!.deliveryId.toString())
-                //falta orden id
+                for (item in ordenes){
+                    if (item == response.body()!!.ordenId.toString()){
+                        spMateriaProveedor.setSelection(ordenesContador)
+                    }
+                    ordenesContador++
+                }
                 txtNombreCom.setText(response.body()!!.nombreCompania)
                 txtTelefonoDeli.setText(response.body()!!.numero.toString())
                 txtCorreoDeli.setText(response.body()!!.correo)
@@ -150,10 +157,10 @@ class Registro_Delivery_Activity : AppCompatActivity() {
         )
     }
 
+    var ordenes = ArrayList<String>()
     private fun callServiceGetOrdenes() {
         val ordenService: OrdenEncabezadoService = RestEngine.buildService().create(OrdenEncabezadoService::class.java)
         var result: Call<List<OrdenEncabezadoDataCollectionItem>> = ordenService.listOrdenesEncabezado()
-        var ordenes = ArrayList<String>()
 
         result.enqueue(object :  Callback<List<OrdenEncabezadoDataCollectionItem>> {
             override fun onFailure(call: Call<List<OrdenEncabezadoDataCollectionItem>>, t: Throwable) {

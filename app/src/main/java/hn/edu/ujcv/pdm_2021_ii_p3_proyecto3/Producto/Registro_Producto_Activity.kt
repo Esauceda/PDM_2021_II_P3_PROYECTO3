@@ -16,6 +16,7 @@ import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Toolbar.MyToolbar
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.FabricaDataCollectionItem
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.ProductoDataCollectionItem
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.RestApiError
+import kotlinx.android.synthetic.main.activity_registro_materia_prima.*
 import kotlinx.android.synthetic.main.activity_registro_producto.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -95,6 +96,7 @@ class Registro_Producto_Activity : AppCompatActivity() {
     private fun callServiceGetProducto() {
         val productoService: ProductoService = RestEngine.buildService().create(ProductoService::class.java)
         var result: Call<ProductoDataCollectionItem> = productoService.getProductoById(txtProduID.text.toString().toInt())
+        var contadorFabricas:Int = 0
 
         result.enqueue(object : Callback<ProductoDataCollectionItem> {
             override fun onFailure(call: Call<ProductoDataCollectionItem>, t: Throwable) {
@@ -106,7 +108,12 @@ class Registro_Producto_Activity : AppCompatActivity() {
                 response: Response<ProductoDataCollectionItem>
             ) {
                 txtProduID.setText(response.body()!!.productoId.toString())
-                //fabrica
+                for (item in fabricas){
+                    if (item == response.body()!!.fabricaId.toString()){
+                        spMateriaProveedor.setSelection(contadorFabricas)
+                    }
+                    contadorFabricas++
+                }
                 txtNombreProdu.setText(response.body()!!.nombreProducto)
                 txtDescripProdu.setText(response.body()!!.descripcion)
                 txtPrecioProdu.setText(response.body()!!.precio.toString())
@@ -155,10 +162,10 @@ class Registro_Producto_Activity : AppCompatActivity() {
         )
     }
 
+    var fabricas = ArrayList<String>()
     private fun callServiceGetFabricas() {
         val fabricaService: FabricaService = RestEngine.buildService().create(FabricaService::class.java)
         var result: Call<List<FabricaDataCollectionItem>> = fabricaService.listFabricas()
-        var fabricas = ArrayList<String>()
 
         result.enqueue(object :  Callback<List<FabricaDataCollectionItem>> {
             override fun onFailure(call: Call<List<FabricaDataCollectionItem>>, t: Throwable) {

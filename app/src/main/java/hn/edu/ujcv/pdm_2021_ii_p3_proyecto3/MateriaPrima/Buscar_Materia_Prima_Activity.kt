@@ -41,10 +41,10 @@ class Buscar_Materia_Prima_Activity : AppCompatActivity() {
                 response: Response<MateriaPrimaDataCollectionItem>
             ) {
                 txtMostrarMateriaPrimaID.setText(response.body()!!.materiaprimaId.toString())
-                txtMostrarMateriaProveedor.setText(response.body()!!.nombreMateria)
+                txtMostrarNombreMateria.setText(response.body()!!.nombreMateria)
                 txtMostrarMateriaProveedor.setText(response.body()!!.proveedorId)
                 txtMostrarMateriaAlmacen.setText(response.body()!!.almacenId)
-                txtMostrarMateriaAlmacen.setText(response.body()!!.descripcion)
+                txtMostrarMateriaDescripcion.setText(response.body()!!.descripcion)
                 txtMostrarCantidadMateria.setText(response.body()!!.cantidad.toString())
                 Toast.makeText(this@Buscar_Materia_Prima_Activity,"OK"+response.body()!!.nombreMateria,
                     Toast.LENGTH_LONG).show()

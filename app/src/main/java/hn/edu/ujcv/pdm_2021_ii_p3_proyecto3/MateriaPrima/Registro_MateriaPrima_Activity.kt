@@ -95,6 +95,8 @@ class Registro_MateriaPrima_Activity : AppCompatActivity() {
     private fun callServiceGetMateria() {
         val materiaService: MateriaPrimaService = RestEngine.buildService().create(MateriaPrimaService::class.java)
         var result: Call<MateriaPrimaDataCollectionItem> = materiaService.getMateriaById(txtMateriaPrimaID.text.toString().toInt())
+        var contadorProveedores:Int = 0
+        var contadorAlmacenes:Int = 0
 
         result.enqueue(object : Callback<MateriaPrimaDataCollectionItem> {
             override fun onFailure(call: Call<MateriaPrimaDataCollectionItem>, t: Throwable) {
@@ -105,10 +107,21 @@ class Registro_MateriaPrima_Activity : AppCompatActivity() {
                 call: Call<MateriaPrimaDataCollectionItem>,
                 response: Response<MateriaPrimaDataCollectionItem>
             ) {
+                for (item in proveedores){
+                    if (item == response.body()!!.proveedorId.toString()){
+                        spMateriaProveedor.setSelection(contadorProveedores)
+                    }
+                    contadorProveedores++
+                }
+
+                for (item in almacenes){
+                    if (item == response.body()!!.almacenId.toString()){
+                        spMateriaAlmacen.setSelection(contadorAlmacenes)
+                    }
+                    contadorAlmacenes++
+                }
                 txtMateriaPrimaID.setText(response.body()!!.materiaprimaId.toString())
                 txtMateriaNombre.setText(response.body()!!.nombreMateria)
-                //Falta proveedor ID
-                //Falta almacen ID
                 txtMateriaDescripcion.setText(response.body()!!.descripcion)
                 txtCantidadMateria.setText(response.body()!!.cantidad.toString())
                 Toast.makeText(this@Registro_MateriaPrima_Activity,"OK"+response.body()!!.nombreMateria,
@@ -152,11 +165,13 @@ class Registro_MateriaPrima_Activity : AppCompatActivity() {
         }
         )
     }
+    var proveedores = ArrayList<String>()
+    var almacenes = ArrayList<String>()
+
 
     private fun callServiceGetProveedores() {
         val proveedorService: ProveedorService = RestEngine.buildService().create(ProveedorService::class.java)
         var result: Call<List<ProveedorDataCollectionItem>> = proveedorService.listProveedor()
-        var proveedores = ArrayList<String>()
 
         result.enqueue(object :  Callback<List<ProveedorDataCollectionItem>> {
             override fun onFailure(call: Call<List<ProveedorDataCollectionItem>>, t: Throwable) {
@@ -182,7 +197,7 @@ class Registro_MateriaPrima_Activity : AppCompatActivity() {
     private fun callServiceGetAlmacenes() {
         val almacenService: AlmacenService = RestEngine.buildService().create(AlmacenService::class.java)
         var result: Call<List<AlmacenDataCollectionItem>> = almacenService.listAlmacen()
-        var almacenes = ArrayList<String>()
+
 
         result.enqueue(object :  Callback<List<AlmacenDataCollectionItem>> {
             override fun onFailure(call: Call<List<AlmacenDataCollectionItem>>, t: Throwable) {
