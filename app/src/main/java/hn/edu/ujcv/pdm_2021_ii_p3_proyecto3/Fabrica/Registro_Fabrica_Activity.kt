@@ -89,6 +89,12 @@ class Registro_Fabrica_Activity : AppCompatActivity() {
                 }
                 else if (response.code() == 401){
                     Toast.makeText(this@Registro_Fabrica_Activity,"Sesion expirada",Toast.LENGTH_LONG).show()
+                }else if (response.code() == 500) {
+                    val errorResponse =
+                        Gson().fromJson(response.errorBody()!!.string()!!, RestApiError::class.java)
+
+                    Toast.makeText(this@Registro_Fabrica_Activity, errorResponse.errorDetails, Toast.LENGTH_LONG)
+                        .show()
                 }
                 else{
                     Toast.makeText(this@Registro_Fabrica_Activity,"Fallo al traer el item",Toast.LENGTH_LONG).show()

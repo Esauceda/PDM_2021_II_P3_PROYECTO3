@@ -5,13 +5,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.google.gson.Gson
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.MenuPrincipal.MenuActivity
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Orden.OrdenEncabezadoService
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.R
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.RestEngine
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Toolbar.MyToolbar
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.DeliveryDataCollecionItem
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.OrdenEncabezadoDataCollectionItem
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.RestApiError
 import kotlinx.android.synthetic.main.activity_registro_delivery.*
 import retrofit2.Call
@@ -24,15 +27,16 @@ class Registro_Delivery_Activity : AppCompatActivity() {
         setContentView(R.layout.activity_registro_delivery)
 
         MyToolbar().show(this,"Registrar Delivery", false)
+        callServiceGetOrdenes()
         btnRegistrarDeliver.setOnClickListener { callServicePostDelivery() }
         btnActualizarDeliver.setOnClickListener { callServicePutDelivery() }
-        btnBuscarDeliver.setOnClickListener { callServiceGetDelivery() }
+        btnBuscarDelivery2.setOnClickListener { callServiceGetDelivery() }
     }
 
     private fun callServicePutDelivery() {
         val deliveryInfo = DeliveryDataCollecionItem(
             deliveryId =      txtDeliveryId.text.toString().toInt(),
-            ordenId =         1,
+            ordenId =         spOrderDeli.selectedItem.toString().toInt(),
             nombreCompania =  txtNombreCom.text.toString(),
             numero =          txtTelefonoDeli.text.toString().toInt(),
             correo =          txtCorreoDeli.text.toString(),
@@ -69,7 +73,7 @@ class Registro_Delivery_Activity : AppCompatActivity() {
     private fun callServicePostDelivery() {
         val clienteInfo = DeliveryDataCollecionItem(
             deliveryId =      txtDeliveryId.text.toString().toInt(),
-            ordenId =         1,
+            ordenId =         spOrderDeli.selectedItem.toString().toInt(),
             nombreCompania =  txtNombreCom.text.toString(),
             numero =          txtTelefonoDeli.text.toString().toInt(),
             correo =          txtCorreoDeli.text.toString(),
@@ -144,6 +148,32 @@ class Registro_Delivery_Activity : AppCompatActivity() {
 
         }
         )
+    }
+
+    private fun callServiceGetOrdenes() {
+        val ordenService: OrdenEncabezadoService = RestEngine.buildService().create(OrdenEncabezadoService::class.java)
+        var result: Call<List<OrdenEncabezadoDataCollectionItem>> = ordenService.listOrdenesEncabezado()
+        var ordenes = ArrayList<String>()
+
+        result.enqueue(object :  Callback<List<OrdenEncabezadoDataCollectionItem>> {
+            override fun onFailure(call: Call<List<OrdenEncabezadoDataCollectionItem>>, t: Throwable) {
+                Toast.makeText(this@Registro_Delivery_Activity,"Error al encontrar ordenes",Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(
+                call: Call<List<OrdenEncabezadoDataCollectionItem>>,
+                response: Response<List<OrdenEncabezadoDataCollectionItem>>
+            ) {
+                for (ordenEncabezado in response.body()!!){
+                    ordenes.add("${ordenEncabezado.empleadoId}")
+                }
+
+                val adapterEmpleados = ArrayAdapter(this@Registro_Delivery_Activity, android.R.layout.simple_spinner_item, ordenes)
+                spOrderDeli.adapter = adapterEmpleados
+
+                Toast.makeText(this@Registro_Delivery_Activity,"Empelados encontrados",Toast.LENGTH_LONG).show()
+            }
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

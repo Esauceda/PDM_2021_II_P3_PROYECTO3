@@ -5,13 +5,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.google.gson.Gson
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Almacen.AlmacenService
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.MenuPrincipal.MenuActivity
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Proveedores.ProveedorService
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.R
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.RestEngine
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Toolbar.MyToolbar
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.AlmacenDataCollectionItem
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.MateriaPrimaDataCollectionItem
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.ProveedorDataCollectionItem
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.RestApiError
 import kotlinx.android.synthetic.main.activity_registro_materia_prima.*
 import retrofit2.Call
@@ -33,8 +38,8 @@ class Registro_MateriaPrima_Activity : AppCompatActivity() {
         val materiaInfo = MateriaPrimaDataCollectionItem(
             materiaprimaId = txtMateriaPrimaID.text.toString().toInt(),
             nombreMateria =  txtMateriaNombre.text.toString(),
-            proveedorId =    1,
-            almacenId =      1,
+            proveedorId =    spMateriaProveedor.selectedItem.toString().toInt(),
+            almacenId =      spMateriaAlmacen.selectedItem.toString().toInt(),
             descripcion =    txtMateriaDescripcion.text.toString(),
             cantidad =       txtCantidadMateria.text.toString().toInt(),
         )
@@ -70,8 +75,8 @@ class Registro_MateriaPrima_Activity : AppCompatActivity() {
         val materiaInfo = MateriaPrimaDataCollectionItem(
             materiaprimaId = txtMateriaPrimaID.text.toString().toInt(),
             nombreMateria =  txtMateriaNombre.text.toString(),
-            proveedorId =    1,
-            almacenId =      1,
+            proveedorId =    spMateriaProveedor.selectedItem.toString().toInt(),
+            almacenId =      spMateriaAlmacen.selectedItem.toString().toInt(),
             descripcion =    txtMateriaDescripcion.text.toString(),
             cantidad =       txtCantidadMateria.text.toString().toInt(),
         )
@@ -144,6 +149,58 @@ class Registro_MateriaPrima_Activity : AppCompatActivity() {
 
         }
         )
+    }
+
+    private fun callServiceGetProveedores() {
+        val proveedorService: ProveedorService = RestEngine.buildService().create(ProveedorService::class.java)
+        var result: Call<List<ProveedorDataCollectionItem>> = proveedorService.listProveedor()
+        var proveedores = ArrayList<String>()
+
+        result.enqueue(object :  Callback<List<ProveedorDataCollectionItem>> {
+            override fun onFailure(call: Call<List<ProveedorDataCollectionItem>>, t: Throwable) {
+                Toast.makeText(this@Registro_MateriaPrima_Activity,"Error al encontrar proveedores",Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(
+                call: Call<List<ProveedorDataCollectionItem>>,
+                response: Response<List<ProveedorDataCollectionItem>>
+            ) {
+                for (proveedor in response.body()!!){
+                    proveedores.add("${proveedor.proveedorId}")
+                }
+
+                val adapterEmpleados = ArrayAdapter(this@Registro_MateriaPrima_Activity, android.R.layout.simple_spinner_item, proveedores)
+                spMateriaProveedor.adapter = adapterEmpleados
+
+                Toast.makeText(this@Registro_MateriaPrima_Activity,"Proveedores encontrados",Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+
+    private fun callServiceGetAlmacenes() {
+        val almacenService: AlmacenService = RestEngine.buildService().create(AlmacenService::class.java)
+        var result: Call<List<AlmacenDataCollectionItem>> = almacenService.listAlmacen()
+        var almacenes = ArrayList<String>()
+
+        result.enqueue(object :  Callback<List<AlmacenDataCollectionItem>> {
+            override fun onFailure(call: Call<List<AlmacenDataCollectionItem>>, t: Throwable) {
+                Toast.makeText(this@Registro_MateriaPrima_Activity,"Error al encontrar almacenes",Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(
+                call: Call<List<AlmacenDataCollectionItem>>,
+                response: Response<List<AlmacenDataCollectionItem>>
+            ) {
+                for (almacen in response.body()!!){
+                    almacenes.add("${almacen.almacenId}")
+                }
+
+                val adapterEmpleados = ArrayAdapter(this@Registro_MateriaPrima_Activity, android.R.layout.simple_spinner_item, almacenes)
+                spMateriaAlmacen.adapter = adapterEmpleados
+
+                Toast.makeText(this@Registro_MateriaPrima_Activity,"Almacenes encontrados",Toast.LENGTH_LONG).show()
+            }
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

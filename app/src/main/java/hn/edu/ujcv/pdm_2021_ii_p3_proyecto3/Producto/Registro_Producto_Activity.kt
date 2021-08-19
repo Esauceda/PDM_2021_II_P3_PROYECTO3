@@ -5,12 +5,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.google.gson.Gson
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Fabrica.FabricaService
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.MenuPrincipal.MenuActivity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.R
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.RestEngine
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Toolbar.MyToolbar
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.FabricaDataCollectionItem
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.ProductoDataCollectionItem
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.RestApiError
 import kotlinx.android.synthetic.main.activity_registro_producto.*
@@ -22,6 +25,7 @@ class Registro_Producto_Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro_producto)
+        callServiceGetFabricas()
         btnGuardarProducto.setOnClickListener { callServicePostProducto() }
         btnActuProducto.setOnClickListener { callServicePutProducto() }
         btnBuscarProducto.setOnClickListener { callServiceGetProducto() }
@@ -31,7 +35,7 @@ class Registro_Producto_Activity : AppCompatActivity() {
     private fun callServicePutProducto() {
         val productoInfo = ProductoDataCollectionItem(
             productoId =        txtProduID.text.toString().toInt(),
-            fabricaId =         1,
+            fabricaId =         sProduFarbicaID.selectedItem.toString().toInt(),
             nombreProducto =    txtNombreProdu.text.toString(),
             descripcion =       txtDescripProdu.text.toString(),
             precio =            txtPrecioProdu.text.toString().toDouble(),
@@ -70,7 +74,7 @@ class Registro_Producto_Activity : AppCompatActivity() {
     private fun callServicePostProducto() {
         val productoInfo = ProductoDataCollectionItem(
             productoId =        txtProduID.text.toString().toInt(),
-            fabricaId =         1,
+            fabricaId =         sProduFarbicaID.selectedItem.toString().toInt(),
             nombreProducto =    txtNombreProdu.text.toString(),
             descripcion =       txtDescripProdu.text.toString(),
             precio =            txtPrecioProdu.text.toString().toDouble(),
@@ -102,7 +106,7 @@ class Registro_Producto_Activity : AppCompatActivity() {
                 response: Response<ProductoDataCollectionItem>
             ) {
                 txtProduID.setText(response.body()!!.productoId.toString())
-                //falta fabrica id
+                //fabrica
                 txtNombreProdu.setText(response.body()!!.nombreProducto)
                 txtDescripProdu.setText(response.body()!!.descripcion)
                 txtPrecioProdu.setText(response.body()!!.precio.toString())
@@ -149,6 +153,32 @@ class Registro_Producto_Activity : AppCompatActivity() {
 
         }
         )
+    }
+
+    private fun callServiceGetFabricas() {
+        val fabricaService: FabricaService = RestEngine.buildService().create(FabricaService::class.java)
+        var result: Call<List<FabricaDataCollectionItem>> = fabricaService.listFabricas()
+        var fabricas = ArrayList<String>()
+
+        result.enqueue(object :  Callback<List<FabricaDataCollectionItem>> {
+            override fun onFailure(call: Call<List<FabricaDataCollectionItem>>, t: Throwable) {
+                Toast.makeText(this@Registro_Producto_Activity,"Error al encontrar fabricas",Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(
+                call: Call<List<FabricaDataCollectionItem>>,
+                response: Response<List<FabricaDataCollectionItem>>
+            ) {
+                for (fabrica in response.body()!!){
+                    fabricas.add("${fabrica.fabricaId}")
+                }
+
+                val adapterEmpleados = ArrayAdapter(this@Registro_Producto_Activity, android.R.layout.simple_spinner_item, fabricas)
+                sProduFarbicaID.adapter = adapterEmpleados
+
+                Toast.makeText(this@Registro_Producto_Activity,"Fabricas encontrados",Toast.LENGTH_LONG).show()
+            }
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

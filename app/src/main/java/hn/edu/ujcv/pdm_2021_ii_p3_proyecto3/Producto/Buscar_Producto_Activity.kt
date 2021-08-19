@@ -12,6 +12,7 @@ import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.RestEngine
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Toolbar.MyToolbar
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.ProductoDataCollectionItem
 import kotlinx.android.synthetic.main.activity_buscar_producto.*
+import kotlinx.android.synthetic.main.activity_registro_producto.*
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -28,7 +29,7 @@ class Buscar_Producto_Activity : AppCompatActivity() {
 
     private fun callServiceGetProducto() {
         val productoService: ProductoService = RestEngine.buildService().create(ProductoService::class.java)
-        var result: Call<ProductoDataCollectionItem> = productoService.getProductoById(txtProduID2.text.toString().toInt())
+        var result: Call<ProductoDataCollectionItem> = productoService.getProductoById(txtProduID.text.toString().toInt())
 
         result.enqueue(object : Callback<ProductoDataCollectionItem> {
             override fun onFailure(call: Call<ProductoDataCollectionItem>, t: Throwable) {
@@ -39,14 +40,14 @@ class Buscar_Producto_Activity : AppCompatActivity() {
                 call: Call<ProductoDataCollectionItem>,
                 response: Response<ProductoDataCollectionItem>
             ) {
-                txtProduID2.setText(response.body()!!.productoId.toString())
-                //falta fabrica id
-                txvMostrarNomProducto.setText(response.body()!!.nombreProducto)
-                txvMostrarDescripProdu.setText(response.body()!!.descripcion)
-                txvMostrarPrecioProdu.setText(response.body()!!.precio.toString())
-                txvMostrarUnidadesAlmacen.setText(response.body()!!.unidadesEnAlmacen.toString())
-                txvMostrarUnidadesMax.setText(response.body()!!.unidadesMaximas.toString())
-                txvMostrarUnidadesMin.setText(response.body()!!.unidadesMinimas.toString())
+                txtProduID.setText(response.body()!!.productoId.toString())
+                //fabrica
+                txtNombreProdu.setText(response.body()!!.nombreProducto)
+                txtDescripProdu.setText(response.body()!!.descripcion)
+                txtPrecioProdu.setText(response.body()!!.precio.toString())
+                txtUnidadesAlmacenadas.setText(response.body()!!.unidadesEnAlmacen.toString())
+                txtUnidadesMax.setText(response.body()!!.unidadesMaximas.toString())
+                txtUnidadesMin.setText(response.body()!!.unidadesMinimas.toString())
                 Toast.makeText(this@Buscar_Producto_Activity,"OK"+response.body()!!.nombreProducto,
                     Toast.LENGTH_LONG).show()
             }

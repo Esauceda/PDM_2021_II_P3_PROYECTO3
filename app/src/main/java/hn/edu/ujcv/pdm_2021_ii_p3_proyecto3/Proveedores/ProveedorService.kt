@@ -7,7 +7,7 @@ import retrofit2.http.*
 
 interface ProveedorService {
     @GET("proveedor")
-    fun listProveedores(): Call<ProveedorDataCollectionItem>
+    fun listProveedor(): Call<List<ProveedorDataCollectionItem>>
     @GET("proveedor/id/{id}")
     fun getProveedorById(@Path("id")id: Long): Call<ProveedorDataCollectionItem>
     @Headers("Content-Type: application/json")

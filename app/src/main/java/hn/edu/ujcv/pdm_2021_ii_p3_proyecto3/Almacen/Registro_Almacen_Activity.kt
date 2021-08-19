@@ -68,7 +68,7 @@ class Registro_Almacen_Activity : AppCompatActivity() {
     private fun callServicePostAlmacen() {
         val almancenInfo = AlmacenDataCollectionItem(
             almacenId = txtMostrarAlmacenID.text.toString().toInt(),
-            telefono = txtTelefonoAlmacen.text.toString().toInt(),
+            telefono =  txtTelefonoAlmacen.text.toString().toInt(),
             direccion = txtDireccionAlmacen.text.toString(),
             encargado = txtEncargado.text.toString()
         )

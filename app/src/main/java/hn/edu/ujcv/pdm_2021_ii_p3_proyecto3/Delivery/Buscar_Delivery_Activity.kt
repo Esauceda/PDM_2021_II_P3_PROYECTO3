@@ -12,7 +12,6 @@ import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.RestEngine
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Toolbar.MyToolbar
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.DeliveryDataCollecionItem
 import kotlinx.android.synthetic.main.activity_buscar_delivery.*
-import kotlinx.android.synthetic.main.activity_registro_delivery.*
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -22,7 +21,8 @@ class Buscar_Delivery_Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_buscar_delivery)
-
+        btnEliminarDelivery.setOnClickListener { callServiceDeleteDelivery() }
+        btnBuscarDelivery.setOnClickListener { callServiceGetDelivery() }
         MyToolbar().show(this,"Buscar Delivery", false)
     }
 
@@ -39,11 +39,12 @@ class Buscar_Delivery_Activity : AppCompatActivity() {
                 call: Call<DeliveryDataCollecionItem>,
                 response: Response<DeliveryDataCollecionItem>
             ) {
-                txtDeliveryId.setText(response.body()!!.deliveryId.toString())
-                txtNombreCom.setText(response.body()!!.nombreCompania)
-                txtTelefonoDeli.setText(response.body()!!.numero.toString())
-                txtCorreoDeli.setText(response.body()!!.correo)
-                txtFechaEntregaDeli.setText(response.body()!!.fechaEntrega)
+                txtDeliveryId2.setText(response.body()!!.deliveryId.toString())
+                txvMostrarOrdernDeliver.setText(response.body()!!.ordenId.toString())
+                txvMostrarNombreComDeliver.setText(response.body()!!.nombreCompania)
+                txvMostrarTelDeliver.setText(response.body()!!.numero.toString())
+                txvMostrarCorreoDeliver.setText(response.body()!!.correo)
+                txvMostrarFechaEntreDeliver.setText(response.body()!!.fechaEntrega)
                 Toast.makeText(this@Buscar_Delivery_Activity,"OK"+response.body()!!.nombreCompania,
                     Toast.LENGTH_LONG).show()
             }
