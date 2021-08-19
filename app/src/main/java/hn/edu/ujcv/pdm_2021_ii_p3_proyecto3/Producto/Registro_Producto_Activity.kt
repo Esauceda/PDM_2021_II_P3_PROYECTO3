@@ -25,7 +25,6 @@ class Registro_Producto_Activity : AppCompatActivity() {
         btnGuardarProducto.setOnClickListener { callServicePostProducto() }
         btnActuProducto.setOnClickListener { callServicePutProducto() }
         btnBuscarProducto.setOnClickListener { callServiceGetProducto() }
-
         MyToolbar().show(this,"Registrar Producto", false)
     }
 

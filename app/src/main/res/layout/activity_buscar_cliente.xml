@@ -138,9 +138,9 @@
         android:layout_marginEnd="14dp"
         android:ems="10"
         android:hint="Ingrese ID"
-        android:textColor="@color/black"
         android:inputType="number"
-        android:textColorHint="#050505"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintBaseline_toBaselineOf="@+id/txvClienteId2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txvClienteId2" />
@@ -175,6 +175,7 @@
         android:layout_marginTop="36dp"
         android:layout_marginEnd="44dp"
         android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txvNombreCompañia2"
         app:layout_constraintTop_toBottomOf="@+id/txtMostrarClienteId" />
@@ -186,6 +187,7 @@
         android:layout_marginTop="36dp"
         android:layout_marginEnd="44dp"
         android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txvCorreoCliente2"
         app:layout_constraintTop_toBottomOf="@+id/txvMostrarTelCli" />
@@ -197,6 +199,7 @@
         android:layout_marginTop="36dp"
         android:layout_marginEnd="44dp"
         android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txvTelefonoCliente2"
         app:layout_constraintTop_toBottomOf="@+id/txvMostrarNomCli" />
@@ -208,6 +211,7 @@
         android:layout_marginTop="36dp"
         android:layout_marginEnd="44dp"
         android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txvPaisCliente2"
         app:layout_constraintTop_toBottomOf="@+id/txvMostrarCorrCli" />
@@ -219,6 +223,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="44dp"
         android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txvCategoriaCliente2"
         app:layout_constraintTop_toBottomOf="@+id/txvMostrarPaisCli" />
@@ -232,7 +237,8 @@
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txvNombreCliente2"
-        app:layout_constraintTop_toBottomOf="@+id/txvMostrarCompCli" />
+        app:layout_constraintTop_toBottomOf="@+id/txvMostrarCompCli"
+        android:textColorHint="@color/black" />
 
     <TextView
         android:id="@+id/txvMostrarDirCli"
@@ -241,6 +247,7 @@
         android:layout_marginTop="36dp"
         android:layout_marginEnd="44dp"
         android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txvDireccionCliente2"
         app:layout_constraintTop_toBottomOf="@+id/txvMostrarCatCli" />
