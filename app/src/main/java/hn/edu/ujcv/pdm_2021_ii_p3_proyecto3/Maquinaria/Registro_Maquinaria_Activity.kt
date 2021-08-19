@@ -28,11 +28,11 @@ class Registro_Maquinaria_Activity : AppCompatActivity() {
 
         MyToolbar().show(this,"Registrar Maquinaria", false)
 
-        callServiceGetMaquinarias()
+//        callServiceGetMaquinarias()
         callServicesGetFabricas()
-        btnBuscarMaqui.setOnClickListener { callServiceGetMaquinaria() }
         btnRegisMaqui.setOnClickListener { callServicePostMaquinaria() }
         btnActuMaqui.setOnClickListener { callServicePutMaquinaria() }
+        btnBuscarMaqui.setOnClickListener { callServiceGetMaquinaria() }
     }
 
     //-----
@@ -72,7 +72,7 @@ class Registro_Maquinaria_Activity : AppCompatActivity() {
     private fun callServicePostMaquinaria() {
         val fecha = "2021-04-10"
         val maquinariaInfo = MaquinariaDataCollectionItem(
-            maquinaId = txtMaquinariaId.text.toString().toInt(),
+            maquinaId = null,
             fabricaId = spMaquiFarbicaID.selectedItem.toString().toInt(),
             marca = txtNombreMarca.text.toString(),
             horasUso = txtHorasUsoMaqui.text.toString().toDouble(),
