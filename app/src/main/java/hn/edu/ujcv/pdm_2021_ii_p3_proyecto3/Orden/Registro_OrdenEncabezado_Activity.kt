@@ -8,6 +8,7 @@ import android.view.MenuItem
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.MenuPrincipal.MenuActivity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.R
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Toolbar.MyToolbar
+import kotlinx.android.synthetic.main.activity_registro_orden_encabezado.*
 
 class Registro_OrdenEncabezado_Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,6 +16,7 @@ class Registro_OrdenEncabezado_Activity : AppCompatActivity() {
         setContentView(R.layout.activity_registro_orden_encabezado)
 
         MyToolbar().show(this,"Registrar Orden Encabezado", false)
+        btnRegistrarOrdenEncabezado.setOnClickListener {  }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

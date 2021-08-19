@@ -20,7 +20,7 @@ class Actualizar_Empleado_Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_actualizar_empleado)
-        btnGuardarEmpleado.setOnClickListener { callServicePutEmpleado() }
+        btnActualizarEmpleado.setOnClickListener { callServicePutEmpleado() }
         btnBuscarEmpleado.setOnClickListener { callServiceGetEmpleado() }
         MyToolbar().show(this,"Actualizar Empleado", false)
     }

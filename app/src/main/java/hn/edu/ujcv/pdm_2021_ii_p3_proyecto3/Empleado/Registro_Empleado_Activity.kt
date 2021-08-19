@@ -17,7 +17,7 @@ class Registro_Empleado_Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro_empleado)
-        btnGuardarEmpleado.setOnClickListener { callServicePostEmpleado() }
+        btnActualizarEmpleado.setOnClickListener { callServicePostEmpleado() }
     }
 
     private fun callServicePostEmpleado() {

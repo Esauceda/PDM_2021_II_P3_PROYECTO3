@@ -156,7 +156,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/btnBuscarFabrica"
+        android:id="@+id/btnBuscarEmpleado2"
         android:layout_width="146dp"
         android:layout_height="49dp"
         android:layout_marginStart="45dp"

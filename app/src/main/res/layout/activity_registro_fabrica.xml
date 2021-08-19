@@ -155,7 +155,7 @@
         android:backgroundTint="#52658F"
         android:text="Guardar"
         android:textSize="17dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnBuscarFabrica"
+        app:layout_constraintBottom_toTopOf="@+id/btnBuscarEmpleado2"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -168,11 +168,11 @@
         android:backgroundTint="#52658F"
         android:text="Actualizar"
         android:textSize="17dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnBuscarFabrica"
+        app:layout_constraintBottom_toTopOf="@+id/btnBuscarEmpleado2"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/btnBuscarFabrica"
+        android:id="@+id/btnBuscarEmpleado2"
         android:layout_width="144dp"
         android:layout_height="41dp"
         android:layout_marginStart="132dp"

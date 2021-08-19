@@ -244,7 +244,7 @@
         android:layout_marginBottom="25dp"
         android:background="@drawable/button_rounded"
         android:backgroundTint="#52658F"
-        android:text="Guardar"
+        android:text="Continuar"
         android:textSize="17dp"
         app:layout_constraintBottom_toTopOf="@+id/btnBuscarOrdenEncabezado"
         app:layout_constraintStart_toStartOf="parent" />

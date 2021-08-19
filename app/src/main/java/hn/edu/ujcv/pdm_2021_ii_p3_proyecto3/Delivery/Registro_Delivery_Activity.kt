@@ -24,6 +24,9 @@ class Registro_Delivery_Activity : AppCompatActivity() {
         setContentView(R.layout.activity_registro_delivery)
 
         MyToolbar().show(this,"Registrar Delivery", false)
+        btnRegistrarDeliver.setOnClickListener { callServicePostDelivery() }
+        btnActualizarDeliver.setOnClickListener { callServicePutDelivery() }
+        btnBuscarDeliver.setOnClickListener { callServiceGetDelivery() }
     }
 
     private fun callServicePutDelivery() {

@@ -13,7 +13,7 @@ interface EmpleadoService {
     @GET("empleado/nombre/{nombre}")
     fun getEmpleadoByNombre(@Path("id") id: Int): Call<EmpleadoDataCollectionItem>
     @Headers("Content-Type: application/json")
-    @POST("empleado/addDelivery")
+    @POST("empleado/addEmpleado")
     fun addEmpleado(@Body personData: EmpleadoDataCollectionItem): Call<EmpleadoDataCollectionItem>
     @Headers("Content-Type: application/json")
     @PUT("empleado")
