@@ -35,6 +35,7 @@
         android:ems="8"
         android:hint="Ingrese id"
         android:inputType="number"
+        android:textColor="@color/black"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include6" />
@@ -139,6 +140,7 @@
         android:ems="8"
         android:hint="Ingrese nombre"
         android:inputType="textPersonName"
+        android:textColor="@color/black"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtEmpleID" />
@@ -152,6 +154,7 @@
         android:ems="8"
         android:hint="Ingrese direccion"
         android:inputType="textPersonName"
+        android:textColor="@color/black"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtEmpleNombre" />
@@ -165,6 +168,7 @@
         android:ems="8"
         android:hint="Ingrese telefono"
         android:inputType="number"
+        android:textColor="@color/black"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtDireccionEmple" />
@@ -178,6 +182,7 @@
         android:ems="8"
         android:hint="Ingrese salario"
         android:inputType="numberDecimal"
+        android:textColor="@color/black"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTelEmple" />
@@ -191,6 +196,7 @@
         android:ems="8"
         android:hint="Ingrese puesto"
         android:inputType="textPersonName"
+        android:textColor="@color/black"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtSalarioEmple" />
@@ -204,6 +210,7 @@
         android:ems="8"
         android:hint="Ingrese fecha"
         android:inputType="date"
+        android:textColor="@color/black"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPuestoEmple" />
@@ -219,7 +226,8 @@
         android:inputType="date"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtFechaContraEmple" />
+        app:layout_constraintTop_toBottomOf="@+id/txtFechaContraEmple"
+        android:textColor="@color/black" />
 
 
     <TextView
@@ -244,6 +252,7 @@
         android:ems="8"
         android:hint="Ingrese contraseña"
         android:inputType="textPersonName"
+        android:textColor="@color/black"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtFechaNaciEmple" />

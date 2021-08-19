@@ -11,7 +11,6 @@ import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.R
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.RestEngine
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Toolbar.MyToolbar
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.EmpleadoDataCollectionItem
-import kotlinx.android.synthetic.main.activity_actualizar_empleado.*
 import kotlinx.android.synthetic.main.activity_buscar_empleado.*
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -23,7 +22,7 @@ class Buscar_Empleado_Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_buscar_empleado)
         btnBuscarEmpleado2.setOnClickListener { callServiceGetEmpleado() }
-        btnEliminarEmpleado.setOnClickListener { callServiceDeleteEmpleado() }
+        btnEliminarEmpleado.setOnClickListener{ callServiceDeleteEmpleado() }
         MyToolbar().show(this,"Buscar Empleado", false)
     }
 

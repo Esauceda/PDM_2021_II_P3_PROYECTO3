@@ -23,7 +23,6 @@ class Buscar_Producto_Activity : AppCompatActivity() {
         setContentView(R.layout.activity_buscar_producto)
         btnBuscarProducto2.setOnClickListener { callServiceGetProducto() }
         btnEliminarProducto.setOnClickListener { callServiceDeleteDelivery() }
-
         MyToolbar().show(this,"Buscar Producto", false)
     }
 

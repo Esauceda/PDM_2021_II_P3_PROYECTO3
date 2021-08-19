@@ -149,7 +149,7 @@
         android:hint="Ingrese ID"
         android:inputType="number"
         android:textColor="@color/black"
-        android:textColorHint="#050505"
+        android:textColorHint="@color/black"
         app:layout_constraintBaseline_toBaselineOf="@+id/txvProductoId2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txvProductoId2" />
@@ -184,6 +184,7 @@
         android:layout_height="34dp"
         android:layout_marginEnd="44dp"
         android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintBaseline_toBaselineOf="@+id/txvProductoFabricaID2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txvProductoFabricaID2" />
@@ -194,6 +195,7 @@
         android:layout_height="34dp"
         android:layout_marginEnd="44dp"
         android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintBaseline_toBaselineOf="@+id/txvProduPrecio2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txvProduPrecio2" />
@@ -204,6 +206,7 @@
         android:layout_height="34dp"
         android:layout_marginEnd="44dp"
         android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintBaseline_toBaselineOf="@+id/txvDescripcionProdu2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txvDescripcionProdu2" />
@@ -214,6 +217,7 @@
         android:layout_height="34dp"
         android:layout_marginEnd="44dp"
         android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintBaseline_toBaselineOf="@+id/txvUnidadesAlmacen2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txvUnidadesAlmacen2" />
@@ -226,6 +230,7 @@
         android:layout_marginEnd="44dp"
         android:layout_marginBottom="58dp"
         android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/txvMostrarUnidadesMax"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txvUnidadesMin2"
@@ -237,6 +242,7 @@
         android:layout_height="34dp"
         android:layout_marginEnd="44dp"
         android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintBaseline_toBaselineOf="@+id/txvNombreProducto2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txvNombreProducto2" />
@@ -249,6 +255,7 @@
         android:layout_marginEnd="44dp"
         android:layout_marginBottom="4dp"
         android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/txvUnidadesMax2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txvUnidadesMax2"
