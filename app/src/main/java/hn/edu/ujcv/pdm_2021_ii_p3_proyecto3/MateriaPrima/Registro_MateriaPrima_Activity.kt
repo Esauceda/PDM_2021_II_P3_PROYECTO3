@@ -27,6 +27,8 @@ class Registro_MateriaPrima_Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro_materia_prima)
+        callServiceGetProveedores()
+        callServiceGetAlmacenes()
         btnGuardarMateria.setOnClickListener { callServicePostMateria() }
         btnActualizarMateria.setOnClickListener { callServicePutMateria() }
         btnBuscarMateria.setOnClickListener { callServiceGetMateria() }
