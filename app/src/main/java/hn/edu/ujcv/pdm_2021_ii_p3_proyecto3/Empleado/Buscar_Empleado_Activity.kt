@@ -22,7 +22,7 @@ class Buscar_Empleado_Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_buscar_empleado)
-        btnBuscarEmpleado2.setOnClickListener { callServiceGetEmpleado() }
+        btnBuscarFabrica.setOnClickListener { callServiceGetEmpleado() }
         btnEliminarEmpleado.setOnClickListener { callServiceDeleteEmpleado() }
         MyToolbar().show(this,"Buscar Empleado", false)
     }

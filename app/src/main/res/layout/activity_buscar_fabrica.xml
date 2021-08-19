@@ -80,7 +80,7 @@
         android:id="@+id/txtMostrarFabricaID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="10dp"
         android:ems="8"
         android:hint="Ingrese iD"
@@ -156,7 +156,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/btnBuscarEmpleado2"
+        android:id="@+id/btnBuscarFabrica2"
         android:layout_width="146dp"
         android:layout_height="49dp"
         android:layout_marginStart="45dp"
@@ -164,8 +164,38 @@
         android:background="@drawable/button_rounded"
         android:backgroundTint="#52658F"
         android:text="Buscar"
-        android:textSize="16dp"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txvNombreFabrica2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginBottom="151dp"
+        android:text="Nombre Fabrica"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnBuscarFabrica2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvEncargadoFabrica2" />
+
+    <TextView
+        android:id="@+id/txvMostrarNombreFabrica"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="109dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="151dp"
+        android:ems="8"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/btnEliminarFabrica"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvNombreFabrica2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
