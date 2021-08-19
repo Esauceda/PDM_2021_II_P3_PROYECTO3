@@ -81,7 +81,7 @@ class Actualizar_Empleado_Activity : AppCompatActivity() {
                 txtEmpleID.setText(response.body()!!.empleadoId.toString())
                 txtEmpleNombre.setText(response.body()!!.nombre)
                 txtDireccionEmple.setText(response.body()!!.direccion)
-                txtTelEmple.setText(response.body()!!.telefono)
+                txtTelEmple.setText(response.body()!!.telefono.toString())
                 txtSalarioEmple.setText(response.body()!!.salario.toString())
                 txtPuestoEmple.setText(response.body()!!.puesto)
                 txtFechaContraEmple.setText(response.body()!!.fechaContratacion)

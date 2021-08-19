@@ -151,12 +151,12 @@
         android:background="@drawable/button_rounded"
         android:text="Buscar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnEliminarCli"
+        app:layout_constraintEnd_toStartOf="@+id/btnEliminarProveedor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txvMostrarDireccionProveedor" />
 
     <Button
-        android:id="@+id/btnEliminarCli"
+        android:id="@+id/btnEliminarProveedor"
         android:layout_width="0dp"
         android:layout_height="39dp"
         android:layout_marginEnd="70dp"

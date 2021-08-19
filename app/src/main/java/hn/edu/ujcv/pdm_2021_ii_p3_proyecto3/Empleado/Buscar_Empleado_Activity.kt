@@ -43,7 +43,7 @@ class Buscar_Empleado_Activity : AppCompatActivity() {
                 txvMostrarEmpleID2.setText(response.body()!!.empleadoId.toString())
                 txvMostrarEmpleNombre2.setText(response.body()!!.nombre)
                 txtMostrarDireccionEmple2.setText(response.body()!!.direccion)
-                txvMostrarTelEmple2.setText(response.body()!!.telefono)
+                txvMostrarTelEmple2.setText(response.body()!!.telefono.toString())
                 txvMostrarSalarioEmple2.setText(response.body()!!.salario.toString())
                 txvMostrarPuestoEmple2.setText(response.body()!!.puesto)
                 txvMostrarFechaContraEmple2.setText(response.body()!!.fechaContratacion)

@@ -22,7 +22,7 @@ class Buscar_Cliente_Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_buscar_cliente)
         btnBuscarCli.setOnClickListener { callServiceGetCliente() }
-        btnEliminarCli.setOnClickListener { callServiceDeleteCliente() }
+        btnEliminarProveedor.setOnClickListener { callServiceDeleteCliente() }
 
         MyToolbar().show(this,"Buscar Cliente", false)
     }
