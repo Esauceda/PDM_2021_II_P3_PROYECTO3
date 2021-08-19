@@ -5,16 +5,20 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.google.gson.Gson
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.MenuPrincipal.MenuActivity
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Orden.OrdenEncabezadoService
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.R
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.RestEngine
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Toolbar.MyToolbar
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.FacturaDataCollectionItem
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.OrdenEncabezadoDataCollectionItem
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.RestApiError
 import kotlinx.android.synthetic.main.activity_registro_fabrica.*
 import kotlinx.android.synthetic.main.activity_registro_factura.*
+import kotlinx.android.synthetic.main.activity_registro_maquinaria.*
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -26,6 +30,7 @@ class Registro_Factura_Activity : AppCompatActivity() {
         setContentView(R.layout.activity_registro_factura)
 
         MyToolbar().show(this,"Registrar Factura", false)
+        callServiceGetOrdenesEncabezado()
         btnRegisFactura.setOnClickListener { callServicePostFactura() }
         btnBuscarFactura.setOnClickListener { callServiceGetFactura() }
         btnActuFactura.setOnClickListener { callServicePutFactura() }
@@ -39,7 +44,7 @@ class Registro_Factura_Activity : AppCompatActivity() {
         val fecha = "2021-04-10"
         val facturaInfo = FacturaDataCollectionItem(
             facturaId = null,
-            ordenId = 1,
+            ordenId = spFacturaOrdenID.selectedItem.toString().toInt(),
             fechaFactura = txtFechaFac.text.toString(),
             total = txtTotalFac.text.toString().toDouble()
 
@@ -95,7 +100,7 @@ class Registro_Factura_Activity : AppCompatActivity() {
         val fecha = "2021-04-11"
         val facturaInfo = FacturaDataCollectionItem(
             facturaId = txtFacturaId.text.toString().toInt(),
-            ordenId = 1, //spFacturaOrdenID.selectedItem.toString().toInt(),
+            ordenId = spFacturaOrdenID.selectedItem.toString().toInt(),
             fechaFactura = txtFechaFac.text.toString(),
             total = txtTotalFac.text.toString().toDouble()
 
@@ -172,7 +177,34 @@ class Registro_Factura_Activity : AppCompatActivity() {
         })
     }
 
+    //GETSORDENESECABEZADO
+    private fun callServiceGetOrdenesEncabezado() {
+        val ordenEncabezadoService: OrdenEncabezadoService = RestEngine.buildService().create(
+            OrdenEncabezadoService::class.java)
+        var result: Call<List<OrdenEncabezadoDataCollectionItem>> = ordenEncabezadoService.listOrdenesEncabezado()
+        val ordenes = ArrayList<String>()
 
+        result.enqueue(object :  Callback<List<OrdenEncabezadoDataCollectionItem>> {
+            override fun onFailure(call: Call<List<OrdenEncabezadoDataCollectionItem>>, t: Throwable) {
+                Toast.makeText(this@Registro_Factura_Activity,"Error al encontrar ordenes",Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(
+                call: Call<List<OrdenEncabezadoDataCollectionItem>>,
+                response: Response<List<OrdenEncabezadoDataCollectionItem>>
+            ) {
+                for (orden in response.body()!!){
+                    ordenes.add("${orden.ordenId}")
+                }
+
+                val  adapterOrdenes = ArrayAdapter(this@Registro_Factura_Activity,android.R.layout.simple_spinner_item, ordenes)
+                spFacturaOrdenID.adapter = adapterOrdenes
+
+
+                Toast.makeText(this@Registro_Factura_Activity,"Ordenes encontradas",Toast.LENGTH_LONG).show()
+            }
+        })
+    }
     //-----
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

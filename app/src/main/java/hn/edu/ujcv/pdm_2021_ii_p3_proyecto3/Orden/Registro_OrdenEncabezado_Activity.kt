@@ -5,10 +5,23 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ArrayAdapter
+import android.widget.Toast
+import com.google.gson.Gson
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Cliente.ClienteService
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Empleado.EmpleadoService
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.MenuPrincipal.MenuActivity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.R
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.RestEngine
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Toolbar.MyToolbar
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.ClienteDataCollectionItem
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.EmpleadoDataCollectionItem
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.OrdenEncabezadoDataCollectionItem
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.RestApiError
 import kotlinx.android.synthetic.main.activity_registro_orden_encabezado.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class Registro_OrdenEncabezado_Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,8 +29,222 @@ class Registro_OrdenEncabezado_Activity : AppCompatActivity() {
         setContentView(R.layout.activity_registro_orden_encabezado)
 
         MyToolbar().show(this,"Registrar Orden Encabezado", false)
-        btnRegistrarOrdenEncabezado.setOnClickListener {  }
+        callServiceGetEmpleados()
+        callServiceGetClientes()
+        btnRegistrarOrdenEncabezado.setOnClickListener { callServicePostPerson() }
+        btnBuscarOrdenEncabezado.setOnClickListener { callServiceGetOrdenEncabezado() }
+        btnActualizarOrdenEncabezado.setOnClickListener { callServicePutOrdenEncabezado() }
     }
+
+    //-----
+
+    //POST
+   private fun callServicePostPerson() {
+        val fecha = "2021-04-10"
+        val ordenEncabezadoInfo = OrdenEncabezadoDataCollectionItem(
+            ordenId         = null,
+            empleadoId      = spOrdenEmpleadoID.selectedItem.toString().toInt(),
+            clienteId       = spClienteIDOrden.selectedItem.toString().toInt(),
+            fechaOrden      = txtFechaOrden.text.toString(),
+            fechaEnvio      = txtFechaEnvio.text.toString(),
+            direccionEnvio  = txtDireccionEnvioOrden.text.toString(),
+            estado          = txtEstadoOrden.text.toString(),
+            total           = txtTotalOrden.text.toString().toDouble()
+        )
+
+        addOrdenEncabezado(ordenEncabezadoInfo) {
+            if (it?.ordenId!= null) {
+                Toast.makeText(this@Registro_OrdenEncabezado_Activity,"OK"+it?.ordenId, Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Error", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    fun addOrdenEncabezado(ordenEncabezadoData: OrdenEncabezadoDataCollectionItem, onResult: (OrdenEncabezadoDataCollectionItem?) -> Unit){
+        val retrofit = RestEngine.buildService().create(OrdenEncabezadoService::class.java)
+        var result: Call<OrdenEncabezadoDataCollectionItem> = retrofit.addOrdenEncabezado(ordenEncabezadoData)
+
+        result.enqueue(object : Callback<OrdenEncabezadoDataCollectionItem> {
+            override fun onFailure(call: Call<OrdenEncabezadoDataCollectionItem>, t: Throwable) {
+                onResult(null)
+            }
+
+            override fun onResponse(call: Call<OrdenEncabezadoDataCollectionItem>,
+                                    response: Response<OrdenEncabezadoDataCollectionItem>
+            ) {
+                if (response.isSuccessful) {
+                    val addedPerson = response.body()!!
+                    onResult(addedPerson)
+                }
+                else if (response.code() == 401){
+                    Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Sesion expirada",Toast.LENGTH_LONG).show()
+                }
+                else if (response.code() == 500){
+                    //val gson = Gson()
+                    //val type = object : TypeToken<RestApiError>() {}.type
+                    //var errorResponse1: RestApiError? = gson.fromJson(response.errorBody()!!.charStream(), type)
+                    val errorResponse = Gson().fromJson(response.errorBody()!!.string()!!, RestApiError::class.java)
+
+                    Toast.makeText(this@Registro_OrdenEncabezado_Activity,errorResponse.errorDetails, Toast.LENGTH_LONG).show()
+                }
+                else{
+                    Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Fallo al traer el item", Toast.LENGTH_LONG).show()
+                }
+            }
+
+        }
+        )
+    }
+
+    //PUT
+
+    private fun callServicePutOrdenEncabezado() {
+        val fecha = "2021-04-11"
+        val ordenEncabezadoInfo = OrdenEncabezadoDataCollectionItem(
+            ordenId         = txtOrdenID.text.toString().toInt(),
+            empleadoId      = spOrdenEmpleadoID.selectedItem.toString().toInt(),
+            clienteId       = spClienteIDOrden.selectedItem.toString().toInt(),
+            fechaOrden      = txtFechaOrden.text.toString(),
+            fechaEnvio      = txtFechaEnvio.text.toString(),
+            direccionEnvio  = txtDireccionEnvioOrden.text.toString(),
+            estado          = txtEstadoOrden.text.toString(),
+            total           = txtTotalOrden.text.toString().toDouble()
+        )
+
+        val retrofit = RestEngine.buildService().create(OrdenEncabezadoService::class.java)
+        var result: Call<OrdenEncabezadoDataCollectionItem> = retrofit.updateOrdenEncabezado(ordenEncabezadoInfo)
+
+        result.enqueue(object : Callback<OrdenEncabezadoDataCollectionItem> {
+            override fun onFailure(call: Call<OrdenEncabezadoDataCollectionItem>, t: Throwable) {
+                Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Error",Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(call: Call<OrdenEncabezadoDataCollectionItem>,
+                                    response: Response<OrdenEncabezadoDataCollectionItem>) {
+                if (response.isSuccessful) {
+                    val updatedPerson = response.body()!!
+                    Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Orden Encabezado actualizado",Toast.LENGTH_LONG).show()
+                }
+                else if (response.code() == 401){
+                    Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Sesion expirada",Toast.LENGTH_LONG).show()
+                }
+                else{
+                    Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Fallo al traer el item",Toast.LENGTH_LONG).show()
+                }
+            }
+
+        })
+    }
+
+    //GET
+
+    private fun callServiceGetOrdenEncabezado() {
+        val ordenEncabezadoService:OrdenEncabezadoService = RestEngine.buildService().create(OrdenEncabezadoService::class.java)
+        var result: Call<OrdenEncabezadoDataCollectionItem> = ordenEncabezadoService.getOrdenEncabezadoById(txtOrdenID.text.toString().toLong())
+
+        result.enqueue(object :  Callback<OrdenEncabezadoDataCollectionItem> {
+            override fun onFailure(call: Call<OrdenEncabezadoDataCollectionItem>, t: Throwable) {
+                Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Error",Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(
+                call: Call<OrdenEncabezadoDataCollectionItem>,
+                response: Response<OrdenEncabezadoDataCollectionItem>
+            ) {
+                txtOrdenID.setText(response.body()!!.ordenId.toString())
+                //empleado
+                //cliente
+                txtFechaOrden.setText(response.body()!!.fechaOrden)
+                txtFechaEnvio.setText(response.body()!!.fechaEnvio)
+                txtDireccionEnvioOrden.setText(response.body()!!.direccionEnvio)
+                txtEstadoOrden.setText(response.body()!!.estado)
+                txtTotalOrden.setText(response.body()!!.total.toString())
+
+                Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Orden Encabezado encontrado "+response.body()!!.ordenId,Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+
+    //GETS
+    private fun callServiceGetOrdenesEncabezado() {
+        val ordenEncabezadoService: OrdenEncabezadoService = RestEngine.buildService().create(
+            OrdenEncabezadoService::class.java)
+        var result: Call<List<OrdenEncabezadoDataCollectionItem>> = ordenEncabezadoService.listOrdenesEncabezado()
+        val ordenes = ArrayList<String>()
+
+        result.enqueue(object :  Callback<List<OrdenEncabezadoDataCollectionItem>> {
+            override fun onFailure(call: Call<List<OrdenEncabezadoDataCollectionItem>>, t: Throwable) {
+                Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Error al encontrar ordenes",Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(
+                call: Call<List<OrdenEncabezadoDataCollectionItem>>,
+                response: Response<List<OrdenEncabezadoDataCollectionItem>>
+            ) {
+                Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Ordenes encontradas",Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+
+
+    //GETSEMPLEADO
+
+    private fun callServiceGetEmpleados() {
+        val empleadoService:EmpleadoService = RestEngine.buildService().create(EmpleadoService::class.java)
+        var result: Call<List<EmpleadoDataCollectionItem>> = empleadoService.listEmpleado()
+        var empleados = ArrayList<String>()
+
+        result.enqueue(object :  Callback<List<EmpleadoDataCollectionItem>> {
+            override fun onFailure(call: Call<List<EmpleadoDataCollectionItem>>, t: Throwable) {
+                Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Error al encontrar empleados",Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(
+                call: Call<List<EmpleadoDataCollectionItem>>,
+                response: Response<List<EmpleadoDataCollectionItem>>
+            ) {
+                for (empleado in response.body()!!){
+                    empleados.add("${empleado.empleadoId}")
+                }
+
+                val adapterEmpleados = ArrayAdapter(this@Registro_OrdenEncabezado_Activity, android.R.layout.simple_spinner_item, empleados)
+                spOrdenEmpleadoID.adapter = adapterEmpleados
+
+                Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Empelados encontrados",Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+
+    //GETSCLIENTES
+
+    private fun callServiceGetClientes() {
+        val clienteService:ClienteService = RestEngine.buildService().create(ClienteService::class.java)
+        var result: Call<List<ClienteDataCollectionItem>> = clienteService.listCliente()
+        val clientes = ArrayList<String>()
+
+        result.enqueue(object :  Callback<List<ClienteDataCollectionItem>> {
+            override fun onFailure(call: Call<List<ClienteDataCollectionItem>>, t: Throwable) {
+                Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Error al encontrar clientes",Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(
+                call: Call<List<ClienteDataCollectionItem>>,
+                response: Response<List<ClienteDataCollectionItem>>
+            ) {
+
+                for (cliente in response.body()!!){
+                    clientes.add("${cliente.clienteId}")
+                }
+
+                val adapterEmpleados = ArrayAdapter(this@Registro_OrdenEncabezado_Activity, android.R.layout.simple_spinner_item, clientes)
+                spClienteIDOrden.adapter = adapterEmpleados
+                Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Clientes encontrados",Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+
+    //-----
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_contextual2, menu)

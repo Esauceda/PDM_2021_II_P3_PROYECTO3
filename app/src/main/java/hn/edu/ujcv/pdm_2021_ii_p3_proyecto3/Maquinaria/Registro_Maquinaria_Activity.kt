@@ -10,12 +10,15 @@ import android.widget.Toast
 import com.google.gson.Gson
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Fabrica.FabricaService
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.MenuPrincipal.MenuActivity
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Orden.OrdenEncabezadoService
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.R
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.RestEngine
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Toolbar.MyToolbar
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.FabricaDataCollectionItem
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.MaquinariaDataCollectionItem
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.OrdenEncabezadoDataCollectionItem
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.RestApiError
+import kotlinx.android.synthetic.main.activity_registro_factura.*
 import kotlinx.android.synthetic.main.activity_registro_maquinaria.*
 import retrofit2.Call
 import retrofit2.Callback

@@ -8,7 +8,8 @@
     tools:context=".Orden.Registro_OrdenEncabezado_Activity">
 
     <include
-        layout="@layout/action_bar_toolbar"/>
+        android:id="@+id/include8"
+        layout="@layout/action_bar_toolbar" />
 
     <TextView
         android:id="@+id/txvOrdenID"
@@ -114,60 +115,61 @@
         app:layout_constraintTop_toBottomOf="@+id/txvEstadoOrden" />
 
 
-
     <EditText
         android:id="@+id/txtOrdenID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="37dp"
         android:ems="8"
         android:hint="Ingrese id"
         android:inputType="number"
-        android:textColorHint="@color/black"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/txtOrdenEmpleadoID"
-        app:layout_constraintStart_toStartOf="@+id/txtOrdenEmpleadoID" />
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include8" />
 
-    <EditText
-        android:id="@+id/txtOrdenEmpleadoID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="2dp"
-        android:layout_marginBottom="12dp"
+    <Spinner
+        android:id="@+id/spOrdenEmpleadoID"
+        android:layout_width="170dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="37dp"
         android:ems="8"
         android:hint="Ingrese Empleado"
         android:inputType="textPersonName"
-        android:textColorHint="@color/black"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/txtClienteIDOrden"
-        app:layout_constraintEnd_toEndOf="@+id/txtClienteIDOrden" />
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtOrdenID" />
 
-    <EditText
-        android:id="@+id/txtClienteIDOrden"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
+    <Spinner
+        android:id="@+id/spClienteIDOrden"
+        android:layout_width="170dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="37dp"
         android:ems="8"
         android:hint="Ingrese Cliente"
         android:inputType="textPersonName"
-        android:textColorHint="@color/black"
         android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvEmpleadoID" />
+        app:layout_constraintTop_toBottomOf="@+id/spOrdenEmpleadoID" />
 
     <EditText
         android:id="@+id/txtFechaOrden"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
+        android:layout_marginEnd="37dp"
         android:ems="8"
         android:hint="Ingrese fecha "
         android:inputType="date"
-        android:textColorHint="@color/black"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/txtClienteIDOrden"
-        app:layout_constraintTop_toBottomOf="@+id/txtClienteIDOrden" />
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spClienteIDOrden" />
 
     <EditText
         android:id="@+id/txtFechaEnvio"
