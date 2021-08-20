@@ -29,7 +29,7 @@ class Buscar_Producto_Activity : AppCompatActivity() {
 
     private fun callServiceGetProducto() {
         val productoService: ProductoService = RestEngine.buildService().create(ProductoService::class.java)
-        var result: Call<ProductoDataCollectionItem> = productoService.getProductoById(txtProduID.text.toString().toInt())
+        var result: Call<ProductoDataCollectionItem> = productoService.getProductoById(txtProduID2.text.toString().toInt())
 
         result.enqueue(object : Callback<ProductoDataCollectionItem> {
             override fun onFailure(call: Call<ProductoDataCollectionItem>, t: Throwable) {
@@ -43,14 +43,14 @@ class Buscar_Producto_Activity : AppCompatActivity() {
                 if (response.code() == 404){
                     Toast.makeText(this@Buscar_Producto_Activity, "Producto no existe",Toast.LENGTH_SHORT).show()
                 }else {
-                    txtProduID.setText(response.body()!!.productoId.toString())
+                    txtProduID2.setText(response.body()!!.productoId.toString())
                     txvMostrarProduFabricaID.setText(response.body()!!.fabricaId.toString())
-                    txtNombreProdu.setText(response.body()!!.nombreProducto)
-                    txtDescripProdu.setText(response.body()!!.descripcion)
-                    txtPrecioProdu.setText(response.body()!!.precio.toString())
-                    txtUnidadesAlmacenadas.setText(response.body()!!.unidadesEnAlmacen.toString())
-                    txtUnidadesMax.setText(response.body()!!.unidadesMaximas.toString())
-                    txtUnidadesMin.setText(response.body()!!.unidadesMinimas.toString())
+                    txvMostrarNomProducto.setText(response.body()!!.nombreProducto)
+                    txvMostrarDescripProdu.setText(response.body()!!.descripcion)
+                    txvMostrarPrecioProdu.setText(response.body()!!.precio.toString())
+                    txvMostrarUnidadesAlmacen.setText(response.body()!!.unidadesEnAlmacen.toString())
+                    txvMostrarUnidadesMin.setText(response.body()!!.unidadesMaximas.toString())
+                    txvMostrarUnidadesMax.setText(response.body()!!.unidadesMinimas.toString())
                     Toast.makeText(this@Buscar_Producto_Activity,
                         "OK" + response.body()!!.nombreProducto,
                         Toast.LENGTH_LONG).show()

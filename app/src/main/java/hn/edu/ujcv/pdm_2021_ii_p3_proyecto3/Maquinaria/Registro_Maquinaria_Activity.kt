@@ -37,12 +37,13 @@ class Registro_Maquinaria_Activity : AppCompatActivity() {
         btnActuMaqui.setOnClickListener { callServicePutMaquinaria() }
         btnBuscarMaqui.setOnClickListener { callServiceGetMaquinaria() }
     }
+    val fabricas = ArrayList<String>()
 
     //-----
 
     //GETFABRICAS
     private fun callServicesGetFabricas(){
-        val fabricas = ArrayList<String>()
+
         val fabricaService:FabricaService = RestEngine.buildService().create(FabricaService::class.java)
         var result: Call<List<FabricaDataCollectionItem>> = fabricaService.listFabricas()
 
@@ -167,6 +168,7 @@ class Registro_Maquinaria_Activity : AppCompatActivity() {
     private fun callServiceGetMaquinaria() {
         val maquinariaService:MaquinariaService = RestEngine.buildService().create(MaquinariaService::class.java)
         var result: Call<MaquinariaDataCollectionItem> = maquinariaService.getMaquinariaById(txtMaquinariaId.text.toString().toLong())
+        var contadorFabircas = 0
 
         result.enqueue(object : Callback<MaquinariaDataCollectionItem> {
             override fun onFailure(call: Call<MaquinariaDataCollectionItem>, t: Throwable) {
@@ -181,12 +183,14 @@ class Registro_Maquinaria_Activity : AppCompatActivity() {
                     Toast.makeText(this@Registro_Maquinaria_Activity, "Maquina no existe",Toast.LENGTH_SHORT).show()
                 }else {
                     txtMaquinariaId.setText(response.body()!!.maquinaId.toString())
-                    //
-                    //
-                    // SPINNERS
-                    //
-                    //
-                    //
+
+                    for (item in fabricas){
+                        if (item == response.body()!!.fabricaId.toString()){
+                            spMaquiFarbicaID.setSelection(contadorFabircas)
+                        }
+                        contadorFabircas++
+                    }
+
                     txtNombreMarca.setText(response.body()!!.marca)
                     txtHorasUsoMaqui.setText(response.body()!!.horasUso.toString())
                     txtTipoMaquina.setText(response.body()!!.tipoMaquina)
