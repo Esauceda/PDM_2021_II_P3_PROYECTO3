@@ -43,7 +43,7 @@ class Registro_OrdenEncabezado_Activity : AppCompatActivity() {
    private fun callServicePostPerson() {
         val fecha = "2021-04-10"
         val ordenEncabezadoInfo = OrdenEncabezadoDataCollectionItem(
-            ordenId         = null,
+            ordenId         = txtOrdenID.text.toString().toInt(),
             empleadoId      = spOrdenEmpleadoID.selectedItem.toString().toInt(),
             clienteId       = spClienteIDOrden.selectedItem.toString().toInt(),
             fechaOrden      = txtFechaOrden.text.toString(),

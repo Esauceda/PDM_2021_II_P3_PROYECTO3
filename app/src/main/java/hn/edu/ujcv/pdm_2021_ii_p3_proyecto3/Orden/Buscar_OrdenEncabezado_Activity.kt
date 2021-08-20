@@ -29,6 +29,13 @@ class Buscar_OrdenEncabezado_Activity : AppCompatActivity() {
         MyToolbar().show(this,"Buscar Orden Encabezado", false)
         btnBuscarOrdenEncabezado2.setOnClickListener { callServiceGetOrdenEncabezado() }
         btnEliminarOrdenEncabezado.setOnClickListener { callServiceDeleteOrdenEncabezado() }
+        btnVerDetalle.setOnClickListener { verDetalle() }
+    }
+
+    private fun verDetalle() {
+        val intent = Intent(this, Buscar_OrdenDetalle_Activity::class.java)
+        intent.putExtra("ordenId", txvMostrarOrdenID.text.toString())
+        startActivity(intent)
     }
 
     //-----

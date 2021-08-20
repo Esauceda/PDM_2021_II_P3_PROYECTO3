@@ -50,30 +50,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txvOrdenDetalleOrdenEncabezadoID2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
-        android:text="Orden Encabezado ID"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvOrdenDetalleProductoID2" />
-
-    <TextView
         android:id="@+id/txtCantidadOrdenDetalle2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="44dp"
         android:text="Cantidad"
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvOrdenDetalleOrdenEncabezadoID2" />
+        app:layout_constraintTop_toBottomOf="@+id/txvOrdenDetalleProductoID2" />
 
     <TextView
         android:id="@+id/txvPrecioOrdenDetalle2"
@@ -92,7 +79,7 @@
         android:id="@+id/txvMostrarOrdenDetalleID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="70dp"
         android:layout_marginEnd="10dp"
         android:ems="8"
         android:hint="Ingrese id"
@@ -131,24 +118,10 @@
         app:layout_constraintTop_toBottomOf="@+id/txvMostrarOrdenDetalleAlmacenID" />
 
     <TextView
-        android:id="@+id/txvMostrarOrdenDetalleOrdenEncabezadoID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="42dp"
-        android:layout_marginEnd="40dp"
-        android:ems="8"
-        android:hint="Ingrese ID "
-        android:inputType="number"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvMostrarOrdenDetalleProductoID" />
-
-    <TextView
         android:id="@+id/txvMostrarOrdenDetalleCantidad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="42dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="40dp"
         android:ems="8"
         android:hint="Ingrese Cantidad"
@@ -156,7 +129,7 @@
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvMostrarOrdenDetalleOrdenEncabezadoID" />
+        app:layout_constraintTop_toBottomOf="@+id/txvMostrarOrdenDetalleProductoID" />
 
     <TextView
         android:id="@+id/txvMostrarOrdenDetallePrecio"
