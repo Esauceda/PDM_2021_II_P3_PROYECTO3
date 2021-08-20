@@ -114,14 +114,20 @@ class Registro_Producto_Activity : AppCompatActivity() {
                     }
                     contadorFabricas++
                 }
-                txtNombreProdu.setText(response.body()!!.nombreProducto)
-                txtDescripProdu.setText(response.body()!!.descripcion)
-                txtPrecioProdu.setText(response.body()!!.precio.toString())
-                txtUnidadesAlmacenadas.setText(response.body()!!.unidadesEnAlmacen.toString())
-                txtUnidadesMax.setText(response.body()!!.unidadesMaximas.toString())
-                txtUnidadesMin.setText(response.body()!!.unidadesMinimas.toString())
-                Toast.makeText(this@Registro_Producto_Activity,"OK"+response.body()!!.nombreProducto,
-                    Toast.LENGTH_LONG).show()
+
+                if (response.code() == 404){
+                    Toast.makeText(this@Registro_Producto_Activity, "Producto no existe",Toast.LENGTH_SHORT).show()
+                }else {
+                    txtNombreProdu.setText(response.body()!!.nombreProducto)
+                    txtDescripProdu.setText(response.body()!!.descripcion)
+                    txtPrecioProdu.setText(response.body()!!.precio.toString())
+                    txtUnidadesAlmacenadas.setText(response.body()!!.unidadesEnAlmacen.toString())
+                    txtUnidadesMax.setText(response.body()!!.unidadesMaximas.toString())
+                    txtUnidadesMin.setText(response.body()!!.unidadesMinimas.toString())
+                    Toast.makeText(this@Registro_Producto_Activity,
+                        "OK" + response.body()!!.nombreProducto,
+                        Toast.LENGTH_LONG).show()
+                }
             }
         })
     }

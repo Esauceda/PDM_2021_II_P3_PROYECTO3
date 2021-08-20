@@ -107,25 +107,31 @@ class Registro_MateriaPrima_Activity : AppCompatActivity() {
                 call: Call<MateriaPrimaDataCollectionItem>,
                 response: Response<MateriaPrimaDataCollectionItem>
             ) {
-                for (item in proveedores){
-                    if (item == response.body()!!.proveedorId.toString()){
-                        spMateriaProveedor.setSelection(contadorProveedores)
-                    }
-                    contadorProveedores++
-                }
 
-                for (item in almacenes){
-                    if (item == response.body()!!.almacenId.toString()){
-                        spMateriaAlmacen.setSelection(contadorAlmacenes)
+                if (response.code() == 404){
+                    Toast.makeText(this@Registro_MateriaPrima_Activity, "Materia Prima no existe",Toast.LENGTH_SHORT).show()
+                }else {
+                    for (item in proveedores) {
+                        if (item == response.body()!!.proveedorId.toString()) {
+                            spMateriaProveedor.setSelection(contadorProveedores)
+                        }
+                        contadorProveedores++
                     }
-                    contadorAlmacenes++
+
+                    for (item in almacenes) {
+                        if (item == response.body()!!.almacenId.toString()) {
+                            spMateriaAlmacen.setSelection(contadorAlmacenes)
+                        }
+                        contadorAlmacenes++
+                    }
+                    txtMateriaPrimaID.setText(response.body()!!.materiaprimaId.toString())
+                    txtMateriaNombre.setText(response.body()!!.nombreMateria)
+                    txtMateriaDescripcion.setText(response.body()!!.descripcion)
+                    txtCantidadMateria.setText(response.body()!!.cantidad.toString())
+                    Toast.makeText(this@Registro_MateriaPrima_Activity,
+                        "OK" + response.body()!!.nombreMateria,
+                        Toast.LENGTH_LONG).show()
                 }
-                txtMateriaPrimaID.setText(response.body()!!.materiaprimaId.toString())
-                txtMateriaNombre.setText(response.body()!!.nombreMateria)
-                txtMateriaDescripcion.setText(response.body()!!.descripcion)
-                txtCantidadMateria.setText(response.body()!!.cantidad.toString())
-                Toast.makeText(this@Registro_MateriaPrima_Activity,"OK"+response.body()!!.nombreMateria,
-                    Toast.LENGTH_LONG).show()
             }
         })
     }

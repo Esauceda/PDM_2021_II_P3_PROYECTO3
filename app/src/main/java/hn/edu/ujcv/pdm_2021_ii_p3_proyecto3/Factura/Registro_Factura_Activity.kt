@@ -146,11 +146,20 @@ class Registro_Factura_Activity : AppCompatActivity() {
                 call: Call<FacturaDataCollectionItem>,
                 response: Response<FacturaDataCollectionItem>
             ) {
-                txtFacturaId.setText(response.body()!!.facturaId.toString())
-//                spFacturaOrdenID.isSelected
-                txtFechaFac.setText(response.body()!!.fechaFactura)
-                txtTotalFac.setText(response.body()!!.total.toString())
-                Toast.makeText(this@Registro_Factura_Activity,"Factura encontrada"+response.body()!!.facturaId,Toast.LENGTH_LONG).show()
+                if (response.code() == 404){
+                    Toast.makeText(this@Registro_Factura_Activity, "Factura no existe",Toast.LENGTH_SHORT).show()
+                }else {
+                    txtFacturaId.setText(response.body()!!.facturaId.toString())
+//                    spFacturaOrdenID.isSelected
+                    //
+                    // Spinners
+                    //
+                    txtFechaFac.setText(response.body()!!.fechaFactura)
+                    txtTotalFac.setText(response.body()!!.total.toString())
+                    Toast.makeText(this@Registro_Factura_Activity,
+                        "Factura encontrada" + response.body()!!.facturaId,
+                        Toast.LENGTH_LONG).show()
+                }
             }
         })
     }

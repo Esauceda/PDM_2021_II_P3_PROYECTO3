@@ -177,11 +177,23 @@ class Registro_Maquinaria_Activity : AppCompatActivity() {
                 call: Call<MaquinariaDataCollectionItem>,
                 response: Response<MaquinariaDataCollectionItem>
             ) {
-                txtMaquinariaId.setText(response.body()!!.maquinaId.toString())
-                txtNombreMarca.setText(response.body()!!.marca)
-                txtHorasUsoMaqui.setText(response.body()!!.horasUso.toString())
-                txtTipoMaquina.setText(response.body()!!.tipoMaquina)
-                Toast.makeText(this@Registro_Maquinaria_Activity,"Se encontró la maquina con Id"+response.body()!!.maquinaId, Toast.LENGTH_LONG).show()
+                if (response.code() == 404){
+                    Toast.makeText(this@Registro_Maquinaria_Activity, "Maquina no existe",Toast.LENGTH_SHORT).show()
+                }else {
+                    txtMaquinariaId.setText(response.body()!!.maquinaId.toString())
+                    //
+                    //
+                    // SPINNERS
+                    //
+                    //
+                    //
+                    txtNombreMarca.setText(response.body()!!.marca)
+                    txtHorasUsoMaqui.setText(response.body()!!.horasUso.toString())
+                    txtTipoMaquina.setText(response.body()!!.tipoMaquina)
+                    Toast.makeText(this@Registro_Maquinaria_Activity,
+                        "Se encontró la maquina con Id" + response.body()!!.maquinaId,
+                        Toast.LENGTH_LONG).show()
+                }
             }
         })
     }

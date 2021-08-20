@@ -42,14 +42,20 @@ class Buscar_Proveedores_Activity : AppCompatActivity() {
                 call: Call<ProveedorDataCollectionItem>,
                 response: Response<ProveedorDataCollectionItem>
             ) {
-                txtProveedorID2.setText(response.body()!!.proveedorId.toString())
-                txvMostrarNombreProveedor.setText(response.body()!!.nombreCompania)
-                txvMostrarNombreContactoProveedor.setText(response.body()!!.nombreContacto)
-                txvMostrarTelProveedor.setText(response.body()!!.numero.toString())
-                txvMostrarCorrProveedor.setText(response.body()!!.correo)
-                txvMostrarPaisProveedor.setText(response.body()!!.pais)
-                txvMostrarDireccionProveedor.setText(response.body()!!.direccion)
-                Toast.makeText(this@Buscar_Proveedores_Activity,"OK"+response.body()!!.nombreCompania,Toast.LENGTH_LONG).show()
+                if (response.code() == 404){
+                    Toast.makeText(this@Buscar_Proveedores_Activity, "Proveedores no existe",Toast.LENGTH_SHORT).show()
+                }else {
+                    txtProveedorID2.setText(response.body()!!.proveedorId.toString())
+                    txvMostrarNombreProveedor.setText(response.body()!!.nombreCompania)
+                    txvMostrarNombreContactoProveedor.setText(response.body()!!.nombreContacto)
+                    txvMostrarTelProveedor.setText(response.body()!!.numero.toString())
+                    txvMostrarCorrProveedor.setText(response.body()!!.correo)
+                    txvMostrarPaisProveedor.setText(response.body()!!.pais)
+                    txvMostrarDireccionProveedor.setText(response.body()!!.direccion)
+                    Toast.makeText(this@Buscar_Proveedores_Activity,
+                        "OK" + response.body()!!.nombreCompania,
+                        Toast.LENGTH_LONG).show()
+                }
             }
         })
     }

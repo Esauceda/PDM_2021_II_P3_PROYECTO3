@@ -81,14 +81,20 @@ class Registro_Proveedores_Activity : AppCompatActivity() {
                 call: Call<ProveedorDataCollectionItem>,
                 response: Response<ProveedorDataCollectionItem>
             ) {
-                txtProveedorID.setText(response.body()!!.proveedorId.toString())
-                txtNombreCompañiaProveedor.setText(response.body()!!.nombreCompania)
-                txtContactoProveedor.setText(response.body()!!.nombreContacto)
-                txtTelefonoProveedor.setText(response.body()!!.numero.toString())
-                txtCorreoProveedor.setText(response.body()!!.correo)
-                txtPaisProveedor.setText(response.body()!!.pais)
-                txtDireccionProveedor.setText(response.body()!!.direccion)
-                Toast.makeText(this@Registro_Proveedores_Activity,"OK"+response.body()!!.nombreCompania,Toast.LENGTH_LONG).show()
+                if (response.code() == 404){
+                    Toast.makeText(this@Registro_Proveedores_Activity, "Proveedores no existe",Toast.LENGTH_SHORT).show()
+                }else {
+                    txtProveedorID.setText(response.body()!!.proveedorId.toString())
+                    txtNombreCompañiaProveedor.setText(response.body()!!.nombreCompania)
+                    txtContactoProveedor.setText(response.body()!!.nombreContacto)
+                    txtTelefonoProveedor.setText(response.body()!!.numero.toString())
+                    txtCorreoProveedor.setText(response.body()!!.correo)
+                    txtPaisProveedor.setText(response.body()!!.pais)
+                    txtDireccionProveedor.setText(response.body()!!.direccion)
+                    Toast.makeText(this@Registro_Proveedores_Activity,
+                        "OK" + response.body()!!.nombreCompania,
+                        Toast.LENGTH_LONG).show()
+                }
             }
         })
     }

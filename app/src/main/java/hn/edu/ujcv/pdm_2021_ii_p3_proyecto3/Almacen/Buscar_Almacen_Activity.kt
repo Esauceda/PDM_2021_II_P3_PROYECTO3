@@ -45,11 +45,17 @@ class Buscar_Almacen_Activity : AppCompatActivity() {
                 call: Call<AlmacenDataCollectionItem>,
                 response: Response<AlmacenDataCollectionItem>
             ) {
-                txtMostrarAlmacenID.setText(response.body()!!.almacenId.toString())
-                txvMostrarTelefonoAlmacen.setText(response.body()!!.telefono.toString())
-                txvMostrarDireccionAlmacen.setText(response.body()!!.direccion)
-                txvMostrarEncargado.setText(response.body()!!.encargado)
-                Toast.makeText(this@Buscar_Almacen_Activity,"OK"+response.body()!!.encargado,Toast.LENGTH_LONG).show()
+                if (response.code() == 404){
+                    Toast.makeText(this@Buscar_Almacen_Activity, "Almacen no existe",Toast.LENGTH_SHORT).show()
+                }else {
+                    txtMostrarAlmacenID.setText(response.body()!!.almacenId.toString())
+                    txvMostrarTelefonoAlmacen.setText(response.body()!!.telefono.toString())
+                    txvMostrarDireccionAlmacen.setText(response.body()!!.direccion)
+                    txvMostrarEncargado.setText(response.body()!!.encargado)
+                    Toast.makeText(this@Buscar_Almacen_Activity,
+                        "OK" + response.body()!!.encargado,
+                        Toast.LENGTH_LONG).show()
+                }
             }
         })
     }

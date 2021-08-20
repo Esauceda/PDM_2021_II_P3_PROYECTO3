@@ -40,16 +40,21 @@ class Buscar_Producto_Activity : AppCompatActivity() {
                 call: Call<ProductoDataCollectionItem>,
                 response: Response<ProductoDataCollectionItem>
             ) {
-                txtProduID.setText(response.body()!!.productoId.toString())
-                txvMostrarProduFabricaID.setText(response.body()!!.fabricaId.toString())
-                txtNombreProdu.setText(response.body()!!.nombreProducto)
-                txtDescripProdu.setText(response.body()!!.descripcion)
-                txtPrecioProdu.setText(response.body()!!.precio.toString())
-                txtUnidadesAlmacenadas.setText(response.body()!!.unidadesEnAlmacen.toString())
-                txtUnidadesMax.setText(response.body()!!.unidadesMaximas.toString())
-                txtUnidadesMin.setText(response.body()!!.unidadesMinimas.toString())
-                Toast.makeText(this@Buscar_Producto_Activity,"OK"+response.body()!!.nombreProducto,
-                    Toast.LENGTH_LONG).show()
+                if (response.code() == 404){
+                    Toast.makeText(this@Buscar_Producto_Activity, "Producto no existe",Toast.LENGTH_SHORT).show()
+                }else {
+                    txtProduID.setText(response.body()!!.productoId.toString())
+                    txvMostrarProduFabricaID.setText(response.body()!!.fabricaId.toString())
+                    txtNombreProdu.setText(response.body()!!.nombreProducto)
+                    txtDescripProdu.setText(response.body()!!.descripcion)
+                    txtPrecioProdu.setText(response.body()!!.precio.toString())
+                    txtUnidadesAlmacenadas.setText(response.body()!!.unidadesEnAlmacen.toString())
+                    txtUnidadesMax.setText(response.body()!!.unidadesMaximas.toString())
+                    txtUnidadesMin.setText(response.body()!!.unidadesMinimas.toString())
+                    Toast.makeText(this@Buscar_Producto_Activity,
+                        "OK" + response.body()!!.nombreProducto,
+                        Toast.LENGTH_LONG).show()
+                }
             }
         })
     }

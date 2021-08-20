@@ -44,12 +44,18 @@ class Buscar_Maquinaria_Activity : AppCompatActivity() {
                 call: Call<MaquinariaDataCollectionItem>,
                 response: Response<MaquinariaDataCollectionItem>
             ) {
-                txtMostrarMaquinariaId.setText(response.body()!!.maquinaId.toString())
-                txvMostrarNombreMarca.setText(response.body()!!.marca)
-                txvMostrarFarbicaId.setText(response.body()!!.fabricaId.toString())
-                txvMostrarHorasUsoMaqui.setText(response.body()!!.horasUso.toString())
-                txvMostrarTipoMaquina.setText(response.body()!!.tipoMaquina)
-                Toast.makeText(this@Buscar_Maquinaria_Activity,"Se encontró la maquina con Id"+response.body()!!.maquinaId, Toast.LENGTH_LONG).show()
+                if (response.code() == 404){
+                    Toast.makeText(this@Buscar_Maquinaria_Activity, "Maquina no existe",Toast.LENGTH_SHORT).show()
+                }else {
+                    txtMostrarMaquinariaId.setText(response.body()!!.maquinaId.toString())
+                    txvMostrarNombreMarca.setText(response.body()!!.marca)
+                    txvMostrarFarbicaId.setText(response.body()!!.fabricaId.toString())
+                    txvMostrarHorasUsoMaqui.setText(response.body()!!.horasUso.toString())
+                    txvMostrarTipoMaquina.setText(response.body()!!.tipoMaquina)
+                    Toast.makeText(this@Buscar_Maquinaria_Activity,
+                        "Se encontró la maquina con Id" + response.body()!!.maquinaId,
+                        Toast.LENGTH_LONG).show()
+                }
             }
         })
     }

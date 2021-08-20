@@ -50,13 +50,19 @@ class Registro_Fabrica_Activity : AppCompatActivity() {
                 if (response.code() == 404){
                     Toast.makeText(this@Registro_Fabrica_Activity,"No existe",Toast.LENGTH_LONG).show()
                 }else{
-                    txtFabricaID.setText(response.body()!!.fabricaId.toString())
-                    txtFabricaNombre.setText(response.body()!!.nombreFabrica)
-                    txtDireccionFabrica.setText(response.body()!!.direccion)
-                    txtEncargadoFabrica.setText(response.body()!!.encargado)
-                    txtTelefonoFabrica.setText(response.body()!!.telefono.toString())
-                    txtProduccionFabrica.setText(response.body()!!.tipoProduccion)
-                    Toast.makeText(this@Registro_Fabrica_Activity,"OK"+response.body()!!.encargado,Toast.LENGTH_LONG).show()
+                    if (response.code() == 404){
+                        Toast.makeText(this@Registro_Fabrica_Activity, "Fabrica no existe",Toast.LENGTH_SHORT).show()
+                    }else {
+                        txtFabricaID.setText(response.body()!!.fabricaId.toString())
+                        txtFabricaNombre.setText(response.body()!!.nombreFabrica)
+                        txtDireccionFabrica.setText(response.body()!!.direccion)
+                        txtEncargadoFabrica.setText(response.body()!!.encargado)
+                        txtTelefonoFabrica.setText(response.body()!!.telefono.toString())
+                        txtProduccionFabrica.setText(response.body()!!.tipoProduccion)
+                        Toast.makeText(this@Registro_Fabrica_Activity,
+                            "OK" + response.body()!!.encargado,
+                            Toast.LENGTH_LONG).show()
+                    }
                 }
 
             }

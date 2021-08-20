@@ -103,16 +103,20 @@ class Registro_Clientes_Activity : AppCompatActivity() {
                 call: Call<ClienteDataCollectionItem>,
                 response: Response<ClienteDataCollectionItem>
             ) {
-                txtClienteID.setText(response.body()!!.clienteId.toString())
-                txtNombreCompaniaCli.setText(response.body()!!.nombreCompania)
-                txtNombreCli.setText(response.body()!!.nombre)
-                txtTelefonoCli.setText(response.body()!!.telefono.toString())
-                txtCorreoCli.setText(response.body()!!.correo)
-                txtPais.setText(response.body()!!.pais)
-                txtDireccionCli.setText(response.body()!!.direccion)
-                txtCategoriaCli.setText(response.body()!!.categoria)
-                Toast.makeText(this@Registro_Clientes_Activity,"OK"+response.body()!!.nombre,
-                    Toast.LENGTH_LONG).show()
+                if (response.code() == 404){
+                    Toast.makeText(this@Registro_Clientes_Activity, "Cliente no existe",Toast.LENGTH_SHORT).show()
+                }else {
+                    txtClienteID.setText(response.body()!!.clienteId.toString())
+                    txtNombreCompaniaCli.setText(response.body()!!.nombreCompania)
+                    txtNombreCli.setText(response.body()!!.nombre)
+                    txtTelefonoCli.setText(response.body()!!.telefono.toString())
+                    txtCorreoCli.setText(response.body()!!.correo)
+                    txtPais.setText(response.body()!!.pais)
+                    txtDireccionCli.setText(response.body()!!.direccion)
+                    txtCategoriaCli.setText(response.body()!!.categoria)
+                    Toast.makeText(this@Registro_Clientes_Activity, "OK" + response.body()!!.nombre,
+                        Toast.LENGTH_LONG).show()
+                }
             }
         })
     }

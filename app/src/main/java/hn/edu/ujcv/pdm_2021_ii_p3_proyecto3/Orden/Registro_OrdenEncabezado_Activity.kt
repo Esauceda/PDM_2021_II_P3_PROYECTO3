@@ -82,9 +82,7 @@ class Registro_OrdenEncabezado_Activity : AppCompatActivity() {
                     Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Sesion expirada",Toast.LENGTH_LONG).show()
                 }
                 else if (response.code() == 500){
-                    //val gson = Gson()
-                    //val type = object : TypeToken<RestApiError>() {}.type
-                    //var errorResponse1: RestApiError? = gson.fromJson(response.errorBody()!!.charStream(), type)
+
                     val errorResponse = Gson().fromJson(response.errorBody()!!.string()!!, RestApiError::class.java)
 
                     Toast.makeText(this@Registro_OrdenEncabezado_Activity,errorResponse.errorDetails, Toast.LENGTH_LONG).show()
@@ -129,8 +127,12 @@ class Registro_OrdenEncabezado_Activity : AppCompatActivity() {
                 }
                 else if (response.code() == 401){
                     Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Sesion expirada",Toast.LENGTH_LONG).show()
-                }
-                else{
+                }else if (response.code() == 500){
+
+                    val errorResponse = Gson().fromJson(response.errorBody()!!.string()!!, RestApiError::class.java)
+
+                    Toast.makeText(this@Registro_OrdenEncabezado_Activity,errorResponse.errorDetails, Toast.LENGTH_LONG).show()
+                }else{
                     Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Fallo al traer el item",Toast.LENGTH_LONG).show()
                 }
             }
@@ -155,29 +157,40 @@ class Registro_OrdenEncabezado_Activity : AppCompatActivity() {
                 call: Call<OrdenEncabezadoDataCollectionItem>,
                 response: Response<OrdenEncabezadoDataCollectionItem>
             ) {
-                txtOrdenID.setText(response.body()!!.ordenId.toString())
 
-                for (item in empleados){
-                    if (item == response.body()!!.empleadoId.toString()){
-                        spOrdenEmpleadoID.setSelection(contadorEmpleados)
+                if (response.code() == 404){
+                    Toast.makeText(this@Registro_OrdenEncabezado_Activity, "Orden no existe",Toast.LENGTH_SHORT).show()
+                }else if (response.code() == 500){
+                    val errorResponse = Gson().fromJson(response.errorBody()!!.string()!!, RestApiError::class.java)
+
+                    Toast.makeText(this@Registro_OrdenEncabezado_Activity,errorResponse.errorDetails, Toast.LENGTH_LONG).show()
+                }else{
+                    txtOrdenID.setText(response.body()!!.ordenId.toString())
+
+                    for (item in empleados){
+                        if (item == response.body()!!.empleadoId.toString()){
+                            spOrdenEmpleadoID.setSelection(contadorEmpleados)
+                        }
+                        contadorEmpleados++
                     }
-                    contadorEmpleados++
+
+                    for (item in clientes){
+                        if (item == response.body()!!.clienteId.toString()){
+                            spClienteIDOrden.setSelection(contadorClientes)
+                        }
+                        contadorClientes++
+                    }
+
+                    txtFechaOrden.setText(response.body()!!.fechaOrden)
+                    txtFechaEnvio.setText(response.body()!!.fechaEnvio)
+                    txtDireccionEnvioOrden.setText(response.body()!!.direccionEnvio)
+                    txtEstadoOrden.setText(response.body()!!.estado)
+                    txtTotalOrden.setText(response.body()!!.total.toString())
+
+                    Toast.makeText(this@Registro_OrdenEncabezado_Activity,
+                        "Orden Encabezado encontrado "+response.body()!!.ordenId,Toast.LENGTH_LONG).show()
                 }
 
-                for (item in clientes){
-                    if (item == response.body()!!.clienteId.toString()){
-                        spClienteIDOrden.setSelection(contadorClientes)
-                    }
-                    contadorClientes++
-                }
-
-                txtFechaOrden.setText(response.body()!!.fechaOrden)
-                txtFechaEnvio.setText(response.body()!!.fechaEnvio)
-                txtDireccionEnvioOrden.setText(response.body()!!.direccionEnvio)
-                txtEstadoOrden.setText(response.body()!!.estado)
-                txtTotalOrden.setText(response.body()!!.total.toString())
-
-                Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Orden Encabezado encontrado "+response.body()!!.ordenId,Toast.LENGTH_LONG).show()
             }
         })
     }

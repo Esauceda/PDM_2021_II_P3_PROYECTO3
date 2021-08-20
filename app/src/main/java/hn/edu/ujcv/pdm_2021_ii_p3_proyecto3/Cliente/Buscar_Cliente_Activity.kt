@@ -45,16 +45,20 @@ class Buscar_Cliente_Activity : AppCompatActivity() {
                 call: Call<ClienteDataCollectionItem>,
                 response: Response<ClienteDataCollectionItem>
             ) {
-                txtMostrarClienteId.setText(response.body()!!.clienteId.toString())
-                txvMostrarCompCli.setText(response.body()!!.nombreCompania)
-                txvMostrarNomCli.setText(response.body()!!.nombre)
-                txvMostrarTelCli.setText(response.body()!!.telefono.toString())
-                txvMostrarCorrCli.setText(response.body()!!.correo)
-                txvMostrarPaisCli.setText(response.body()!!.pais)
-                txvMostrarDirCli.setText(response.body()!!.direccion)
-                txvMostrarCatCli.setText(response.body()!!.categoria)
-                Toast.makeText(this@Buscar_Cliente_Activity,"OK"+response.body()!!.nombre,
-                    Toast.LENGTH_LONG).show()
+                if (response.code() == 404){
+                    Toast.makeText(this@Buscar_Cliente_Activity, "Cliente no existe",Toast.LENGTH_SHORT).show()
+                }else {
+                    txtMostrarClienteId.setText(response.body()!!.clienteId.toString())
+                    txvMostrarCompCli.setText(response.body()!!.nombreCompania)
+                    txvMostrarNomCli.setText(response.body()!!.nombre)
+                    txvMostrarTelCli.setText(response.body()!!.telefono.toString())
+                    txvMostrarCorrCli.setText(response.body()!!.correo)
+                    txvMostrarPaisCli.setText(response.body()!!.pais)
+                    txvMostrarDirCli.setText(response.body()!!.direccion)
+                    txvMostrarCatCli.setText(response.body()!!.categoria)
+                    Toast.makeText(this@Buscar_Cliente_Activity, "OK" + response.body()!!.nombre,
+                        Toast.LENGTH_LONG).show()
+                }
             }
         })
     }

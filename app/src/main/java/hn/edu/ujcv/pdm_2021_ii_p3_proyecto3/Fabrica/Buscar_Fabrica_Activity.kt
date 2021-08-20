@@ -45,13 +45,19 @@ class Buscar_Fabrica_Activity : AppCompatActivity() {
                 call: Call<FabricaDataCollectionItem>,
                 response: Response<FabricaDataCollectionItem>
             ) {
-                txtMostrarFabricaID.setText(response.body()!!.fabricaId.toString())
-                txvMostrarNombreFabrica.setText(response.body()!!.nombreFabrica)
-                txvMostrarDireccionFabrica.setText(response.body()!!.direccion)
-                txvMostrarEncargadoFabrica.setText(response.body()!!.encargado)
-                txvMostrarTelefonoFabrica.setText(response.body()!!.telefono.toString())
-                txvMostrarProduccionFabrica.setText(response.body()!!.tipoProduccion)
-                Toast.makeText(this@Buscar_Fabrica_Activity,"OK"+response.body()!!.encargado, Toast.LENGTH_LONG).show()
+                if (response.code() == 404){
+                    Toast.makeText(this@Buscar_Fabrica_Activity, "Fabrica no existe",Toast.LENGTH_SHORT).show()
+                }else {
+                    txtMostrarFabricaID.setText(response.body()!!.fabricaId.toString())
+                    txvMostrarNombreFabrica.setText(response.body()!!.nombreFabrica)
+                    txvMostrarDireccionFabrica.setText(response.body()!!.direccion)
+                    txvMostrarEncargadoFabrica.setText(response.body()!!.encargado)
+                    txvMostrarTelefonoFabrica.setText(response.body()!!.telefono.toString())
+                    txvMostrarProduccionFabrica.setText(response.body()!!.tipoProduccion)
+                    Toast.makeText(this@Buscar_Fabrica_Activity,
+                        "OK" + response.body()!!.encargado,
+                        Toast.LENGTH_LONG).show()
+                }
             }
         })
     }

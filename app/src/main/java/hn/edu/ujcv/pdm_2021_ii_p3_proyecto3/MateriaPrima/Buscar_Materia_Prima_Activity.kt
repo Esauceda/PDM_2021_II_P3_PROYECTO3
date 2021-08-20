@@ -40,14 +40,19 @@ class Buscar_Materia_Prima_Activity : AppCompatActivity() {
                 call: Call<MateriaPrimaDataCollectionItem>,
                 response: Response<MateriaPrimaDataCollectionItem>
             ) {
-                txtMostrarMateriaPrimaID.setText(response.body()!!.materiaprimaId.toString())
-                txtMostrarNombreMateria.setText(response.body()!!.nombreMateria)
-                txtMostrarMateriaProveedor.setText(response.body()!!.proveedorId)
-                txtMostrarMateriaAlmacen.setText(response.body()!!.almacenId)
-                txtMostrarMateriaDescripcion.setText(response.body()!!.descripcion)
-                txtMostrarCantidadMateria.setText(response.body()!!.cantidad.toString())
-                Toast.makeText(this@Buscar_Materia_Prima_Activity,"OK"+response.body()!!.nombreMateria,
-                    Toast.LENGTH_LONG).show()
+                if (response.code() == 404){
+                    Toast.makeText(this@Buscar_Materia_Prima_Activity, "Materia Prima no existe",Toast.LENGTH_SHORT).show()
+                }else {
+                    txtMostrarMateriaPrimaID.setText(response.body()!!.materiaprimaId.toString())
+                    txtMostrarNombreMateria.setText(response.body()!!.nombreMateria)
+                    txtMostrarMateriaProveedor.setText(response.body()!!.proveedorId)
+                    txtMostrarMateriaAlmacen.setText(response.body()!!.almacenId)
+                    txtMostrarMateriaDescripcion.setText(response.body()!!.descripcion)
+                    txtMostrarCantidadMateria.setText(response.body()!!.cantidad.toString())
+                    Toast.makeText(this@Buscar_Materia_Prima_Activity,
+                        "OK" + response.body()!!.nombreMateria,
+                        Toast.LENGTH_LONG).show()
+                }
             }
         })
     }

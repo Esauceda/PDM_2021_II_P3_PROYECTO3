@@ -40,17 +40,21 @@ class Buscar_Empleado_Activity : AppCompatActivity() {
                 call: Call<EmpleadoDataCollectionItem>,
                 response: Response<EmpleadoDataCollectionItem>
             ) {
-                txvMostrarEmpleID2.setText(response.body()!!.empleadoId.toString())
-                txvMostrarEmpleNombre2.setText(response.body()!!.nombre)
-                txtMostrarDireccionEmple2.setText(response.body()!!.direccion)
-                txvMostrarTelEmple2.setText(response.body()!!.telefono.toString())
-                txvMostrarSalarioEmple2.setText(response.body()!!.salario.toString())
-                txvMostrarPuestoEmple2.setText(response.body()!!.puesto)
-                txvMostrarFechaContraEmple2.setText(response.body()!!.fechaContratacion)
-                txvMostrarFechaNaciEmple2.setText(response.body()!!.fechaNacimiento)
-                txvMostrarContraEmple2.setText(response.body()!!.contrasena)
-                Toast.makeText(this@Buscar_Empleado_Activity,"OK"+response.body()!!.nombre,
-                    Toast.LENGTH_LONG).show()
+                if (response.code() == 404){
+                    Toast.makeText(this@Buscar_Empleado_Activity, "Empleado no existe",Toast.LENGTH_SHORT).show()
+                }else {
+                    txvMostrarEmpleID2.setText(response.body()!!.empleadoId.toString())
+                    txvMostrarEmpleNombre2.setText(response.body()!!.nombre)
+                    txtMostrarDireccionEmple2.setText(response.body()!!.direccion)
+                    txvMostrarTelEmple2.setText(response.body()!!.telefono.toString())
+                    txvMostrarSalarioEmple2.setText(response.body()!!.salario.toString())
+                    txvMostrarPuestoEmple2.setText(response.body()!!.puesto)
+                    txvMostrarFechaContraEmple2.setText(response.body()!!.fechaContratacion)
+                    txvMostrarFechaNaciEmple2.setText(response.body()!!.fechaNacimiento)
+                    txvMostrarContraEmple2.setText(response.body()!!.contrasena)
+                    Toast.makeText(this@Buscar_Empleado_Activity, "OK" + response.body()!!.nombre,
+                        Toast.LENGTH_LONG).show()
+                }
             }
         })
     }

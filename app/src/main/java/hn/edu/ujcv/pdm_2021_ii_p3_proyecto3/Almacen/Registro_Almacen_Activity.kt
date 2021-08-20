@@ -95,11 +95,18 @@ class Registro_Almacen_Activity : AppCompatActivity() {
                 call: Call<AlmacenDataCollectionItem>,
                 response: Response<AlmacenDataCollectionItem>
             ) {
-                txtMostrarAlmacenID.setText(response.body()!!.almacenId.toString())
-                txtTelefonoAlmacen.setText(response.body()!!.telefono.toString())
-                txtDireccionAlmacen.setText(response.body()!!.direccion)
-                txtEncargado.setText(response.body()!!.encargado)
-                Toast.makeText(this@Registro_Almacen_Activity,"OK"+response.body()!!.encargado,Toast.LENGTH_LONG).show()
+                if (response.code() == 404){
+                    Toast.makeText(this@Registro_Almacen_Activity, "Almacen no existe",Toast.LENGTH_SHORT).show()
+                }else {
+                    txtMostrarAlmacenID.setText(response.body()!!.almacenId.toString())
+                    txtTelefonoAlmacen.setText(response.body()!!.telefono.toString())
+                    txtDireccionAlmacen.setText(response.body()!!.direccion)
+                    txtEncargado.setText(response.body()!!.encargado)
+                    Toast.makeText(this@Registro_Almacen_Activity,
+                        "OK" + response.body()!!.encargado,
+                        Toast.LENGTH_LONG).show()
+                }
+
             }
         })
     }

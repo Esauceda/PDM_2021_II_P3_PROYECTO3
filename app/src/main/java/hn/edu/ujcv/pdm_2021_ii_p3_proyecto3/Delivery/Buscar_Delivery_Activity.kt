@@ -39,14 +39,19 @@ class Buscar_Delivery_Activity : AppCompatActivity() {
                 call: Call<DeliveryDataCollecionItem>,
                 response: Response<DeliveryDataCollecionItem>
             ) {
-                txtDeliveryId2.setText(response.body()!!.deliveryId.toString())
-                txvMostrarOrdernDeliver.setText(response.body()!!.ordenId.toString())
-                txvMostrarNombreComDeliver.setText(response.body()!!.nombreCompania)
-                txvMostrarTelDeliver.setText(response.body()!!.numero.toString())
-                txvMostrarCorreoDeliver.setText(response.body()!!.correo)
-                txvMostrarFechaEntreDeliver.setText(response.body()!!.fechaEntrega)
-                Toast.makeText(this@Buscar_Delivery_Activity,"OK"+response.body()!!.nombreCompania,
-                    Toast.LENGTH_LONG).show()
+                if (response.code() == 404){
+                    Toast.makeText(this@Buscar_Delivery_Activity, "Delivery no existe",Toast.LENGTH_SHORT).show()
+                }else {
+                    txtDeliveryId2.setText(response.body()!!.deliveryId.toString())
+                    txvMostrarOrdernDeliver.setText(response.body()!!.ordenId.toString())
+                    txvMostrarNombreComDeliver.setText(response.body()!!.nombreCompania)
+                    txvMostrarTelDeliver.setText(response.body()!!.numero.toString())
+                    txvMostrarCorreoDeliver.setText(response.body()!!.correo)
+                    txvMostrarFechaEntreDeliver.setText(response.body()!!.fechaEntrega)
+                    Toast.makeText(this@Buscar_Delivery_Activity,
+                        "OK" + response.body()!!.nombreCompania,
+                        Toast.LENGTH_LONG).show()
+                }
             }
         })
     }

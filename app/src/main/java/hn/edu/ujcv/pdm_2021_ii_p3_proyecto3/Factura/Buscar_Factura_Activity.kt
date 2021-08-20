@@ -44,12 +44,17 @@ class Buscar_Factura_Activity : AppCompatActivity() {
                 call: Call<FacturaDataCollectionItem>,
                 response: Response<FacturaDataCollectionItem>
             ) {
-                txtMostrarFacturaId.setText(response.body()!!.facturaId.toString())
-                txvMostrarFacOrdenId.setText(response.body()!!.ordenId.toString())
-                txvMostrarFechaFac.setText(response.body()!!.fechaFactura)
-                txvMostrarTotalFac.setText(response.body()!!.total.toString())
-                Toast.makeText(this@Buscar_Factura_Activity,"Factura encontrada"+response.body()!!.facturaId,
-                    Toast.LENGTH_LONG).show()
+                if (response.code() == 404){
+                    Toast.makeText(this@Buscar_Factura_Activity, "Factura no existe",Toast.LENGTH_SHORT).show()
+                }else {
+                    txtMostrarFacturaId.setText(response.body()!!.facturaId.toString())
+                    txvMostrarFacOrdenId.setText(response.body()!!.ordenId.toString())
+                    txvMostrarFechaFac.setText(response.body()!!.fechaFactura)
+                    txvMostrarTotalFac.setText(response.body()!!.total.toString())
+                    Toast.makeText(this@Buscar_Factura_Activity,
+                        "Factura encontrada" + response.body()!!.facturaId,
+                        Toast.LENGTH_LONG).show()
+                }
             }
         })
     }

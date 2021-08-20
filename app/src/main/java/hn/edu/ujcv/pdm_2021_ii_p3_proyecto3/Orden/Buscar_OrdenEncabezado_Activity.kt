@@ -6,11 +6,13 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import com.google.gson.Gson
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.MenuPrincipal.MenuActivity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.R
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.RestEngine
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Toolbar.MyToolbar
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.OrdenEncabezadoDataCollectionItem
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.RestApiError
 import kotlinx.android.synthetic.main.activity_buscar_empleado.*
 import kotlinx.android.synthetic.main.activity_buscar_orden_encabezado.*
 import kotlinx.android.synthetic.main.activity_registro_orden_encabezado.*
@@ -45,17 +47,26 @@ class Buscar_OrdenEncabezado_Activity : AppCompatActivity() {
                 call: Call<OrdenEncabezadoDataCollectionItem>,
                 response: Response<OrdenEncabezadoDataCollectionItem>
             ) {
-                txvMostrarOrdenID.setText(response.body()!!.ordenId.toString())
-                txvMostrarOrdenEmpleadoID.setText(response.body()!!.empleadoId.toString())
-                txvMostrarClienteIDOrden.setText(response.body()!!.clienteId.toString())
-                txvMostrarFechaOrden.setText(response.body()!!.fechaOrden)
-                txvMostrarFechaEnvio.setText(response.body()!!.fechaEnvio)
-                txvMostrarDireccionEnvioOrden.setText(response.body()!!.direccionEnvio)
-                txvMostrarEstadoOrden.setText(response.body()!!.estado)
-                txvMostrarTotalOrden.setText(response.body()!!.total.toString())
+                if (response.code() == 404){
+                    Toast.makeText(this@Buscar_OrdenEncabezado_Activity, "Orden no existe",Toast.LENGTH_SHORT).show()
+                }else if (response.code() == 500){
+                    val errorResponse = Gson().fromJson(response.errorBody()!!.string()!!, RestApiError::class.java)
 
-                Toast.makeText(this@Buscar_OrdenEncabezado_Activity,"Orden Encabezado encontrado "+response.body()!!.ordenId,
-                    Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_OrdenEncabezado_Activity,errorResponse.errorDetails, Toast.LENGTH_LONG).show()
+                }else {
+                    txvMostrarOrdenID.setText(response.body()!!.ordenId.toString())
+                    txvMostrarOrdenEmpleadoID.setText(response.body()!!.empleadoId.toString())
+                    txvMostrarClienteIDOrden.setText(response.body()!!.clienteId.toString())
+                    txvMostrarFechaOrden.setText(response.body()!!.fechaOrden)
+                    txvMostrarFechaEnvio.setText(response.body()!!.fechaEnvio)
+                    txvMostrarDireccionEnvioOrden.setText(response.body()!!.direccionEnvio)
+                    txvMostrarEstadoOrden.setText(response.body()!!.estado)
+                    txvMostrarTotalOrden.setText(response.body()!!.total.toString())
+
+                    Toast.makeText(this@Buscar_OrdenEncabezado_Activity,
+                        "Orden Encabezado encontrado " + response.body()!!.ordenId,
+                        Toast.LENGTH_LONG).show()
+                }
             }
         })
     }
@@ -80,8 +91,7 @@ class Buscar_OrdenEncabezado_Activity : AppCompatActivity() {
                  }
                  else if (response.code() == 401){
                      Toast.makeText(this@Buscar_OrdenEncabezado_Activity,"Sesion expirada",Toast.LENGTH_LONG).show()
-                 }
-                 else{
+                 }else{
                      Toast.makeText(this@Buscar_OrdenEncabezado_Activity,"Fallo al traer el item",Toast.LENGTH_LONG).show()
                  }
              }

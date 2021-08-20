@@ -78,17 +78,22 @@ class Actualizar_Empleado_Activity : AppCompatActivity() {
                 call: Call<EmpleadoDataCollectionItem>,
                 response: Response<EmpleadoDataCollectionItem>
             ) {
-                txtEmpleID.setText(response.body()!!.empleadoId.toString())
-                txtEmpleNombre.setText(response.body()!!.nombre)
-                txtDireccionEmple.setText(response.body()!!.direccion)
-                txtTelEmple.setText(response.body()!!.telefono.toString())
-                txtSalarioEmple.setText(response.body()!!.salario.toString())
-                txtPuestoEmple.setText(response.body()!!.puesto)
-                txtFechaContraEmple.setText(response.body()!!.fechaContratacion)
-                txtFechaNaciEmple.setText(response.body()!!.fechaNacimiento)
-                txtContraEmple.setText(response.body()!!.contrasena)
-                Toast.makeText(this@Actualizar_Empleado_Activity,"OK"+response.body()!!.nombre,
-                    Toast.LENGTH_LONG).show()
+                if (response.code() == 404){
+                    Toast.makeText(this@Actualizar_Empleado_Activity, "Empleado no existe",Toast.LENGTH_SHORT).show()
+                }else {
+                    txtEmpleID.setText(response.body()!!.empleadoId.toString())
+                    txtEmpleNombre.setText(response.body()!!.nombre)
+                    txtDireccionEmple.setText(response.body()!!.direccion)
+                    txtTelEmple.setText(response.body()!!.telefono.toString())
+                    txtSalarioEmple.setText(response.body()!!.salario.toString())
+                    txtPuestoEmple.setText(response.body()!!.puesto)
+                    txtFechaContraEmple.setText(response.body()!!.fechaContratacion)
+                    txtFechaNaciEmple.setText(response.body()!!.fechaNacimiento)
+                    txtContraEmple.setText(response.body()!!.contrasena)
+                    Toast.makeText(this@Actualizar_Empleado_Activity,
+                        "OK" + response.body()!!.nombre,
+                        Toast.LENGTH_LONG).show()
+                }
             }
         })
     }

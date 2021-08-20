@@ -111,12 +111,18 @@ class Registro_Delivery_Activity : AppCompatActivity() {
                     }
                     ordenesContador++
                 }
-                txtNombreCom.setText(response.body()!!.nombreCompania)
-                txtTelefonoDeli.setText(response.body()!!.numero.toString())
-                txtCorreoDeli.setText(response.body()!!.correo)
-                txtFechaEntregaDeli.setText(response.body()!!.fechaEntrega)
-                Toast.makeText(this@Registro_Delivery_Activity,"OK"+response.body()!!.nombreCompania,
-                    Toast.LENGTH_LONG).show()
+
+                if (response.code() == 404){
+                    Toast.makeText(this@Registro_Delivery_Activity, "Delivery no existe",Toast.LENGTH_SHORT).show()
+                }else {
+                    txtNombreCom.setText(response.body()!!.nombreCompania)
+                    txtTelefonoDeli.setText(response.body()!!.numero.toString())
+                    txtCorreoDeli.setText(response.body()!!.correo)
+                    txtFechaEntregaDeli.setText(response.body()!!.fechaEntrega)
+                    Toast.makeText(this@Registro_Delivery_Activity,
+                        "OK" + response.body()!!.nombreCompania,
+                        Toast.LENGTH_LONG).show()
+                }
             }
         })
     }
