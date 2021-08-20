@@ -144,39 +144,39 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="35dp"
+        android:layout_marginEnd="36dp"
         android:ems="8"
         android:inputType="text"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvMostrarCompraTotal" />
+
+    <TextView
+        android:id="@+id/txvMostrarCompraTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="36dp"
+        android:ems="8"
+        android:inputType="numberDecimal"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txvEmpleadoID" />
 
     <TextView
-        android:id="@+id/txvMostrarTotalCompra"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="35dp"
-        android:ems="8"
-        android:inputType="numberDecimal"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvMostrarFechaCompra" />
-
-    <TextView
         android:id="@+id/txvMostrarEstadoCompra"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="34dp"
         android:layout_marginEnd="35dp"
         android:ems="8"
         android:inputType="number"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvMostrarTotalCompra" />
+        app:layout_constraintTop_toBottomOf="@+id/txvMostrarFechaCompra" />
 
     <TextView
         android:id="@+id/txvMostrarFechaRecepcion"
@@ -205,7 +205,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/btnBuscarCompraEncabezado"
+        android:id="@+id/btnBuscarCompraEncabezado2"
         android:layout_width="146dp"
         android:layout_height="49dp"
         android:layout_marginStart="45dp"

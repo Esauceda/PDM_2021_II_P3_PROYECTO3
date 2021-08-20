@@ -5,9 +5,19 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.MenuPrincipal.MenuActivity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.R
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.RestEngine
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Toolbar.MyToolbar
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.CompraEncabezadoDataCollectionItem
+import kotlinx.android.synthetic.main.activity_buscar_compra_encabezado.*
+import kotlinx.android.synthetic.main.activity_buscar_orden_encabezado.*
+import kotlinx.android.synthetic.main.activity_registro_compra_encabezado.*
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class Buscar_CompraEncabezado_Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,7 +25,64 @@ class Buscar_CompraEncabezado_Activity : AppCompatActivity() {
         setContentView(R.layout.activity_buscar_compra_encabezado)
 
         MyToolbar().show(this,"Buscar Compra Encabezado", false)
+        btnBuscarCompraEncabezado2.setOnClickListener { callServiceGetCompraEncabezado() }
+        btnEliminarCompraEncabezado.setOnClickListener { callServiceDeleteCompraEncabezado() }
     }
+
+    //-----
+
+    private fun callServiceDeleteCompraEncabezado() {
+        val compraEncabezadoService: CompraEncabezadoService = RestEngine.buildService().create(CompraEncabezadoService::class.java)
+        var result: Call<ResponseBody> = compraEncabezadoService.deleteCompraEncabezado(txtMostrarCompraEncabezadoID.text.toString().toLong())
+
+        result.enqueue(object :  Callback<ResponseBody> { override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+            Toast.makeText(this@Buscar_CompraEncabezado_Activity,"Error",Toast.LENGTH_LONG).show()
+        }
+            override fun onResponse(
+                call: Call<ResponseBody>,
+                response: Response<ResponseBody>
+            ) {
+                if (response.isSuccessful) {
+                    Toast.makeText(this@Buscar_CompraEncabezado_Activity,"Orden encabezado eliminada",Toast.LENGTH_LONG).show()
+                }
+                else if (response.code() == 401){
+                    Toast.makeText(this@Buscar_CompraEncabezado_Activity,"Sesion expirada",Toast.LENGTH_LONG).show()
+                }
+                else{
+                    Toast.makeText(this@Buscar_CompraEncabezado_Activity,"Fallo al traer el item",Toast.LENGTH_LONG).show()
+                }
+            }
+        })
+    }
+
+    private fun callServiceGetCompraEncabezado() {
+        val compraEncabezadoService:CompraEncabezadoService = RestEngine.buildService().create(CompraEncabezadoService::class.java)
+        var result: Call<CompraEncabezadoDataCollectionItem> = compraEncabezadoService.getCompraEncabezadoById(txtMostrarCompraEncabezadoID.text.toString().toLong())
+        result.enqueue(object : Callback<CompraEncabezadoDataCollectionItem> {
+            override fun onFailure(call: Call<CompraEncabezadoDataCollectionItem>, t: Throwable) {
+                Toast.makeText(this@Buscar_CompraEncabezado_Activity,"Error", Toast.LENGTH_LONG).show()
+            }
+            override fun onResponse(
+                call: Call<CompraEncabezadoDataCollectionItem>,
+                response: Response<CompraEncabezadoDataCollectionItem>
+            ) {
+                if (response.code() == 404){
+                    Toast.makeText(this@Buscar_CompraEncabezado_Activity,"No existe compra encabezado con este id", Toast.LENGTH_LONG).show()
+                }else{
+                    txtMostrarCompraEncabezadoID.setText(response.body()!!.compraId.toString())
+                    txvMostrarProveedorID.setText(response.body()!!.proveedorId.toString())
+                    txvEmpleadoID.setText(response.body()!!.empleadoId.toString())
+                    txvMostrarCompraTotal.setText(response.body()!!.total.toString())
+                    txvMostrarFechaCompra.setText(response.body()!!.fechaCompra)
+                    txvMostrarFechaRecepcion.setText(response.body()!!.fechaRecepcion)
+                    txvMostrarEstadoCompra.setText(response.body()!!.estado)
+                }
+            }
+        })
+    }
+
+    //-----
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_contextual2, menu)

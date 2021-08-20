@@ -55,9 +55,12 @@ class Registro_OrdenEncabezado_Activity : AppCompatActivity() {
 
         addOrdenEncabezado(ordenEncabezadoInfo) {
             if (it?.ordenId!= null) {
-                Toast.makeText(this@Registro_OrdenEncabezado_Activity,"OK"+it?.ordenId, Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Orden Registrada", Toast.LENGTH_LONG).show()
+
+                val intent = Intent(this, Registro_OrdenDetalle_Activity::class.java)
+                startActivity(intent)
             } else {
-                Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Error", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Error al registrar", Toast.LENGTH_LONG).show()
             }
         }
     }
