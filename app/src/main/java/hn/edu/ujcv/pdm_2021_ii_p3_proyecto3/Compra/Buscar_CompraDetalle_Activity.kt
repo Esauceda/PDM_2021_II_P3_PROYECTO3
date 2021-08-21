@@ -26,7 +26,7 @@ class Buscar_CompraDetalle_Activity : AppCompatActivity() {
 
         MyToolbar().show(this,"Buscar Compra Detalle", false)
         callServiceGetCompraDetalle()
-        btnEliminarOrdenDetalle.setOnClickListener { callServiceDeleteCompraDetalle() }
+        btnEliminarCompraDetalle.setOnClickListener { callServiceDeleteCompraDetalle() }
     }
 
     //-----
@@ -59,7 +59,36 @@ class Buscar_CompraDetalle_Activity : AppCompatActivity() {
         })
     }
 
+    //DELETE
+
     private fun callServiceDeleteCompraDetalle() {
+        val personService:CompraDetalleService = RestEngine.buildService().create(CompraDetalleService::class.java)
+        var result: Call<ResponseBody> = personService.deleteCompraDetalle(txtMostrarCompraDetalleID.text.toString().toLong())
+
+        result.enqueue(object :  Callback<ResponseBody> {
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                Toast.makeText(this@Buscar_CompraDetalle_Activity,"Error al eliminar",Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(
+                call: Call<ResponseBody>,
+                response: Response<ResponseBody>
+            ) {
+                if (response.isSuccessful) {
+                    Toast.makeText(this@Buscar_CompraDetalle_Activity,"Compra eliminada",Toast.LENGTH_LONG).show()
+                }
+                else if (response.code() == 401){
+                    Toast.makeText(this@Buscar_CompraDetalle_Activity,"Sesion expirada",Toast.LENGTH_LONG).show()
+                }
+                else{
+                    Toast.makeText(this@Buscar_CompraDetalle_Activity,"Fallo al traer el item",Toast.LENGTH_LONG).show()
+                }
+            }
+        })
+    }
+
+
+    /*private fun callServiceDeleteCompraDetalle() {
         val compraDetalleService: CompraDetalleService = RestEngine.buildService().create(
             CompraDetalleService::class.java)
         var result: Call<ResponseBody> = compraDetalleService.deleteCompraDetalle(txtMostrarCompraDetalleID.text.toString().toLong())
@@ -83,7 +112,7 @@ class Buscar_CompraDetalle_Activity : AppCompatActivity() {
                 }
             }
         })
-    }
+    }*/
 
     //-----
 

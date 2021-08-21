@@ -116,7 +116,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txvMostrarCantidad" />
 
     <Button
-        android:id="@+id/btnEliminarCompraEncabezado"
+        android:id="@+id/btnEliminarCompraDetalle"
         android:layout_width="146dp"
         android:layout_height="49dp"
         android:layout_marginEnd="45dp"
