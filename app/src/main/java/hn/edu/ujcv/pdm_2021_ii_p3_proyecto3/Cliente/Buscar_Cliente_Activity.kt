@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.GetAllActivity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.MenuPrincipal.MenuActivity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.R
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.RestEngine
@@ -23,8 +24,14 @@ class Buscar_Cliente_Activity : AppCompatActivity() {
         setContentView(R.layout.activity_buscar_cliente)
         btnBuscarCli.setOnClickListener { callServiceGetCliente() }
         btnEliminarProveedor.setOnClickListener { callServiceDeleteCliente() }
-
+        btnMostrarTodosClientes.setOnClickListener{ mostrarClientes() }
         MyToolbar().show(this,"Buscar Cliente", false)
+    }
+
+    private fun mostrarClientes() {
+        intent = Intent(this@Buscar_Cliente_Activity, GetAllActivity::class.java)
+        intent.putExtra("numero", 2)
+        startActivity(intent)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

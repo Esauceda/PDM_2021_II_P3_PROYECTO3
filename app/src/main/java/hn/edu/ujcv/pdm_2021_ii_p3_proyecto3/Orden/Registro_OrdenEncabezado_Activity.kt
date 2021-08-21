@@ -171,12 +171,12 @@ class Registro_OrdenEncabezado_Activity : AppCompatActivity() {
                 }
                 else if (response.code() == 401){
                     Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Sesion expirada",Toast.LENGTH_LONG).show()
-                }else if (response.code() == 500){
+                }/*else if (response.code() == 500){
 
                     val errorResponse = Gson().fromJson(response.errorBody()!!.string()!!, RestApiError::class.java)
 
                     Toast.makeText(this@Registro_OrdenEncabezado_Activity,errorResponse.errorDetails, Toast.LENGTH_LONG).show()
-                }else{
+                }*/else{
                     Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Fallo al traer el item",Toast.LENGTH_LONG).show()
                 }
             }

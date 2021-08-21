@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PDM_2021_II_P3_PROYECTO3</string>
+    <string name="app_name">Maquila Textil</string>
     <string name="title_activity_menu">Maquila Textil</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

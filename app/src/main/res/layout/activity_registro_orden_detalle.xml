@@ -162,7 +162,7 @@
         android:id="@+id/btnRegistrarOrdenDetalle"
         android:layout_width="130dp"
         android:layout_height="41dp"
-        android:layout_marginStart="60dp"
+        android:layout_marginStart="130dp"
         android:layout_marginBottom="160dp"
         android:background="@drawable/button_rounded"
         android:backgroundTint="#52658F"
@@ -171,7 +171,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+   <!-- <Button
         android:id="@+id/btnBuscarOrdenDetalle"
         android:layout_width="130dp"
         android:layout_height="41dp"
@@ -182,6 +182,6 @@
         android:text="Buscar"
         android:textSize="17dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />    -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

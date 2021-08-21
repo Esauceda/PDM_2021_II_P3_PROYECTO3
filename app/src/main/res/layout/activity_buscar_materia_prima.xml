@@ -189,4 +189,17 @@
         app:layout_constraintEnd_toStartOf="@+id/btnEliminarMateria"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <Button
+        android:id="@+id/btnMostrarTodosMateriaPrima"
+        android:layout_width="146dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="#52658F"
+        android:text="Mostar todos"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

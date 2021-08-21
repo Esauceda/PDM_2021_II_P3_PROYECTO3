@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.GetAllActivity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.MenuPrincipal.MenuActivity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.R
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.RestEngine
@@ -23,8 +24,14 @@ class Buscar_Materia_Prima_Activity : AppCompatActivity() {
         setContentView(R.layout.activity_buscar_materia_prima)
         btnBuscarMateria.setOnClickListener { callServiceGetMateria() }
         btnEliminarMateria.setOnClickListener { callServiceDeleteMateria() }
-
+        btnMostrarTodosMateriaPrima.setOnClickListener{ mostarMateriasPrimas() }
         MyToolbar().show(this,"Buscar Materia Prima", false)
+    }
+
+    private fun mostarMateriasPrimas() {
+        intent = Intent(this@Buscar_Materia_Prima_Activity, GetAllActivity::class.java)
+        intent.putExtra("numero", 9)
+        startActivity(intent)
     }
 
     private fun callServiceGetMateria() {
@@ -45,8 +52,8 @@ class Buscar_Materia_Prima_Activity : AppCompatActivity() {
                 }else {
                     txtMostrarMateriaPrimaID.setText(response.body()!!.materiaprimaId.toString())
                     txtMostrarNombreMateria.setText(response.body()!!.nombreMateria)
-                    txtMostrarMateriaProveedor.setText(response.body()!!.proveedorId)
-                    txtMostrarMateriaAlmacen.setText(response.body()!!.almacenId)
+                    txtMostrarMateriaProveedor.setText(response.body()!!.proveedorId.toString())
+                    txtMostrarMateriaAlmacen.setText(response.body()!!.almacenId.toString())
                     txtMostrarMateriaDescripcion.setText(response.body()!!.descripcion)
                     txtMostrarCantidadMateria.setText(response.body()!!.cantidad.toString())
                     Toast.makeText(this@Buscar_Materia_Prima_Activity,

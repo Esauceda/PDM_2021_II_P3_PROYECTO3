@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.GetAllActivity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.MenuPrincipal.MenuActivity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.R
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.RestEngine
@@ -27,6 +28,13 @@ class Buscar_Fabrica_Activity : AppCompatActivity() {
         MyToolbar().show(this,"Buscar Fabrica", false)
         btnBuscarFabrica2.setOnClickListener { callServiceGetFabrica() }
         btnEliminarFabrica.setOnClickListener { callServiceDeleteAlmacen() }
+        btnMostrarTodosFabricas.setOnClickListener{ mostrarFabricas() }
+    }
+
+    private fun mostrarFabricas() {
+        intent = Intent(this@Buscar_Fabrica_Activity, GetAllActivity::class.java)
+        intent.putExtra("numero", 6)
+        startActivity(intent)
     }
 
     //-----

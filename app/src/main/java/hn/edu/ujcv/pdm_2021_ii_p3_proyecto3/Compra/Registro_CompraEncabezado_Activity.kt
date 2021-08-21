@@ -157,10 +157,12 @@ class Registro_CompraEncabezado_Activity : AppCompatActivity() {
                 }
                 else if (response.code() == 401){
                     Toast.makeText(this@Registro_CompraEncabezado_Activity,"Sesion expirada",Toast.LENGTH_LONG).show()
-                } else if (response.code() == 500){
+                } else {
+                    Toast.makeText(this@Registro_CompraEncabezado_Activity,"Fallo al traer el item", Toast.LENGTH_LONG).show()
+                }/*if (response.code() == 500){
                     val errorResponse = Gson().fromJson(response.errorBody()!!.string()!!, RestApiError::class.java)
                     Toast.makeText(this@Registro_CompraEncabezado_Activity,errorResponse.errorDetails, Toast.LENGTH_LONG).show()
-                }
+                }*/
             }
         })
     }

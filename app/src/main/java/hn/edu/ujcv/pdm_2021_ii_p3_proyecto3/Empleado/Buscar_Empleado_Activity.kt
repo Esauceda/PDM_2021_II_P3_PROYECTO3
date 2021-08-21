@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.GetAllActivity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.MenuPrincipal.MenuActivity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.R
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.RestEngine
@@ -24,7 +25,14 @@ class Buscar_Empleado_Activity : AppCompatActivity() {
         setContentView(R.layout.activity_buscar_empleado)
         btnBuscarFabrica.setOnClickListener { callServiceGetEmpleado() }
         btnEliminarEmpleado.setOnClickListener { callServiceDeleteEmpleado() }
+        btnMostrarTodosEmpleados.setOnClickListener{ mostrarEmpleados() }
         MyToolbar().show(this,"Buscar Empleado", false)
+    }
+
+    private fun mostrarEmpleados() {
+        intent = Intent(this@Buscar_Empleado_Activity, GetAllActivity::class.java)
+        intent.putExtra("numero", 5)
+        startActivity(intent)
     }
 
     private fun callServiceGetEmpleado() {

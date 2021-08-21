@@ -1,5 +1,6 @@
 package hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Delivery
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,11 +17,14 @@ import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Toolbar.MyToolbar
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.DeliveryDataCollecionItem
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.OrdenEncabezadoDataCollectionItem
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.RestApiError
+import kotlinx.android.synthetic.main.activity_registro_compra_encabezado.*
 import kotlinx.android.synthetic.main.activity_registro_delivery.*
 import kotlinx.android.synthetic.main.activity_registro_materia_prima.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
+import kotlin.collections.ArrayList
 
 class Registro_Delivery_Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +36,26 @@ class Registro_Delivery_Activity : AppCompatActivity() {
         btnRegistrarDeliver.setOnClickListener { callServicePostDelivery() }
         btnActualizarDeliver.setOnClickListener { callServicePutDelivery() }
         btnBuscarDelivery2.setOnClickListener { callServiceGetDelivery() }
+        txtFechaEntregaDeli.setOnClickListener{ calendario() }
+    }
+
+
+    private fun calendario() {
+        val c = Calendar.getInstance()
+        val date = Date()
+
+        var año = c.get(Calendar.YEAR)
+        var mes = c.get(Calendar.MONTH)
+        var dia = c.get(Calendar.DAY_OF_MONTH)
+
+        val dpd = DatePickerDialog(this, { view, Año, Mes, Dia ->
+            txtFechaEntregaDeli.setText(""+Año+"-"+Mes+"-"+Dia)
+            c.set(Año,(Mes+1),(Dia+3))
+            dia = c.get(Calendar.DAY_OF_MONTH)
+            var año = c.get(Calendar.YEAR)
+            var mes = c.get(Calendar.MONTH) + 1
+        },año,mes,dia)
+        dpd.show()
     }
 
     private fun callServicePutDelivery() {
@@ -104,17 +128,18 @@ class Registro_Delivery_Activity : AppCompatActivity() {
                 call: Call<DeliveryDataCollecionItem>,
                 response: Response<DeliveryDataCollecionItem>
             ) {
-                txtDeliveryId.setText(response.body()!!.deliveryId.toString())
-                for (item in ordenes){
-                    if (item == response.body()!!.ordenId.toString()){
-                        spMateriaProveedor.setSelection(ordenesContador)
-                    }
-                    ordenesContador++
-                }
+
 
                 if (response.code() == 404){
                     Toast.makeText(this@Registro_Delivery_Activity, "Delivery no existe",Toast.LENGTH_SHORT).show()
                 }else {
+                    txtDeliveryId.setText(response.body()!!.deliveryId.toString())
+                    for (item in ordenes){
+                        if (item == response.body()!!.ordenId.toString()){
+                            spOrderDeli.setSelection(ordenesContador)
+                        }
+                        ordenesContador++
+                    }
                     txtNombreCom.setText(response.body()!!.nombreCompania)
                     txtTelefonoDeli.setText(response.body()!!.numero.toString())
                     txtCorreoDeli.setText(response.body()!!.correo)

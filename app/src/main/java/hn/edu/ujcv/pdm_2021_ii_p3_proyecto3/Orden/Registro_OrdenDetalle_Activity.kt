@@ -32,7 +32,7 @@ class Registro_OrdenDetalle_Activity : AppCompatActivity() {
         callServiceGetProductos()
         callServiceGetOrdenesEncabezado()
         btnRegistrarOrdenDetalle.setOnClickListener { callServicePostOrdenDetalle() }
-        btnBuscarOrdenDetalle.setOnClickListener { callServiceGetOrdenDetalle() }
+//        btnBuscarOrdenDetalle.setOnClickListener { callServiceGetOrdenDetalle() }
 //        btnActualizarOrdenDetalle.setOnClickListener { callServicePutOrdenDetalle() }
     }
 

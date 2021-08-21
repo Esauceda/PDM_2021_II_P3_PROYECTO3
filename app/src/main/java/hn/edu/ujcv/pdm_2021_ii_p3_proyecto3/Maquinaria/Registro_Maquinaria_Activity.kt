@@ -31,7 +31,6 @@ class Registro_Maquinaria_Activity : AppCompatActivity() {
 
         MyToolbar().show(this,"Registrar Maquinaria", false)
 
-//        callServiceGetMaquinarias()
         callServicesGetFabricas()
         btnRegisMaqui.setOnClickListener { callServicePostMaquinaria() }
         btnActuMaqui.setOnClickListener { callServicePutMaquinaria() }

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.GetAllActivity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.MenuPrincipal.MenuActivity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.R
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.RestEngine
@@ -26,6 +27,13 @@ class Buscar_Factura_Activity : AppCompatActivity() {
         MyToolbar().show(this,"Buscar Factura", false)
         btnBuscarFac2.setOnClickListener { callServiceGetFactura() }
         btnEliminarFac.setOnClickListener { callServiceDeleteFactura() }
+        btnMostrarTodosFacturas.setOnClickListener{ mostrarFacturas() }
+    }
+
+    private fun mostrarFacturas() {
+        intent = Intent(this@Buscar_Factura_Activity, GetAllActivity::class.java)
+        intent.putExtra("numero", 7)
+        startActivity(intent)
     }
 
     //-----

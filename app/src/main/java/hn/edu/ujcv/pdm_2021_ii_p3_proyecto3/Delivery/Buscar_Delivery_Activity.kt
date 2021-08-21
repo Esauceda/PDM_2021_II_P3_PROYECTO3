@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.GetAllActivity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.MenuPrincipal.MenuActivity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.R
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.RestEngine
@@ -23,7 +24,14 @@ class Buscar_Delivery_Activity : AppCompatActivity() {
         setContentView(R.layout.activity_buscar_delivery)
         btnEliminarDelivery.setOnClickListener { callServiceDeleteDelivery() }
         btnBuscarDelivery.setOnClickListener { callServiceGetDelivery() }
+        btnMostrarTodosDeliveries.setOnClickListener{ mostrarDeliveries() }
         MyToolbar().show(this,"Buscar Delivery", false)
+    }
+
+    private fun mostrarDeliveries() {
+        intent = Intent(this@Buscar_Delivery_Activity, GetAllActivity::class.java)
+        intent.putExtra("numero",4)
+        startActivity(intent)
     }
 
     private fun callServiceGetDelivery() {

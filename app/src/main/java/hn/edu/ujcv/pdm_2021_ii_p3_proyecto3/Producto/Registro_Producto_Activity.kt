@@ -107,17 +107,17 @@ class Registro_Producto_Activity : AppCompatActivity() {
                 call: Call<ProductoDataCollectionItem>,
                 response: Response<ProductoDataCollectionItem>
             ) {
-                txtProduID.setText(response.body()!!.productoId.toString())
-                for (item in fabricas){
-                    if (item == response.body()!!.fabricaId.toString()){
-                        spMateriaProveedor.setSelection(contadorFabricas)
-                    }
-                    contadorFabricas++
-                }
 
                 if (response.code() == 404){
                     Toast.makeText(this@Registro_Producto_Activity, "Producto no existe",Toast.LENGTH_SHORT).show()
                 }else {
+                    txtProduID.setText(response.body()!!.productoId.toString())
+                    for (item in fabricas){
+                        if (item == response.body()!!.fabricaId.toString()){
+                            sProduFarbicaID.setSelection(contadorFabricas)
+                        }
+                        contadorFabricas++
+                    }
                     txtNombreProdu.setText(response.body()!!.nombreProducto)
                     txtDescripProdu.setText(response.body()!!.descripcion)
                     txtPrecioProdu.setText(response.body()!!.precio.toString())

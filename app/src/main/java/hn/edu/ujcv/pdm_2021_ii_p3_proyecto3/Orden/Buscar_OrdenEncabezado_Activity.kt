@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import com.google.gson.Gson
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.GetAllActivity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.MenuPrincipal.MenuActivity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.R
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.RestEngine
@@ -30,6 +31,13 @@ class Buscar_OrdenEncabezado_Activity : AppCompatActivity() {
         btnBuscarOrdenEncabezado2.setOnClickListener { callServiceGetOrdenEncabezado() }
         btnEliminarOrdenEncabezado.setOnClickListener { callServiceDeleteOrdenEncabezado() }
         btnVerDetalle.setOnClickListener { verDetalle() }
+        btnMostrarTodosOrdenes.setOnClickListener{ mostrarOrdenes() }
+    }
+
+    private fun mostrarOrdenes() {
+        intent = Intent(this@Buscar_OrdenEncabezado_Activity, GetAllActivity::class.java)
+        intent.putExtra("numero", 10)
+        startActivity(intent)
     }
 
     private fun verDetalle() {

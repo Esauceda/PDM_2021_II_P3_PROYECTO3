@@ -9,74 +9,64 @@
 
     <EditText
         android:id="@+id/txtIdEmpleado"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="#050505"
         android:ems="10"
         android:hint="Empleado Id"
+        android:inputType="number"
         android:textColor="@color/black"
-        android:inputType="textPersonName"
         android:textColorHint="#050505"
         app:layout_constraintBottom_toTopOf="@+id/txtContaseniaEmpleado"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
         android:id="@+id/txtContaseniaEmpleado"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="35dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="100dp"
         android:backgroundTint="#050505"
         android:ems="10"
         android:hint="Contraseña"
+        android:inputType="textPassword"
         android:textColor="@color/black"
-        android:inputType="textPersonName"
         android:textColorHint="#050505"
         app:layout_constraintBottom_toTopOf="@+id/btnLogin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtIdEmpleado" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="202dp"
         android:layout_height="40dp"
+        android:layout_marginEnd="100dp"
         android:layout_marginBottom="15dp"
         android:background="@drawable/button_rounded"
         android:text="Login"
         app:layout_constraintBottom_toTopOf="@+id/btnRegistrar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtContaseniaEmpleado" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/btnRegistrar"
         android:layout_width="202dp"
         android:layout_height="40dp"
-        android:layout_marginBottom="273dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="210dp"
         android:background="@drawable/button_rounded"
         android:text="Registrar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="120dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="45dp"
-        android:src="@drawable/arteydiseno"
-        app:layout_constraintBottom_toTopOf="@+id/txtIdEmpleado"
+        android:layout_width="212dp"
+        android:layout_height="206dp"
+        android:layout_marginTop="31dp"
+        android:layout_marginEnd="90dp"
+        android:src="@drawable/menuprincipal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.GetAllActivity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.MenuPrincipal.MenuActivity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.R
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.RestEngine
@@ -27,6 +28,13 @@ class Buscar_Maquinaria_Activity : AppCompatActivity() {
         MyToolbar().show(this,"Buscar Maquinaria", false)
         btnBuscarMaqui2.setOnClickListener{ callServiceGetMaquinaria() }
         btnEliminarMaqui.setOnClickListener { callServiceDeleteMaquinaria() }
+        btnMostrarTodosMaquinas.setOnClickListener{ mostrarMaquinas() }
+    }
+
+    private fun mostrarMaquinas() {
+        intent = Intent(this@Buscar_Maquinaria_Activity, GetAllActivity::class.java)
+        intent.putExtra("numero", 8)
+        startActivity(intent)
     }
 
 

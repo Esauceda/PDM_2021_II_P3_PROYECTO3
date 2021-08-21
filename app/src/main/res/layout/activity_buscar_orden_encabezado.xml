@@ -231,7 +231,7 @@
         android:layout_width="146dp"
         android:layout_height="49dp"
         android:layout_marginEnd="45dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="90dp"
         android:background="@drawable/button_rounded"
         android:backgroundTint="#52658F"
         android:text="Eliminar"
@@ -244,7 +244,7 @@
         android:layout_width="146dp"
         android:layout_height="49dp"
         android:layout_marginStart="45dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="90dp"
         android:background="@drawable/button_rounded"
         android:backgroundTint="#52658F"
         android:text="Buscar"
@@ -256,15 +256,27 @@
         android:id="@+id/btnVerDetalle"
         android:layout_width="146dp"
         android:layout_height="49dp"
-        android:layout_marginStart="133dp"
-        android:layout_marginEnd="133dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/button_rounded"
         android:backgroundTint="#52658F"
         android:text="Ver Detalle"
         android:textSize="17dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <Button
+        android:id="@+id/btnMostrarTodosOrdenes"
+        android:layout_width="146dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="#52658F"
+        android:text="Mostar todos"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
 

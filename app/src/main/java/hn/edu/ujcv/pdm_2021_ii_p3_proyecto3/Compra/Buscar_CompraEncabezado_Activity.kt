@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.GetAllActivity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.MenuPrincipal.MenuActivity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.R
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.RestEngine
@@ -28,6 +29,13 @@ class Buscar_CompraEncabezado_Activity : AppCompatActivity() {
         btnBuscarCompraEncabezado2.setOnClickListener { callServiceGetCompraEncabezado() }
         btnEliminarCompraEncabezado.setOnClickListener { callServiceDeleteCompraEncabezado() }
         btnVerDetalleCompraEncabezado.setOnClickListener{ verDetalle() }
+        btnMostrarTodosCompras.setOnClickListener{ mostrarCompras() }
+    }
+
+    private fun mostrarCompras() {
+        intent = Intent(this@Buscar_CompraEncabezado_Activity, GetAllActivity::class.java)
+        intent.putExtra("numero", 3)
+        startActivity(intent)
     }
 
 

@@ -1,5 +1,6 @@
 package hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Factura
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,6 +17,7 @@ import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Toolbar.MyToolbar
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.FacturaDataCollectionItem
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.OrdenEncabezadoDataCollectionItem
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.RestApiError
+import kotlinx.android.synthetic.main.activity_registro_compra_encabezado.*
 import kotlinx.android.synthetic.main.activity_registro_fabrica.*
 import kotlinx.android.synthetic.main.activity_registro_factura.*
 import kotlinx.android.synthetic.main.activity_registro_maquinaria.*
@@ -23,6 +25,8 @@ import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
+import kotlin.collections.ArrayList
 
 class Registro_Factura_Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,9 +38,29 @@ class Registro_Factura_Activity : AppCompatActivity() {
         btnRegisFactura.setOnClickListener { callServicePostFactura() }
         btnBuscarFactura.setOnClickListener { callServiceGetFactura() }
         btnActuFactura.setOnClickListener { callServicePutFactura() }
+        txtFechaFac.setOnClickListener{ calendario() }
     }
     val ordenes = ArrayList<String>()
     //-----
+
+
+    private fun calendario() {
+        val c = Calendar.getInstance()
+        val date = Date()
+
+        var año = c.get(Calendar.YEAR)
+        var mes = c.get(Calendar.MONTH)
+        var dia = c.get(Calendar.DAY_OF_MONTH)
+
+        val dpd = DatePickerDialog(this, { view, Año, Mes, Dia ->
+            txtFechaFac.setText(""+Año+"-"+Mes+"-"+Dia)
+            c.set(Año,(Mes+1),(Dia+3))
+            dia = c.get(Calendar.DAY_OF_MONTH)
+            var año = c.get(Calendar.YEAR)
+            var mes = c.get(Calendar.MONTH) + 1
+        },año,mes,dia)
+        dpd.show()
+    }
 
     //POST
 

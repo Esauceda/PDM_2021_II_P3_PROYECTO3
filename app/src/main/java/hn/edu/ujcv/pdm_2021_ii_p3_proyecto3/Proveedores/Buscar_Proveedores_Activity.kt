@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.GetAllActivity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.MenuPrincipal.MenuActivity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.R
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.RestEngine
@@ -26,6 +27,13 @@ class Buscar_Proveedores_Activity : AppCompatActivity() {
         MyToolbar().show(this,"Buscar Proveedores", false)
         btnEliminarProveedor.setOnClickListener { callServiceDeleteProveedor() }
         btnBuscarProveedor2.setOnClickListener { callServiceGetProveedor() }
+        btnMostrarTodosProveedores.setOnClickListener{ mostrarProveedores() }
+    }
+
+    private fun mostrarProveedores() {
+        intent = Intent(this@Buscar_Proveedores_Activity, GetAllActivity::class.java)
+        intent.putExtra("numero", 12)
+        startActivity(intent)
     }
 
     //-----

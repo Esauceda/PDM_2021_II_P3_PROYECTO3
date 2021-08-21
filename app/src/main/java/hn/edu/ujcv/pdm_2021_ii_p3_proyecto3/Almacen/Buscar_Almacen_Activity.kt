@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.GetAllActivity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.MenuPrincipal.MenuActivity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.R
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.RestEngine
@@ -23,8 +24,15 @@ class Buscar_Almacen_Activity : AppCompatActivity() {
         setContentView(R.layout.activity_buscar_almacen)
         btnEliminarAlmacen.setOnClickListener { callServiceDeleteAlmacen() }
         btnBuscarAlmacen2.setOnClickListener { callServiceGetAlmacen() }
+        btnMostrarTodosAlmacenes.setOnClickListener{ mostrarAlmacenes() }
 
         MyToolbar().show(this,"Buscar Almacen", false)
+    }
+
+    private fun mostrarAlmacenes() {
+        intent = Intent(this@Buscar_Almacen_Activity, GetAllActivity::class.java)
+        intent.putExtra("numero", 1)
+        startActivity(intent)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
