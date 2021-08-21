@@ -49,8 +49,8 @@ class Buscar_Empleado_Activity : AppCompatActivity() {
                     txvMostrarTelEmple2.setText(response.body()!!.telefono.toString())
                     txvMostrarSalarioEmple2.setText(response.body()!!.salario.toString())
                     txvMostrarPuestoEmple2.setText(response.body()!!.puesto)
-                    txvMostrarFechaContraEmple2.setText(response.body()!!.fechaContratacion)
-                    txvMostrarFechaNaciEmple2.setText(response.body()!!.fechaNacimiento)
+                    txvMostrarFechaContraEmple2.setText(response.body()!!.fechaContratacion.toString())
+                    txvMostrarFechaNaciEmple2.setText(response.body()!!.fechaNacimiento.toString())
                     txvMostrarContraEmple2.setText(response.body()!!.contrasena)
                     Toast.makeText(this@Buscar_Empleado_Activity, "OK" + response.body()!!.nombre,
                         Toast.LENGTH_LONG).show()

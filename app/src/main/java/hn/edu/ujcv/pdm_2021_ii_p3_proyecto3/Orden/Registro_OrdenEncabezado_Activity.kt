@@ -1,5 +1,6 @@
 package hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Orden
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -18,10 +19,13 @@ import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.ClienteDataCollectionItem
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.EmpleadoDataCollectionItem
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.OrdenEncabezadoDataCollectionItem
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.RestApiError
+import kotlinx.android.synthetic.main.activity_registro_compra_encabezado.*
 import kotlinx.android.synthetic.main.activity_registro_orden_encabezado.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
+import kotlin.collections.ArrayList
 
 class Registro_OrdenEncabezado_Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,9 +35,46 @@ class Registro_OrdenEncabezado_Activity : AppCompatActivity() {
         MyToolbar().show(this,"Registrar Orden Encabezado", false)
         callServiceGetEmpleados()
         callServiceGetClientes()
+        txtFechaOrden.setOnClickListener{calendario()}
+        txtFechaEnvio.setOnClickListener{calendario2()}
         btnRegistrarOrdenEncabezado.setOnClickListener { callServicePostPerson() }
         btnBuscarOrdenEncabezado.setOnClickListener { callServiceGetOrdenEncabezado() }
         btnActualizarOrdenEncabezado.setOnClickListener { callServicePutOrdenEncabezado() }
+    }
+    private fun calendario() {
+        val c = Calendar.getInstance()
+        val date = Date()
+
+        var año = c.get(Calendar.YEAR)
+        var mes = c.get(Calendar.MONTH)
+        var dia = c.get(Calendar.DAY_OF_MONTH)
+
+        val dpd = DatePickerDialog(this, { view, Año, Mes, Dia ->
+            txtFechaOrden.setText(""+Año+"-"+Mes+"-"+Dia)
+            c.set(Año,(Mes+1),(Dia+3))
+            dia = c.get(Calendar.DAY_OF_MONTH)
+            var año = c.get(Calendar.YEAR)
+            var mes = c.get(Calendar.MONTH) + 1
+        },año,mes,dia)
+        dpd.show()
+    }
+
+    private fun calendario2() {
+        val c = Calendar.getInstance()
+        val date = Date()
+
+        var año = c.get(Calendar.YEAR)
+        var mes = c.get(Calendar.MONTH)
+        var dia = c.get(Calendar.DAY_OF_MONTH)
+
+        val dpd = DatePickerDialog(this, { view, Año, Mes, Dia ->
+            txtFechaEnvio.setText(""+Año+"-"+Mes+"-"+Dia)
+            c.set(Año,(Mes+1),(Dia+3))
+            dia = c.get(Calendar.DAY_OF_MONTH)
+            var año = c.get(Calendar.YEAR)
+            var mes = c.get(Calendar.MONTH) + 1
+        },año,mes,dia)
+        dpd.show()
     }
         var empleados = ArrayList<String>()
         val clientes = ArrayList<String>()

@@ -1,5 +1,6 @@
 package hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Compra
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +11,7 @@ import android.widget.Toast
 import com.google.gson.Gson
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Empleado.EmpleadoService
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.MenuPrincipal.MenuActivity
+import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Orden.Registro_OrdenDetalle_Activity
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Proveedores.ProveedorService
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.R
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.RestEngine
@@ -19,22 +21,62 @@ import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.EmpleadoDataCollectionItem
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.ProveedorDataCollectionItem
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.RestApiError
 import kotlinx.android.synthetic.main.activity_registro_compra_encabezado.*
+import kotlinx.android.synthetic.main.activity_registro_empleado.*
 import kotlinx.android.synthetic.main.activity_registro_orden_encabezado.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
+import kotlin.collections.ArrayList
 
 class Registro_CompraEncabezado_Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro_compra_encabezado)
-
         MyToolbar().show(this,"Registro Compra Encabezado", false)
+        txtFechaCompra.setOnClickListener{ calendario() }
+        txtFechaRecepcion.setOnClickListener{calendario2()}
         callServiceGetEmpleados()
         callServiceGetProveedores()
         btnRegistrarCompraEncabezado.setOnClickListener { callServicePostPerson() }
         btnActualizarCompraEncabezado.setOnClickListener { callServicePutPerson() }
         btnBuscarCompraEncabezado.setOnClickListener { callServiceGetCompraEncabezado() }
+
+    }
+    private fun calendario() {
+        val c = Calendar.getInstance()
+        val date = Date()
+
+        var año = c.get(Calendar.YEAR)
+        var mes = c.get(Calendar.MONTH)
+        var dia = c.get(Calendar.DAY_OF_MONTH)
+
+        val dpd = DatePickerDialog(this, { view, Año, Mes, Dia ->
+            txtFechaCompra.setText(""+Año+"-"+Mes+"-"+Dia)
+            c.set(Año,(Mes+1),(Dia+3))
+            dia = c.get(Calendar.DAY_OF_MONTH)
+            var año = c.get(Calendar.YEAR)
+            var mes = c.get(Calendar.MONTH) + 1
+        },año,mes,dia)
+        dpd.show()
+    }
+
+    private fun calendario2() {
+        val c = Calendar.getInstance()
+        val date = Date()
+
+        var año = c.get(Calendar.YEAR)
+        var mes = c.get(Calendar.MONTH)
+        var dia = c.get(Calendar.DAY_OF_MONTH)
+
+        val dpd = DatePickerDialog(this, { view, Año, Mes, Dia ->
+            txtFechaRecepcion.setText(""+Año+"-"+Mes+"-"+Dia)
+            c.set(Año,(Mes+1),(Dia+3))
+            dia = c.get(Calendar.DAY_OF_MONTH)
+            var año = c.get(Calendar.YEAR)
+            var mes = c.get(Calendar.MONTH) + 1
+        },año,mes,dia)
+        dpd.show()
     }
     var empleados = ArrayList<String>()
     var proveedores = ArrayList<String>()
@@ -53,6 +95,8 @@ class Registro_CompraEncabezado_Activity : AppCompatActivity() {
         addCompraEncabezado(compraEncabezadoInfo) {
             if (it?.compraId != null) {
                 Toast.makeText(this@Registro_CompraEncabezado_Activity,"OK"+it?.compraId,Toast.LENGTH_LONG).show()
+                val intent = Intent(this, Registro_CompraDetalle_Activity::class.java)
+                startActivity(intent)
             } else {
                 Toast.makeText(this@Registro_CompraEncabezado_Activity,"Error",Toast.LENGTH_LONG).show()
             }

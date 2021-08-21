@@ -15,6 +15,8 @@ import kotlinx.android.synthetic.main.activity_actualizar_empleado.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.SimpleDateFormat
+import java.util.*
 
 class Actualizar_Empleado_Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,8 +35,8 @@ class Actualizar_Empleado_Activity : AppCompatActivity() {
             telefono =          txtTelEmple.text.toString().toInt(),
             salario =           txtSalarioEmple.text.toString().toDouble(),
             puesto =            txtPuestoEmple.text.toString(),
-            fechaNacimiento =   txtFechaContraEmple.text.toString(),
-            fechaContratacion = txtFechaNaciEmple.text.toString(),
+            fechaNacimiento =   txtFechaNaciEmple.text.toString(),
+            fechaContratacion = txtFechaContraEmple.text.toString(),
             contrasena =        txtContraEmple.text.toString()
         )
 
@@ -87,8 +89,8 @@ class Actualizar_Empleado_Activity : AppCompatActivity() {
                     txtTelEmple.setText(response.body()!!.telefono.toString())
                     txtSalarioEmple.setText(response.body()!!.salario.toString())
                     txtPuestoEmple.setText(response.body()!!.puesto)
-                    txtFechaContraEmple.setText(response.body()!!.fechaContratacion)
-                    txtFechaNaciEmple.setText(response.body()!!.fechaNacimiento)
+                    txtFechaContraEmple.setText(response.body()!!.fechaContratacion.toString())
+                    txtFechaNaciEmple.setText(response.body()!!.fechaNacimiento.toString())
                     txtContraEmple.setText(response.body()!!.contrasena)
                     Toast.makeText(this@Actualizar_Empleado_Activity,
                         "OK" + response.body()!!.nombre,
@@ -114,4 +116,6 @@ class Actualizar_Empleado_Activity : AppCompatActivity() {
 
         return super.onOptionsItemSelected(item)
     }
+
+    fun String.toDate(format: String, locale: Locale = Locale.getDefault()): Date = SimpleDateFormat(format, locale).parse(this)
 }

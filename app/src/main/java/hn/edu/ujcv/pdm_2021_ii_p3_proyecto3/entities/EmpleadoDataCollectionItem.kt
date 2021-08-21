@@ -1,5 +1,11 @@
 package hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities
 
+
+
+
+import java.util.*
+import kotlin.collections.ArrayList
+
 class EmpleadoDataCollection: ArrayList<EmpleadoDataCollectionItem>()
 
 data class EmpleadoDataCollectionItem(

@@ -1,5 +1,6 @@
 package hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.Empleado
 
+import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -8,16 +9,56 @@ import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.R
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.RestEngine
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.EmpleadoDataCollectionItem
 import hn.edu.ujcv.pdm_2021_ii_p3_proyecto3.entities.RestApiError
-import kotlinx.android.synthetic.main.activity_actualizar_empleado.*
+import kotlinx.android.synthetic.main.activity_registro_empleado.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.SimpleDateFormat
+import java.util.*
 
 class Registro_Empleado_Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro_empleado)
-        btnActualizarEmpleado.setOnClickListener { callServicePostEmpleado() }
+        btnGuardarEmpleado.setOnClickListener { callServicePostEmpleado() }
+        txtFechaNaciEmple.setOnClickListener{ calendario() }
+        txtFechaContraEmple.setOnClickListener{ calendario2() }
+    }
+
+    private fun calendario() {
+        val c = Calendar.getInstance()
+        val date = Date()
+
+        var año = c.get(Calendar.YEAR)
+        var mes = c.get(Calendar.MONTH)
+        var dia = c.get(Calendar.DAY_OF_MONTH)
+
+        val dpd = DatePickerDialog(this, { view, Año, Mes, Dia ->
+            txtFechaNaciEmple.setText(""+Año+"-"+Mes+"-"+Dia)
+            c.set(Año,(Mes+1),(Dia+3))
+            dia = c.get(Calendar.DAY_OF_MONTH)
+            var año = c.get(Calendar.YEAR)
+            var mes = c.get(Calendar.MONTH) + 1
+        },año,mes,dia)
+        dpd.show()
+    }
+
+    private fun calendario2() {
+        val c = Calendar.getInstance()
+        val date = Date()
+
+        var año = c.get(Calendar.YEAR)
+        var mes = c.get(Calendar.MONTH)
+        var dia = c.get(Calendar.DAY_OF_MONTH)
+
+        val dpd = DatePickerDialog(this, { view, Año, Mes, Dia ->
+            txtFechaContraEmple.setText(""+Año+"-"+Mes+"-"+Dia)
+            c.set(Año,(Mes+1),(Dia+3))
+            dia = c.get(Calendar.DAY_OF_MONTH)
+            var año = c.get(Calendar.YEAR)
+            var mes = c.get(Calendar.MONTH) + 1
+        },año,mes,dia)
+        dpd.show()
     }
 
     private fun callServicePostEmpleado() {
@@ -28,8 +69,8 @@ class Registro_Empleado_Activity : AppCompatActivity() {
             telefono =          txtTelEmple.text.toString().toInt(),
             salario =           txtSalarioEmple.text.toString().toDouble(),
             puesto =            txtPuestoEmple.text.toString(),
-            fechaNacimiento =   txtFechaContraEmple.text.toString(),
-            fechaContratacion = txtFechaNaciEmple.text.toString(),
+            fechaNacimiento =   txtFechaNaciEmple.text.toString(),
+            fechaContratacion = txtFechaContraEmple.text.toString(),
             contrasena =        txtContraEmple.text.toString()
         )
 
@@ -58,13 +99,11 @@ class Registro_Empleado_Activity : AppCompatActivity() {
                     val addedPerson = response.body()!!
                     onResult(addedPerson)
                 }
-                /*else if (response.code() == 401){
-                    Toast.makeText(this@MainActivity,"Sesion expirada",Toast.LENGTH_LONG).show()
-                }*/
+                else if (response.code() == 401){
+                    Toast.makeText(this@Registro_Empleado_Activity,"Sesion expirada",Toast.LENGTH_LONG).show()
+                }
                 else if (response.code() == 500){
-                    //val gson = Gson()
-                    //val type = object : TypeToken<RestApiError>() {}.type
-                    //var errorResponse1: RestApiError? = gson.fromJson(response.errorBody()!!.charStream(), type)
+
                     val errorResponse = Gson().fromJson(response.errorBody()!!.string()!!, RestApiError::class.java)
 
                     Toast.makeText(this@Registro_Empleado_Activity,errorResponse.errorDetails, Toast.LENGTH_LONG).show()
@@ -77,4 +116,6 @@ class Registro_Empleado_Activity : AppCompatActivity() {
         }
         )
     }
+
+    fun String.toDate(format: String, locale: Locale = Locale.getDefault()): Date = SimpleDateFormat(format, locale).parse(this)
 }

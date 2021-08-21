@@ -27,9 +27,17 @@ class Buscar_CompraEncabezado_Activity : AppCompatActivity() {
         MyToolbar().show(this,"Buscar Compra Encabezado", false)
         btnBuscarCompraEncabezado2.setOnClickListener { callServiceGetCompraEncabezado() }
         btnEliminarCompraEncabezado.setOnClickListener { callServiceDeleteCompraEncabezado() }
+        btnVerDetalleCompraEncabezado.setOnClickListener{ verDetalle() }
     }
 
+
     //-----
+
+    private fun verDetalle(){
+        val intent = Intent(this, Buscar_CompraDetalle_Activity::class.java)
+        intent.putExtra("compraId", txtMostrarCompraEncabezadoID.text.toString())
+        startActivity(intent)
+    }
 
     private fun callServiceDeleteCompraEncabezado() {
         val compraEncabezadoService: CompraEncabezadoService = RestEngine.buildService().create(CompraEncabezadoService::class.java)

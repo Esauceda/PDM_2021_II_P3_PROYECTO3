@@ -8,7 +8,8 @@
     tools:context=".Compra.Registro_CompraDetalle_Activity">
 
     <include
-        layout="@layout/action_bar_toolbar"/>
+        android:id="@+id/include10"
+        layout="@layout/action_bar_toolbar" />
 
     <TextView
         android:id="@+id/txvCompraDetalleID"
@@ -23,20 +24,23 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/txvCantidad"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/txvProductoID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="17dp"
-        android:layout_marginBottom="28dp"
-        android:text="Producto ID"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="36dp"
+        android:text="Nombre de producto "
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/txvCantidad"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvCompraDetalleID" />
 
     <TextView
         android:id="@+id/txvCantidad"
@@ -51,12 +55,13 @@
         app:layout_constraintBottom_toBottomOf="@+id/txtCantidad"
         app:layout_constraintStart_toStartOf="parent" />
 
+
     <TextView
         android:id="@+id/txvPrecio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
         android:text="Precio"
         android:textColor="@color/black"
         android:textSize="16dp"
@@ -64,62 +69,48 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txvCantidad" />
 
-    <EditText
-        android:id="@+id/txtCompraDetalleID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:layout_marginEnd="35dp"
+    <Spinner
+        android:id="@+id/sCompraDetalle"
+        android:layout_width="165dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="28dp"
         android:ems="8"
         android:hint="Ingrese id"
         android:inputType="number"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/include10" />
 
-
-    <Spinner
-        android:id="@+id/sProductoID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="62dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginBottom="58dp"
+    <EditText
+        android:id="@+id/txtProductoCompra"
+        android:layout_width="165dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="60dp"
         android:backgroundTint="@color/black"
+        android:hint="Ingrese nombre"
+        android:textColorHint="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/txtCantidad"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/txtProduID" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
         android:id="@+id/txtCantidad"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/black"
         android:hint="Ingrese Cantidad"
         android:inputType="number"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
-        android:backgroundTint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sProductoID" />
+        app:layout_constraintTop_toBottomOf="@+id/txtProductoCompra" />
 
-    <EditText
-        android:id="@+id/txtPrecioCompra"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="35dp"
-        android:ems="8"
-        android:hint="Ingrese Precio Compra"
-        android:inputType="numberDecimal"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCantidad" />
-
-    <Button
+    <!--<Button
         android:id="@+id/btnActualizarCompraEncabezado"
         android:layout_width="130dp"
         android:layout_height="41dp"
@@ -130,32 +121,48 @@
         android:text="Actualizar"
         android:textSize="17dp"
         app:layout_constraintBottom_toTopOf="@+id/btnBuscarCompraEncabezado"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" /> -->
+
+    <EditText
+        android:id="@+id/txtPrecioCompra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="20dp"
+        android:ems="8"
+        android:hint="Ingrese Precio"
+        android:inputType="numberDecimal"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtCantidad" />
 
     <Button
-        android:id="@+id/btnRegistrarCompraEncabezado"
+        android:id="@+id/btnRegistrarCompraDetalle"
         android:layout_width="130dp"
         android:layout_height="41dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginBottom="176dp"
         android:background="@drawable/button_rounded"
         android:backgroundTint="#52658F"
         android:text="Guardar"
         android:textSize="17dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnBuscarCompraEncabezado"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/btnBuscarCompraEncabezado"
+    <!--<Button
+        android:id="@+id/btnBuscarCompraDetalle"
         android:layout_width="130dp"
         android:layout_height="41dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginBottom="115dp"
+        android:layout_marginStart="220dp"
+        android:layout_marginEnd="61dp"
+        android:layout_marginBottom="180dp"
         android:background="@drawable/button_rounded"
         android:backgroundTint="#52658F"
         android:text="Buscar"
         android:textSize="17dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" /> -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
