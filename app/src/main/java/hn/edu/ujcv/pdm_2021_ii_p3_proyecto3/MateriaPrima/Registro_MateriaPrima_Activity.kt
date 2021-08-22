@@ -51,7 +51,7 @@ class Registro_MateriaPrima_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<MateriaPrimaDataCollectionItem> {
             override fun onFailure(call: Call<MateriaPrimaDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Registro_MateriaPrima_Activity,"Error", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_MateriaPrima_Activity,"Error al actualizar la materia prima", Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(call: Call<MateriaPrimaDataCollectionItem>,
@@ -59,14 +59,14 @@ class Registro_MateriaPrima_Activity : AppCompatActivity() {
             ) {
                 if (response.isSuccessful) {
                     val updatedProducto = response.body()!!
-                    Toast.makeText(this@Registro_MateriaPrima_Activity,"OK"+response.body()!!.nombreMateria,
+                    Toast.makeText(this@Registro_MateriaPrima_Activity,"Materia Prima Actualizada "+response.body()!!.nombreMateria,
                         Toast.LENGTH_LONG).show()
                 }
                 else if (response.code() == 401){
-                    Toast.makeText(this@Registro_MateriaPrima_Activity,"Sesion expirada", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_MateriaPrima_Activity,"Sesion expirada", Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    Toast.makeText(this@Registro_MateriaPrima_Activity,"Fallo al traer el item", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_MateriaPrima_Activity,"Fallo al traer el item", Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -75,7 +75,7 @@ class Registro_MateriaPrima_Activity : AppCompatActivity() {
 
     private fun callServicePostMateria() {
         val materiaInfo = MateriaPrimaDataCollectionItem(
-            materiaprimaId = txtMateriaPrimaID.text.toString().toInt(),
+            materiaprimaId = null,//txtMateriaPrimaID.text.toString().toInt(),
             nombreMateria =  txtMateriaNombre.text.toString(),
             proveedorId =    spMateriaProveedor.selectedItem.toString().toInt(),
             almacenId =      spMateriaAlmacen.selectedItem.toString().toInt(),
@@ -85,9 +85,9 @@ class Registro_MateriaPrima_Activity : AppCompatActivity() {
 
         addMateria(materiaInfo) {
             if (it?.materiaprimaId != null) {
-                Toast.makeText(this@Registro_MateriaPrima_Activity,"OK"+it?.materiaprimaId, Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_MateriaPrima_Activity,"Materia prima registrada", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this@Registro_MateriaPrima_Activity,"Error", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_MateriaPrima_Activity,"Error al registrar la materia prima", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -100,7 +100,7 @@ class Registro_MateriaPrima_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<MateriaPrimaDataCollectionItem> {
             override fun onFailure(call: Call<MateriaPrimaDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Registro_MateriaPrima_Activity,"Error", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_MateriaPrima_Activity,"Error al encontrar la materia", Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -129,8 +129,8 @@ class Registro_MateriaPrima_Activity : AppCompatActivity() {
                     txtMateriaDescripcion.setText(response.body()!!.descripcion)
                     txtCantidadMateria.setText(response.body()!!.cantidad.toString())
                     Toast.makeText(this@Registro_MateriaPrima_Activity,
-                        "OK" + response.body()!!.nombreMateria,
-                        Toast.LENGTH_LONG).show()
+                        "Materia Prima encontrada " + response.body()!!.nombreMateria,
+                        Toast.LENGTH_SHORT).show()
                 }
             }
         })
@@ -161,10 +161,10 @@ class Registro_MateriaPrima_Activity : AppCompatActivity() {
                     //var errorResponse1: RestApiError? = gson.fromJson(response.errorBody()!!.charStream(), type)
                     val errorResponse = Gson().fromJson(response.errorBody()!!.string()!!, RestApiError::class.java)
 
-                    Toast.makeText(this@Registro_MateriaPrima_Activity,errorResponse.errorDetails, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_MateriaPrima_Activity,errorResponse.errorDetails, Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    Toast.makeText(this@Registro_MateriaPrima_Activity,"Fallo al traer el item", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_MateriaPrima_Activity,"Fallo al traer el item", Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -181,7 +181,7 @@ class Registro_MateriaPrima_Activity : AppCompatActivity() {
 
         result.enqueue(object :  Callback<List<ProveedorDataCollectionItem>> {
             override fun onFailure(call: Call<List<ProveedorDataCollectionItem>>, t: Throwable) {
-                Toast.makeText(this@Registro_MateriaPrima_Activity,"Error al encontrar proveedores",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_MateriaPrima_Activity,"Error al encontrar proveedores",Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -195,7 +195,7 @@ class Registro_MateriaPrima_Activity : AppCompatActivity() {
                 val adapterEmpleados = ArrayAdapter(this@Registro_MateriaPrima_Activity, android.R.layout.simple_spinner_item, proveedores)
                 spMateriaProveedor.adapter = adapterEmpleados
 
-                Toast.makeText(this@Registro_MateriaPrima_Activity,"Proveedores encontrados",Toast.LENGTH_LONG).show()
+//                Toast.makeText(this@Registro_MateriaPrima_Activity,"Proveedores encontrados",Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -207,7 +207,7 @@ class Registro_MateriaPrima_Activity : AppCompatActivity() {
 
         result.enqueue(object :  Callback<List<AlmacenDataCollectionItem>> {
             override fun onFailure(call: Call<List<AlmacenDataCollectionItem>>, t: Throwable) {
-                Toast.makeText(this@Registro_MateriaPrima_Activity,"Error al encontrar almacenes",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_MateriaPrima_Activity,"Error al encontrar almacenes",Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -221,7 +221,7 @@ class Registro_MateriaPrima_Activity : AppCompatActivity() {
                 val adapterEmpleados = ArrayAdapter(this@Registro_MateriaPrima_Activity, android.R.layout.simple_spinner_item, almacenes)
                 spMateriaAlmacen.adapter = adapterEmpleados
 
-                Toast.makeText(this@Registro_MateriaPrima_Activity,"Almacenes encontrados",Toast.LENGTH_LONG).show()
+//                Toast.makeText(this@Registro_MateriaPrima_Activity,"Almacenes encontrados",Toast.LENGTH_SHORT).show()
             }
         })
     }

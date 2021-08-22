@@ -43,7 +43,7 @@ class Buscar_Proveedores_Activity : AppCompatActivity() {
 
         result.enqueue(object :  Callback<ProveedorDataCollectionItem> {
             override fun onFailure(call: Call<ProveedorDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Buscar_Proveedores_Activity,"Error",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Buscar_Proveedores_Activity,"Error al encontrar el proveedor",Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -61,8 +61,8 @@ class Buscar_Proveedores_Activity : AppCompatActivity() {
                     txvMostrarPaisProveedor.setText(response.body()!!.pais)
                     txvMostrarDireccionProveedor.setText(response.body()!!.direccion)
                     Toast.makeText(this@Buscar_Proveedores_Activity,
-                        "OK" + response.body()!!.nombreCompania,
-                        Toast.LENGTH_LONG).show()
+                        "Proveedor encontrado " + response.body()!!.nombreContacto,
+                        Toast.LENGTH_SHORT).show()
                 }
             }
         })
@@ -74,7 +74,7 @@ class Buscar_Proveedores_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<ResponseBody> {
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Toast.makeText(this@Buscar_Proveedores_Activity,"Error", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Buscar_Proveedores_Activity,"Error al eliminar el proveedor", Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -82,13 +82,13 @@ class Buscar_Proveedores_Activity : AppCompatActivity() {
                 response: Response<ResponseBody>
             ) {
                 if (response.isSuccessful) {
-                    Toast.makeText(this@Buscar_Proveedores_Activity,"DELETE", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_Proveedores_Activity,"Proveedor eliminado", Toast.LENGTH_SHORT).show()
                 }
                 else if (response.code() == 401){
-                    Toast.makeText(this@Buscar_Proveedores_Activity,"Sesion expirada", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_Proveedores_Activity,"Sesion expirada", Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    Toast.makeText(this@Buscar_Proveedores_Activity,"Fallo al traer el item", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_Proveedores_Activity,"Fallo al traer el item", Toast.LENGTH_SHORT).show()
                 }
             }
         })

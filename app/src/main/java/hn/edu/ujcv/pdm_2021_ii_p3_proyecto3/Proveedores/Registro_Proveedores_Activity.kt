@@ -47,20 +47,21 @@ class Registro_Proveedores_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<ProveedorDataCollectionItem> {
             override fun onFailure(call: Call<ProveedorDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Registro_Proveedores_Activity,"Error",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_Proveedores_Activity,"Error al actualizar el proveedor",Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(call: Call<ProveedorDataCollectionItem>,
                                     response: Response<ProveedorDataCollectionItem>) {
                 if (response.isSuccessful) {
                     val updatedPerson = response.body()!!
-                    Toast.makeText(this@Registro_Proveedores_Activity,"OK"+response.body()!!.nombreCompania,Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Proveedores_Activity,
+                        "Proveedor Actualizado",Toast.LENGTH_SHORT).show()
                 }
                 else if (response.code() == 401){
-                    Toast.makeText(this@Registro_Proveedores_Activity,"Sesion expirada",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Proveedores_Activity,"Sesion expirada",Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    Toast.makeText(this@Registro_Proveedores_Activity,"Fallo al traer el item",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Proveedores_Activity,"Fallo al traer el item",Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -74,7 +75,7 @@ class Registro_Proveedores_Activity : AppCompatActivity() {
 
         result.enqueue(object :  Callback<ProveedorDataCollectionItem> {
             override fun onFailure(call: Call<ProveedorDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Registro_Proveedores_Activity,"Error",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_Proveedores_Activity,"Error al encontrar el proveedor",Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -92,8 +93,8 @@ class Registro_Proveedores_Activity : AppCompatActivity() {
                     txtPaisProveedor.setText(response.body()!!.pais)
                     txtDireccionProveedor.setText(response.body()!!.direccion)
                     Toast.makeText(this@Registro_Proveedores_Activity,
-                        "OK" + response.body()!!.nombreCompania,
-                        Toast.LENGTH_LONG).show()
+                        "Proveedor encontrado " + response.body()!!.nombreContacto,
+                        Toast.LENGTH_SHORT).show()
                 }
             }
         })
@@ -103,7 +104,7 @@ class Registro_Proveedores_Activity : AppCompatActivity() {
 
     private fun callServicePostProveedor() {
         val proveedorInfo = ProveedorDataCollectionItem(
-            proveedorId = txtProveedorID.text.toString().toLong(),
+            proveedorId = null,//txtProveedorID.text.toString().toLong(),
             nombreCompania= txtNombreCompañiaProveedor.text.toString(),
             nombreContacto = txtContactoProveedor.text.toString(),
             numero = txtTelefonoProveedor.text.toString().toInt(),
@@ -114,9 +115,9 @@ class Registro_Proveedores_Activity : AppCompatActivity() {
 
         addProveedor(proveedorInfo) {
             if (it?.proveedorId != null) {
-                Toast.makeText(this@Registro_Proveedores_Activity,"OK"+it?.proveedorId,Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_Proveedores_Activity,"Proveedor Registrado "+it?.proveedorId,Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this@Registro_Proveedores_Activity,"Error",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_Proveedores_Activity,"Error al registrar el proveedor ",Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -137,10 +138,10 @@ class Registro_Proveedores_Activity : AppCompatActivity() {
                 }
                 else if (response.code() == 500){
                     val errorResponse = Gson().fromJson(response.errorBody()!!.string()!!, RestApiError::class.java)
-                    Toast.makeText(this@Registro_Proveedores_Activity,errorResponse.errorDetails, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Proveedores_Activity,errorResponse.errorDetails, Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    Toast.makeText(this@Registro_Proveedores_Activity,"Fallo al traer el item", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Proveedores_Activity,"Fallo al traer el item", Toast.LENGTH_SHORT).show()
                 }
             }
         }

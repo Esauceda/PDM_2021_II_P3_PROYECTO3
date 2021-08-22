@@ -45,7 +45,7 @@ class Actualizar_Empleado_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<EmpleadoDataCollectionItem> {
             override fun onFailure(call: Call<EmpleadoDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Actualizar_Empleado_Activity,"Error", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Actualizar_Empleado_Activity,"Error al actaulizar el empleado", Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(call: Call<EmpleadoDataCollectionItem>,
@@ -53,14 +53,14 @@ class Actualizar_Empleado_Activity : AppCompatActivity() {
             ) {
                 if (response.isSuccessful) {
                     val updatedEmpleado = response.body()!!
-                    Toast.makeText(this@Actualizar_Empleado_Activity,"OK"+response.body()!!.nombre,
-                        Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Actualizar_Empleado_Activity,"Empleado Actualizado",
+                        Toast.LENGTH_SHORT).show()
                 }
                 else if (response.code() == 401){
-                    Toast.makeText(this@Actualizar_Empleado_Activity,"Sesion expirada", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Actualizar_Empleado_Activity,"Sesion expirada", Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    Toast.makeText(this@Actualizar_Empleado_Activity,"Fallo al traer el item", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Actualizar_Empleado_Activity,"Fallo al traer el item", Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -73,7 +73,7 @@ class Actualizar_Empleado_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<EmpleadoDataCollectionItem> {
             override fun onFailure(call: Call<EmpleadoDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Actualizar_Empleado_Activity,"Error", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Actualizar_Empleado_Activity,"Error al encontrar el empleado", Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -93,8 +93,8 @@ class Actualizar_Empleado_Activity : AppCompatActivity() {
                     txtFechaNaciEmple.setText(response.body()!!.fechaNacimiento.toString())
                     txtContraEmple.setText(response.body()!!.contrasena)
                     Toast.makeText(this@Actualizar_Empleado_Activity,
-                        "OK" + response.body()!!.nombre,
-                        Toast.LENGTH_LONG).show()
+                        "Empleado encontado " + response.body()!!.nombre,
+                        Toast.LENGTH_SHORT).show()
                 }
             }
         })

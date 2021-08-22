@@ -73,7 +73,7 @@ class Registro_Delivery_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<DeliveryDataCollecionItem> {
             override fun onFailure(call: Call<DeliveryDataCollecionItem>, t: Throwable) {
-                Toast.makeText(this@Registro_Delivery_Activity,"Error", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_Delivery_Activity,"Error al actualizar el delivery", Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(call: Call<DeliveryDataCollecionItem>,
@@ -81,14 +81,14 @@ class Registro_Delivery_Activity : AppCompatActivity() {
             ) {
                 if (response.isSuccessful) {
                     val updatedAlmacen = response.body()!!
-                    Toast.makeText(this@Registro_Delivery_Activity,"OK"+response.body()!!.nombreCompania,
+                    Toast.makeText(this@Registro_Delivery_Activity,"Delivery Actualizado"+response.body()!!.deliveryId,
                         Toast.LENGTH_LONG).show()
                 }
                 else if (response.code() == 401){
-                    Toast.makeText(this@Registro_Delivery_Activity,"Sesion expirada", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Delivery_Activity,"Sesion expirada", Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    Toast.makeText(this@Registro_Delivery_Activity,"Fallo al traer el item", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Delivery_Activity,"Fallo al traer el item", Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -97,7 +97,7 @@ class Registro_Delivery_Activity : AppCompatActivity() {
 
     private fun callServicePostDelivery() {
         val clienteInfo = DeliveryDataCollecionItem(
-            deliveryId =      txtDeliveryId.text.toString().toInt(),
+            deliveryId =      null,//txtDeliveryId.text.toString().toInt(),
             ordenId =         spOrderDeli.selectedItem.toString().toInt(),
             nombreCompania =  txtNombreCom.text.toString(),
             numero =          txtTelefonoDeli.text.toString().toInt(),
@@ -107,7 +107,7 @@ class Registro_Delivery_Activity : AppCompatActivity() {
 
         addCliente(clienteInfo) {
             if (it?.deliveryId != null) {
-                Toast.makeText(this@Registro_Delivery_Activity,"OK"+it?.deliveryId, Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_Delivery_Activity,"Delivery Registrado "+it?.deliveryId, Toast.LENGTH_LONG).show()
             } else {
                 Toast.makeText(this@Registro_Delivery_Activity,"Error", Toast.LENGTH_LONG).show()
             }
@@ -121,7 +121,7 @@ class Registro_Delivery_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<DeliveryDataCollecionItem> {
             override fun onFailure(call: Call<DeliveryDataCollecionItem>, t: Throwable) {
-                Toast.makeText(this@Registro_Delivery_Activity,"Error", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_Delivery_Activity,"Error al encontrar el Delivery", Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -145,7 +145,7 @@ class Registro_Delivery_Activity : AppCompatActivity() {
                     txtCorreoDeli.setText(response.body()!!.correo)
                     txtFechaEntregaDeli.setText(response.body()!!.fechaEntrega)
                     Toast.makeText(this@Registro_Delivery_Activity,
-                        "OK" + response.body()!!.nombreCompania,
+                        "Delivery encontrado "+ response.body()!!.deliveryId,
                         Toast.LENGTH_LONG).show()
                 }
             }
@@ -203,13 +203,13 @@ class Registro_Delivery_Activity : AppCompatActivity() {
                 response: Response<List<OrdenEncabezadoDataCollectionItem>>
             ) {
                 for (ordenEncabezado in response.body()!!){
-                    ordenes.add("${ordenEncabezado.empleadoId}")
+                    ordenes.add("${ordenEncabezado.ordenId}")
                 }
 
                 val adapterEmpleados = ArrayAdapter(this@Registro_Delivery_Activity, android.R.layout.simple_spinner_item, ordenes)
                 spOrderDeli.adapter = adapterEmpleados
 
-                Toast.makeText(this@Registro_Delivery_Activity,"Empelados encontrados",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_Delivery_Activity,"Ordenes encontradas",Toast.LENGTH_LONG).show()
             }
         })
     }

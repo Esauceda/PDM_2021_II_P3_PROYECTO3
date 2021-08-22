@@ -46,7 +46,7 @@ class Buscar_Fabrica_Activity : AppCompatActivity() {
         result.enqueue(object : Callback<FabricaDataCollectionItem> {
 
             override fun onFailure(call: Call<FabricaDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Buscar_Fabrica_Activity,"Error", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Buscar_Fabrica_Activity,"Error al encontrar la fabrica", Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -54,7 +54,7 @@ class Buscar_Fabrica_Activity : AppCompatActivity() {
                 response: Response<FabricaDataCollectionItem>
             ) {
                 if (response.code() == 404){
-                    Toast.makeText(this@Buscar_Fabrica_Activity, "Fabrica no existe",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Buscar_Fabrica_Activity, "Esa fabrica no existe",Toast.LENGTH_SHORT).show()
                 }else {
                     txtMostrarFabricaID.setText(response.body()!!.fabricaId.toString())
                     txvMostrarNombreFabrica.setText(response.body()!!.nombreFabrica)
@@ -63,8 +63,8 @@ class Buscar_Fabrica_Activity : AppCompatActivity() {
                     txvMostrarTelefonoFabrica.setText(response.body()!!.telefono.toString())
                     txvMostrarProduccionFabrica.setText(response.body()!!.tipoProduccion)
                     Toast.makeText(this@Buscar_Fabrica_Activity,
-                        "OK" + response.body()!!.encargado,
-                        Toast.LENGTH_LONG).show()
+                        "Fabrica encontrada " + response.body()!!.fabricaId,
+                        Toast.LENGTH_SHORT).show()
                 }
             }
         })
@@ -76,7 +76,7 @@ class Buscar_Fabrica_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<ResponseBody> {
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Toast.makeText(this@Buscar_Fabrica_Activity,"Error",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Buscar_Fabrica_Activity,"Error al eliminar la fabrica",Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -84,13 +84,13 @@ class Buscar_Fabrica_Activity : AppCompatActivity() {
                 response: Response<ResponseBody>
             ) {
                 if (response.isSuccessful) {
-                    Toast.makeText(this@Buscar_Fabrica_Activity,"DELETE",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_Fabrica_Activity,"Fabrica eliminada",Toast.LENGTH_SHORT).show()
                 }
                 else if (response.code() == 401){
-                    Toast.makeText(this@Buscar_Fabrica_Activity,"Sesion expirada",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_Fabrica_Activity,"Sesion expirada",Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    Toast.makeText(this@Buscar_Fabrica_Activity,"Fallo al traer el item",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_Fabrica_Activity,"Fallo al traer el item",Toast.LENGTH_SHORT).show()
                 }
             }
         })

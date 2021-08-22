@@ -40,7 +40,7 @@ class Registro_Fabrica_Activity : AppCompatActivity() {
         result.enqueue(object :  Callback<FabricaDataCollectionItem> {
 
             override fun onFailure(call: Call<FabricaDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Registro_Fabrica_Activity,"Error",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_Fabrica_Activity,"Error al encontrar la fabrica",Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -48,10 +48,10 @@ class Registro_Fabrica_Activity : AppCompatActivity() {
                 response: Response<FabricaDataCollectionItem>
             ) {
                 if (response.code() == 404){
-                    Toast.makeText(this@Registro_Fabrica_Activity,"No existe",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Fabrica_Activity,"Esa fabrica no existe",Toast.LENGTH_SHORT).show()
                 }else{
                     if (response.code() == 404){
-                        Toast.makeText(this@Registro_Fabrica_Activity, "Fabrica no existe",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@Registro_Fabrica_Activity, "Esa fabrica no existe",Toast.LENGTH_SHORT).show()
                     }else {
                         txtFabricaID.setText(response.body()!!.fabricaId.toString())
                         txtFabricaNombre.setText(response.body()!!.nombreFabrica)
@@ -60,8 +60,8 @@ class Registro_Fabrica_Activity : AppCompatActivity() {
                         txtTelefonoFabrica.setText(response.body()!!.telefono.toString())
                         txtProduccionFabrica.setText(response.body()!!.tipoProduccion)
                         Toast.makeText(this@Registro_Fabrica_Activity,
-                            "OK" + response.body()!!.encargado,
-                            Toast.LENGTH_LONG).show()
+                            "Fabrica encontrada " + response.body()!!.fabricaId,
+                            Toast.LENGTH_SHORT).show()
                     }
                 }
 
@@ -84,17 +84,18 @@ class Registro_Fabrica_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<FabricaDataCollectionItem> {
             override fun onFailure(call: Call<FabricaDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Registro_Fabrica_Activity,"Error",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_Fabrica_Activity,"Error al actualizar la fabrica",Toast.LENGTH_SHORT).show()
             }
             override fun onResponse(call: Call<FabricaDataCollectionItem>,
                                     response: Response<FabricaDataCollectionItem>
             ) {
                 if (response.isSuccessful) {
                     val updatedFabrica = response.body()!!
-                    Toast.makeText(this@Registro_Fabrica_Activity,"OK"+response.body()!!.encargado,Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Fabrica_Activity,
+                        "Fabrica actaulizada "+response.body()!!.fabricaId,Toast.LENGTH_SHORT).show()
                 }
                 else if (response.code() == 401){
-                    Toast.makeText(this@Registro_Fabrica_Activity,"Sesion expirada",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Fabrica_Activity,"Sesion expirada",Toast.LENGTH_SHORT).show()
                 }/*else if (response.code() == 500) {
                     val errorResponse =
                         Gson().fromJson(response.errorBody()!!.string()!!, RestApiError::class.java)
@@ -103,7 +104,7 @@ class Registro_Fabrica_Activity : AppCompatActivity() {
                         .show()
                 }*/
                 else{
-                    Toast.makeText(this@Registro_Fabrica_Activity,"Fallo al traer el item",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Fabrica_Activity,"Fallo al traer el item",Toast.LENGTH_SHORT).show()
                 }
             }
         })
@@ -111,7 +112,7 @@ class Registro_Fabrica_Activity : AppCompatActivity() {
 
     private fun callServicePostFabrica() {
         val fabricaInfo = FabricaDataCollectionItem(
-            fabricaId = txtFabricaID.text.toString().toLong(),
+            fabricaId = null,//txtFabricaID.text.toString().toLong(),
             nombreFabrica = txtFabricaNombre.text.toString(),
             telefono = txtTelefonoFabrica.text.toString().toLong(),
             tipoProduccion = txtProduccionFabrica.text.toString(),
@@ -120,9 +121,9 @@ class Registro_Fabrica_Activity : AppCompatActivity() {
         )
         addFabrica(fabricaInfo){
             if (it?.fabricaId != null){
-                Toast.makeText(this@Registro_Fabrica_Activity,"OK"+it?.fabricaId, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Registro_Fabrica_Activity,"Fabrica registrada "+it?.fabricaId, Toast.LENGTH_SHORT).show()
             }else{
-                Toast.makeText(this@Registro_Fabrica_Activity,"Error", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Registro_Fabrica_Activity,"Error al registrar la fabrica", Toast.LENGTH_SHORT).show()
             }
         }
     }

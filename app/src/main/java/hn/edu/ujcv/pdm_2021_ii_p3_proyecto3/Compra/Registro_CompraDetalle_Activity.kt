@@ -36,6 +36,7 @@ class Registro_CompraDetalle_Activity : AppCompatActivity() {
 
     private fun callServicePostCompraDetalle() {
         val compraDetalleInfo = CompraDetalleDataCollectionItem(
+            compraDetalleId = null,
             compraId = sCompraDetalle.selectedItem.toString().toLong(),
             producto = txtProductoCompra.text.toString(),
             cantidad = txtCantidad.text.toString().toInt(),
@@ -44,9 +45,9 @@ class Registro_CompraDetalle_Activity : AppCompatActivity() {
 
         addCompraDetalle(compraDetalleInfo) {
             if (it?.compraId != null) {
-                Toast.makeText(this@Registro_CompraDetalle_Activity,"Compra Detalle Registrada", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_CompraDetalle_Activity,"Compra Detalle Registrada", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this@Registro_CompraDetalle_Activity,"Error", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_CompraDetalle_Activity,"Error al registrar Compra Detalle", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -67,16 +68,16 @@ class Registro_CompraDetalle_Activity : AppCompatActivity() {
                     onResult(addedCompraDetalle)
                 }
                 else if (response.code() == 401) {
-                    Toast.makeText(this@Registro_CompraDetalle_Activity, "Sesion expirada", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_CompraDetalle_Activity, "Sesion expirada", Toast.LENGTH_SHORT).show()
                 }
                 else if (response.code() == 500){
 
                     val errorResponse = Gson().fromJson(response.errorBody()!!.string()!!, RestApiError::class.java)
 
-                    Toast.makeText(this@Registro_CompraDetalle_Activity,errorResponse.errorDetails, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_CompraDetalle_Activity,errorResponse.errorDetails, Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    Toast.makeText(this@Registro_CompraDetalle_Activity,"Fallo al traer el item", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_CompraDetalle_Activity,"Fallo al traer el item", Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -90,8 +91,8 @@ class Registro_CompraDetalle_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<List<CompraEncabezadoDataCollectionItem>> {
             override fun onFailure(call: Call<List<CompraEncabezadoDataCollectionItem>>, t: Throwable) {
-                Toast.makeText(this@Registro_CompraDetalle_Activity,"Error al encontrar productos",
-                    Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_CompraDetalle_Activity,"Error al encontrar Compras Encabezado",
+                    Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -105,7 +106,7 @@ class Registro_CompraDetalle_Activity : AppCompatActivity() {
                 val adapterCompraEncabezado = ArrayAdapter(this@Registro_CompraDetalle_Activity, android.R.layout.simple_spinner_item, comprasEncabezado)
                 sCompraDetalle.adapter = adapterCompraEncabezado
 
-                Toast.makeText(this@Registro_CompraDetalle_Activity,"Productos encontrados", Toast.LENGTH_LONG).show()
+//                Toast.makeText(this@Registro_CompraDetalle_Activity,"Productos encontrados", Toast.LENGTH_LONG).show()
             }
         })
     }

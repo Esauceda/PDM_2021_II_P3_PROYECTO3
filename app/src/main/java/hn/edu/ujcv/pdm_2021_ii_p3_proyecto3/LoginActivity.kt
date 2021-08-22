@@ -44,6 +44,7 @@ class LoginActivity : AppCompatActivity() {
                         Toast.makeText(this@LoginActivity, "Empleado no existe", Toast.LENGTH_SHORT).show()
                     }else {
 
+
                         if (response.body()!!.empleadoId.toString() == txtIdEmpleado.text.toString()
                             && response.body()!!.contrasena == txtContaseniaEmpleado.text.toString()){
 

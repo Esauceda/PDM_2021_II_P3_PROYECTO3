@@ -94,11 +94,11 @@ class Registro_CompraEncabezado_Activity : AppCompatActivity() {
         )
         addCompraEncabezado(compraEncabezadoInfo) {
             if (it?.compraId != null) {
-                Toast.makeText(this@Registro_CompraEncabezado_Activity,"OK"+it?.compraId,Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_CompraEncabezado_Activity,"Compra Encabezado Registrado "+it?.compraId,Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, Registro_CompraDetalle_Activity::class.java)
                 startActivity(intent)
             } else {
-                Toast.makeText(this@Registro_CompraEncabezado_Activity,"Error",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_CompraEncabezado_Activity,"Error al registrar Compra Encabezado",Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -118,13 +118,13 @@ class Registro_CompraEncabezado_Activity : AppCompatActivity() {
                     onResult(addedPerson)
                 }
                 else if (response.code() == 401){
-                    Toast.makeText(this@Registro_CompraEncabezado_Activity,"Sesion expirada",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_CompraEncabezado_Activity,"Sesion expirada",Toast.LENGTH_SHORT).show()
                 } else if (response.code() == 500){
                     val errorResponse = Gson().fromJson(response.errorBody()!!.string()!!, RestApiError::class.java)
-                    Toast.makeText(this@Registro_CompraEncabezado_Activity,errorResponse.errorDetails, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_CompraEncabezado_Activity,errorResponse.errorDetails, Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    Toast.makeText(this@Registro_CompraEncabezado_Activity,"Fallo al traer el item", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_CompraEncabezado_Activity,"Fallo al traer el item", Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -147,19 +147,20 @@ class Registro_CompraEncabezado_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<CompraEncabezadoDataCollectionItem> {
             override fun onFailure(call: Call<CompraEncabezadoDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Registro_CompraEncabezado_Activity,"Error",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_CompraEncabezado_Activity,"Error al actualizar la compra encabezado",Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(call: Call<CompraEncabezadoDataCollectionItem>, response: Response<CompraEncabezadoDataCollectionItem>) {
                 if (response.isSuccessful) {
                     val updatedPerson = response.body()!!
-                    Toast.makeText(this@Registro_CompraEncabezado_Activity,"OK"+response.body()!!.compraId,Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_CompraEncabezado_Activity,
+                        "Compra Encabezado Actualizada "+response.body()!!.compraId,Toast.LENGTH_SHORT).show()
                 }
                 else if (response.code() == 401){
-                    Toast.makeText(this@Registro_CompraEncabezado_Activity,"Sesion expirada",Toast.LENGTH_LONG).show()
-                } else {
+                    Toast.makeText(this@Registro_CompraEncabezado_Activity,"Sesion expirada",Toast.LENGTH_SHORT).show()
+                } /*else {
                     Toast.makeText(this@Registro_CompraEncabezado_Activity,"Fallo al traer el item", Toast.LENGTH_LONG).show()
-                }/*if (response.code() == 500){
+                }*//*if (response.code() == 500){
                     val errorResponse = Gson().fromJson(response.errorBody()!!.string()!!, RestApiError::class.java)
                     Toast.makeText(this@Registro_CompraEncabezado_Activity,errorResponse.errorDetails, Toast.LENGTH_LONG).show()
                 }*/
@@ -201,7 +202,8 @@ class Registro_CompraEncabezado_Activity : AppCompatActivity() {
                     txtFechaRecepcion.setText(response.body()!!.fechaRecepcion)
                     txtTotalCompra.setText(response.body()!!.total.toString())
                     txtEstadoCompra.setText(response.body()!!.estado)
-                    Toast.makeText(this@Registro_CompraEncabezado_Activity,"OK"+response.body()!!.compraId,Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_CompraEncabezado_Activity,
+                        "Compra Encabezado Encontrado "+response.body()!!.compraId,Toast.LENGTH_SHORT).show()
                 }
 
             }
@@ -216,7 +218,7 @@ class Registro_CompraEncabezado_Activity : AppCompatActivity() {
 
         result.enqueue(object :  Callback<List<EmpleadoDataCollectionItem>> {
             override fun onFailure(call: Call<List<EmpleadoDataCollectionItem>>, t: Throwable) {
-                Toast.makeText(this@Registro_CompraEncabezado_Activity,"Error al encontrar empleados",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_CompraEncabezado_Activity,"Error al encontrar empleados",Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -230,7 +232,7 @@ class Registro_CompraEncabezado_Activity : AppCompatActivity() {
                 val adapterEmpleados = ArrayAdapter(this@Registro_CompraEncabezado_Activity, android.R.layout.simple_spinner_item, empleados)
                 sEmpleadoID.adapter = adapterEmpleados
 
-                Toast.makeText(this@Registro_CompraEncabezado_Activity,"Empelados encontrados",Toast.LENGTH_LONG).show()
+//                Toast.makeText(this@Registro_CompraEncabezado_Activity,"Empelados encontrados",Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -242,7 +244,7 @@ class Registro_CompraEncabezado_Activity : AppCompatActivity() {
 
         result.enqueue(object :  Callback<List<ProveedorDataCollectionItem>> {
             override fun onFailure(call: Call<List<ProveedorDataCollectionItem>>, t: Throwable) {
-                Toast.makeText(this@Registro_CompraEncabezado_Activity,"Error al encontrar empleados",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_CompraEncabezado_Activity,"Error al encontrar empleados",Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -255,7 +257,7 @@ class Registro_CompraEncabezado_Activity : AppCompatActivity() {
                 val adapterProveedor = ArrayAdapter(this@Registro_CompraEncabezado_Activity, android.R.layout.simple_spinner_item, proveedores)
                 sProveedorID.adapter = adapterProveedor
 
-                Toast.makeText(this@Registro_CompraEncabezado_Activity,"Empelados encontrados",Toast.LENGTH_LONG).show()
+//                Toast.makeText(this@Registro_CompraEncabezado_Activity,"Empelados encontrados",Toast.LENGTH_LONG).show()
             }
         })
     }

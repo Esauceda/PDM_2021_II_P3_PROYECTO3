@@ -50,7 +50,7 @@ class Registro_Producto_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<ProductoDataCollectionItem> {
             override fun onFailure(call: Call<ProductoDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Registro_Producto_Activity,"Error", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_Producto_Activity,"Error al actualizar el Producto", Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(call: Call<ProductoDataCollectionItem>,
@@ -58,15 +58,15 @@ class Registro_Producto_Activity : AppCompatActivity() {
             ) {
                 if (response.isSuccessful) {
                     val updatedProducto = response.body()!!
-                    Toast.makeText(this@Registro_Producto_Activity,"OK"+response.body()!!.nombreProducto,
+                    Toast.makeText(this@Registro_Producto_Activity,"Producto Actualiado "+response.body()!!.nombreProducto,
                         Toast.LENGTH_LONG).show()
                 }
                 else if (response.code() == 401){
-                    Toast.makeText(this@Registro_Producto_Activity,"Sesion expirada", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Producto_Activity,"Sesion expirada", Toast.LENGTH_SHORT).show()
                 }
-                else{
+                /*else{
                     Toast.makeText(this@Registro_Producto_Activity,"Fallo al traer el item", Toast.LENGTH_LONG).show()
-                }
+                }*/
             }
 
         })
@@ -74,7 +74,7 @@ class Registro_Producto_Activity : AppCompatActivity() {
 
     private fun callServicePostProducto() {
         val productoInfo = ProductoDataCollectionItem(
-            productoId =        txtProduID.text.toString().toInt(),
+            productoId =        null,//txtProduID.text.toString().toInt(),
             fabricaId =         sProduFarbicaID.selectedItem.toString().toInt(),
             nombreProducto =    txtNombreProdu.text.toString(),
             descripcion =       txtDescripProdu.text.toString(),
@@ -86,9 +86,9 @@ class Registro_Producto_Activity : AppCompatActivity() {
 
         addProducto(productoInfo) {
             if (it?.productoId != null) {
-                Toast.makeText(this@Registro_Producto_Activity,"OK"+it?.productoId, Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_Producto_Activity,"Poducto Registrado", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this@Registro_Producto_Activity,"Error", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_Producto_Activity,"Error al registrar", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -100,7 +100,7 @@ class Registro_Producto_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<ProductoDataCollectionItem> {
             override fun onFailure(call: Call<ProductoDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Registro_Producto_Activity,"Error", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_Producto_Activity,"Error al encontrar el producto", Toast.LENGTH_LONG).show()
             }
 
             override fun onResponse(
@@ -125,8 +125,8 @@ class Registro_Producto_Activity : AppCompatActivity() {
                     txtUnidadesMax.setText(response.body()!!.unidadesMaximas.toString())
                     txtUnidadesMin.setText(response.body()!!.unidadesMinimas.toString())
                     Toast.makeText(this@Registro_Producto_Activity,
-                        "OK" + response.body()!!.nombreProducto,
-                        Toast.LENGTH_LONG).show()
+                        "Producto encontrado " + response.body()!!.nombreProducto,
+                        Toast.LENGTH_SHORT).show()
                 }
             }
         })
@@ -157,10 +157,10 @@ class Registro_Producto_Activity : AppCompatActivity() {
                     //var errorResponse1: RestApiError? = gson.fromJson(response.errorBody()!!.charStream(), type)
                     val errorResponse = Gson().fromJson(response.errorBody()!!.string()!!, RestApiError::class.java)
 
-                    Toast.makeText(this@Registro_Producto_Activity,errorResponse.errorDetails, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Producto_Activity,errorResponse.errorDetails, Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    Toast.makeText(this@Registro_Producto_Activity,"Fallo al traer el item", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Producto_Activity,"Fallo al traer el item", Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -175,7 +175,7 @@ class Registro_Producto_Activity : AppCompatActivity() {
 
         result.enqueue(object :  Callback<List<FabricaDataCollectionItem>> {
             override fun onFailure(call: Call<List<FabricaDataCollectionItem>>, t: Throwable) {
-                Toast.makeText(this@Registro_Producto_Activity,"Error al encontrar fabricas",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_Producto_Activity,"Error al encontrar fabricas",Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -189,7 +189,7 @@ class Registro_Producto_Activity : AppCompatActivity() {
                 val adapterEmpleados = ArrayAdapter(this@Registro_Producto_Activity, android.R.layout.simple_spinner_item, fabricas)
                 sProduFarbicaID.adapter = adapterEmpleados
 
-                Toast.makeText(this@Registro_Producto_Activity,"Fabricas encontrados",Toast.LENGTH_LONG).show()
+//                Toast.makeText(this@Registro_Producto_Activity,"Fabricas encontrados",Toast.LENGTH_SHORT).show()
             }
         })
     }

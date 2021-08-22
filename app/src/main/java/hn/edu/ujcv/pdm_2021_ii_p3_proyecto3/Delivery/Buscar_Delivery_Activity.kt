@@ -40,7 +40,7 @@ class Buscar_Delivery_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<DeliveryDataCollecionItem> {
             override fun onFailure(call: Call<DeliveryDataCollecionItem>, t: Throwable) {
-                Toast.makeText(this@Buscar_Delivery_Activity,"Error", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Buscar_Delivery_Activity,"Error al encontrar el Delivery", Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -57,7 +57,7 @@ class Buscar_Delivery_Activity : AppCompatActivity() {
                     txvMostrarCorreoDeliver.setText(response.body()!!.correo)
                     txvMostrarFechaEntreDeliver.setText(response.body()!!.fechaEntrega)
                     Toast.makeText(this@Buscar_Delivery_Activity,
-                        "OK" + response.body()!!.nombreCompania,
+                        "Delivery encontrado " + response.body()!!.deliveryId,
                         Toast.LENGTH_LONG).show()
                 }
             }
@@ -70,7 +70,7 @@ class Buscar_Delivery_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<ResponseBody> {
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Toast.makeText(this@Buscar_Delivery_Activity,"Error", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Buscar_Delivery_Activity,"Error al Eliminar el delivery", Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -78,13 +78,13 @@ class Buscar_Delivery_Activity : AppCompatActivity() {
                 response: Response<ResponseBody>
             ) {
                 if (response.isSuccessful) {
-                    Toast.makeText(this@Buscar_Delivery_Activity,"DELETE", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_Delivery_Activity,"Delivery Eliminado", Toast.LENGTH_SHORT).show()
                 }
                 else if (response.code() == 401){
-                    Toast.makeText(this@Buscar_Delivery_Activity,"Sesion expirada", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_Delivery_Activity,"Sesion expirada", Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    Toast.makeText(this@Buscar_Delivery_Activity,"Fallo al traer el item", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_Delivery_Activity,"Fallo al traer el item", Toast.LENGTH_SHORT).show()
                 }
             }
         })

@@ -9,7 +9,7 @@ import kotlin.collections.ArrayList
 class EmpleadoDataCollection: ArrayList<EmpleadoDataCollectionItem>()
 
 data class EmpleadoDataCollectionItem(
-    val empleadoId: Int,
+    val empleadoId: Int?,
     val nombre: String,
     val direccion: String,
     val telefono: Int,

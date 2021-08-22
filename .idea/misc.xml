@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Axcel Leonel/Desktop/Copia de este cerote/app/src/main/res/layout/activiry_registro_almacen.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Axcel Leonel/Desktop/Copia de este cerote/app/src/main/res/layout/activity_actualizar_empleado.xml" value="0.4" />
         <entry key="..\:/Users/Axcel Leonel/Desktop/Copia de este cerote/app/src/main/res/layout/activity_buscar_almacen.xml" value="0.264" />
         <entry key="..\:/Users/Axcel Leonel/Desktop/Copia de este cerote/app/src/main/res/layout/activity_buscar_cliente.xml" value="0.4" />
@@ -14,10 +15,12 @@
         <entry key="..\:/Users/Axcel Leonel/Desktop/Copia de este cerote/app/src/main/res/layout/activity_buscar_factura.xml" value="0.264" />
         <entry key="..\:/Users/Axcel Leonel/Desktop/Copia de este cerote/app/src/main/res/layout/activity_buscar_maquinaria.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Axcel Leonel/Desktop/Copia de este cerote/app/src/main/res/layout/activity_buscar_materia_prima.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Axcel Leonel/Desktop/Copia de este cerote/app/src/main/res/layout/activity_buscar_orden_detalle.xml" value="0.4" />
+        <entry key="..\:/Users/Axcel Leonel/Desktop/Copia de este cerote/app/src/main/res/layout/activity_buscar_orden_detalle.xml" value="0.264" />
         <entry key="..\:/Users/Axcel Leonel/Desktop/Copia de este cerote/app/src/main/res/layout/activity_buscar_orden_encabezado.xml" value="0.264" />
         <entry key="..\:/Users/Axcel Leonel/Desktop/Copia de este cerote/app/src/main/res/layout/activity_buscar_producto.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Axcel Leonel/Desktop/Copia de este cerote/app/src/main/res/layout/activity_buscar_proveedores.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Axcel Leonel/Desktop/Copia de este cerote/app/src/main/res/layout/activity_eliminar_compra_detalle.xml" value="0.22327898550724637" />
+        <entry key="..\:/Users/Axcel Leonel/Desktop/Copia de este cerote/app/src/main/res/layout/activity_eliminar_orden_detalle.xml" value="0.22327898550724637" />
         <entry key="..\:/Users/Axcel Leonel/Desktop/Copia de este cerote/app/src/main/res/layout/activity_get_all.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Axcel Leonel/Desktop/Copia de este cerote/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Axcel Leonel/Desktop/Copia de este cerote/app/src/main/res/layout/activity_registro_compra_detalle.xml" value="0.25416666666666665" />
@@ -27,6 +30,7 @@
         <entry key="..\:/Users/Axcel Leonel/Desktop/Copia de este cerote/app/src/main/res/layout/activity_registro_fabrica.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Axcel Leonel/Desktop/Copia de este cerote/app/src/main/res/layout/activity_registro_factura.xml" value="0.22780797101449277" />
         <entry key="..\:/Users/Axcel Leonel/Desktop/Copia de este cerote/app/src/main/res/layout/activity_registro_maquinaria.xml" value="0.4" />
+        <entry key="..\:/Users/Axcel Leonel/Desktop/Copia de este cerote/app/src/main/res/layout/activity_registro_materia_prima.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Axcel Leonel/Desktop/Copia de este cerote/app/src/main/res/layout/activity_registro_orden_detalle.xml" value="0.4" />
         <entry key="..\:/Users/Axcel Leonel/Desktop/Copia de este cerote/app/src/main/res/layout/activity_registro_orden_encabezado.xml" value="0.264" />
         <entry key="..\:/Users/Axcel Leonel/Desktop/Copia de este cerote/app/src/main/res/layout/activity_registro_producto.xml" value="0.25416666666666665" />

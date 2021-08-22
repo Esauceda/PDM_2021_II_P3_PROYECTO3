@@ -47,7 +47,7 @@ class Registro_Clientes_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<ClienteDataCollectionItem> {
             override fun onFailure(call: Call<ClienteDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Registro_Clientes_Activity,"Error", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_Clientes_Activity,"Error al actualizar el cliente", Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(call: Call<ClienteDataCollectionItem>,
@@ -55,14 +55,14 @@ class Registro_Clientes_Activity : AppCompatActivity() {
             ) {
                 if (response.isSuccessful) {
                     val updatedAlmacen = response.body()!!
-                    Toast.makeText(this@Registro_Clientes_Activity,"OK"+response.body()!!.nombre,
+                    Toast.makeText(this@Registro_Clientes_Activity,"Cliente Actualizado "+response.body()!!.nombre,
                         Toast.LENGTH_LONG).show()
                 }
                 else if (response.code() == 401){
-                    Toast.makeText(this@Registro_Clientes_Activity,"Sesion expirada", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Clientes_Activity,"Sesion expirada", Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    Toast.makeText(this@Registro_Clientes_Activity,"Fallo al traer el item", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Clientes_Activity,"Fallo al traer el item", Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -71,7 +71,7 @@ class Registro_Clientes_Activity : AppCompatActivity() {
 
     private fun callServicePostCliente() {
         val clienteInfo = ClienteDataCollectionItem(
-            clienteId =       txtClienteID.text.toString().toInt(),
+            clienteId =       null,//txtClienteID.text.toString().toInt(),
             nombreCompania =  txtNombreCompaniaCli.text.toString(),
             nombre =          txtNombreCli.text.toString(),
             telefono =        txtTelefonoCli.text.toString().toInt(),
@@ -83,9 +83,9 @@ class Registro_Clientes_Activity : AppCompatActivity() {
 
         addCliente(clienteInfo) {
             if (it?.clienteId != null) {
-                Toast.makeText(this@Registro_Clientes_Activity,"OK"+it?.clienteId, Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_Clientes_Activity,"Cliente registrado "+it?.clienteId, Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this@Registro_Clientes_Activity,"Error", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_Clientes_Activity,"Error al registrar el cliente", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -96,7 +96,7 @@ class Registro_Clientes_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<ClienteDataCollectionItem> {
             override fun onFailure(call: Call<ClienteDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Registro_Clientes_Activity,"Error", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_Clientes_Activity,"Error al encontrar el cliente", Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -114,8 +114,8 @@ class Registro_Clientes_Activity : AppCompatActivity() {
                     txtPais.setText(response.body()!!.pais)
                     txtDireccionCli.setText(response.body()!!.direccion)
                     txtCategoriaCli.setText(response.body()!!.categoria)
-                    Toast.makeText(this@Registro_Clientes_Activity, "OK" + response.body()!!.nombre,
-                        Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Clientes_Activity, "Cliente encontrado " + response.body()!!.nombre,
+                        Toast.LENGTH_SHORT).show()
                 }
             }
         })
@@ -146,10 +146,10 @@ class Registro_Clientes_Activity : AppCompatActivity() {
                     //var errorResponse1: RestApiError? = gson.fromJson(response.errorBody()!!.charStream(), type)
                     val errorResponse = Gson().fromJson(response.errorBody()!!.string()!!, RestApiError::class.java)
 
-                    Toast.makeText(this@Registro_Clientes_Activity,errorResponse.errorDetails, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Clientes_Activity,errorResponse.errorDetails, Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    Toast.makeText(this@Registro_Clientes_Activity,"Fallo al traer el item", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Clientes_Activity,"Fallo al traer el item", Toast.LENGTH_SHORT).show()
                 }
             }
 

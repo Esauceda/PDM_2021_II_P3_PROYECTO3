@@ -4,7 +4,7 @@ class ProveedorDataCollection: ArrayList<ProveedorDataCollectionItem>()
 
 
 data class ProveedorDataCollectionItem(
-    val proveedorId: Long,
+    val proveedorId: Long?,
     val nombreCompania: String,
     val nombreContacto: String,
     val numero: Int,

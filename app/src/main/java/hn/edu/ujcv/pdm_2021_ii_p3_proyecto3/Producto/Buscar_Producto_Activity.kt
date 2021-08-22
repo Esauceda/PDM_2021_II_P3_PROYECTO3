@@ -41,7 +41,7 @@ class Buscar_Producto_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<ProductoDataCollectionItem> {
             override fun onFailure(call: Call<ProductoDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Buscar_Producto_Activity,"Error", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Buscar_Producto_Activity,"Error al encontrar el producto", Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -60,8 +60,8 @@ class Buscar_Producto_Activity : AppCompatActivity() {
                     txvMostrarUnidadesMin.setText(response.body()!!.unidadesMaximas.toString())
                     txvMostrarUnidadesMax.setText(response.body()!!.unidadesMinimas.toString())
                     Toast.makeText(this@Buscar_Producto_Activity,
-                        "OK" + response.body()!!.nombreProducto,
-                        Toast.LENGTH_LONG).show()
+                        "Producto Encontrado " + response.body()!!.nombreProducto,
+                        Toast.LENGTH_SHORT).show()
                 }
             }
         })
@@ -73,7 +73,7 @@ class Buscar_Producto_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<ResponseBody> {
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Toast.makeText(this@Buscar_Producto_Activity,"Error", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Buscar_Producto_Activity,"Error al eliminar el producto", Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -81,13 +81,13 @@ class Buscar_Producto_Activity : AppCompatActivity() {
                 response: Response<ResponseBody>
             ) {
                 if (response.isSuccessful) {
-                    Toast.makeText(this@Buscar_Producto_Activity,"DELETE", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_Producto_Activity,"Producto eliminado", Toast.LENGTH_SHORT).show()
                 }
                 else if (response.code() == 401){
-                    Toast.makeText(this@Buscar_Producto_Activity,"Sesion expirada", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_Producto_Activity,"Sesion expirada", Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    Toast.makeText(this@Buscar_Producto_Activity,"Fallo al traer el item", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_Producto_Activity,"Fallo al traer el item", Toast.LENGTH_SHORT).show()
                 }
             }
         })

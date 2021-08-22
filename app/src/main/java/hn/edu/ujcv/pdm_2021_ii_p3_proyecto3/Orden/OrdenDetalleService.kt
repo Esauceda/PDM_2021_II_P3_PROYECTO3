@@ -9,6 +9,9 @@ interface OrdenDetalleService {
     @GET("OrdenDetalle")
     fun listOrdenesDetalle(): Call<List<OrdenDetalleDataCollectionItem>>
 
+    @GET("OrdenDetalle/ordenId/{ordenId}")
+    fun listOrdenesDetalleByOrdenId(@Path("ordenId") orenId: Long ): Call<List<OrdenDetalleDataCollectionItem>>
+
     @GET("OrdenDetalle/id/{id}")
     fun getOrdenDetalleById(@Path("id") id: Long): Call<OrdenDetalleDataCollectionItem>
     @Headers("Content-Type: application/json")

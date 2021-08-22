@@ -32,8 +32,6 @@ class Registro_OrdenDetalle_Activity : AppCompatActivity() {
         callServiceGetProductos()
         callServiceGetOrdenesEncabezado()
         btnRegistrarOrdenDetalle.setOnClickListener { callServicePostOrdenDetalle() }
-//        btnBuscarOrdenDetalle.setOnClickListener { callServiceGetOrdenDetalle() }
-//        btnActualizarOrdenDetalle.setOnClickListener { callServicePutOrdenDetalle() }
     }
 
     var almacenes = ArrayList<String>()
@@ -46,6 +44,7 @@ class Registro_OrdenDetalle_Activity : AppCompatActivity() {
         val fecha = "2021-04-10"
         val prueba      = spOrdenDetalleID.selectedItem.toString().toInt()
         val ordenDetalleInfo = OrdenDetalleDataCollectionItem(
+            ordenDetalleId = null,
             ordenId         = spOrdenDetalleID.selectedItem.toString().toInt(),
             almacenId       = spOrdenDetalleAlmacenID.selectedItem.toString().toInt(),
             productoId      = spOrdenDetalleProductoID.selectedItem.toString().toInt(),
@@ -55,9 +54,9 @@ class Registro_OrdenDetalle_Activity : AppCompatActivity() {
 
         addOrdenDetalle(ordenDetalleInfo) {
             if (it?.ordenId != null) {
-                Toast.makeText(this@Registro_OrdenDetalle_Activity,"Orden Detalle Registrada", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_OrdenDetalle_Activity,"Orden Detalle Registrada", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this@Registro_OrdenDetalle_Activity,"Error", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_OrdenDetalle_Activity,"Error al registrar el orden detalle", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -78,16 +77,16 @@ class Registro_OrdenDetalle_Activity : AppCompatActivity() {
                     onResult(addedOrdenDetalle)
                 }
                 else if (response.code() == 401) {
-                    Toast.makeText(this@Registro_OrdenDetalle_Activity, "Sesion expirada", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_OrdenDetalle_Activity, "Sesion expirada", Toast.LENGTH_SHORT).show()
                 }
                 else if (response.code() == 500){
 
                     val errorResponse = Gson().fromJson(response.errorBody()!!.string()!!, RestApiError::class.java)
 
-                    Toast.makeText(this@Registro_OrdenDetalle_Activity,errorResponse.errorDetails, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_OrdenDetalle_Activity,errorResponse.errorDetails, Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    Toast.makeText(this@Registro_OrdenDetalle_Activity,"Fallo al traer el item", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_OrdenDetalle_Activity,"Fallo al traer el item", Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -101,6 +100,7 @@ class Registro_OrdenDetalle_Activity : AppCompatActivity() {
     private fun callServicePutOrdenDetalle() {
         val fecha = "2021-04-11"
         val orndeDetalleInfo = OrdenDetalleDataCollectionItem(
+            ordenDetalleId = null,
             ordenId         = spOrdenDetalleID.selectedItem.toString().toInt(),
             almacenId       = spOrdenDetalleAlmacenID.selectedItem.toString().toInt(),
             productoId      = spOrdenDetalleProductoID.selectedItem.toString().toInt(),
@@ -113,20 +113,20 @@ class Registro_OrdenDetalle_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<OrdenDetalleDataCollectionItem> {
             override fun onFailure(call: Call<OrdenDetalleDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Registro_OrdenDetalle_Activity,"Error",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_OrdenDetalle_Activity,"Error al actualizar el ordend detalle",Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(call: Call<OrdenDetalleDataCollectionItem>,
                                     response: Response<OrdenDetalleDataCollectionItem>) {
                 if (response.isSuccessful) {
                     val updatedPerson = response.body()!!
-                    Toast.makeText(this@Registro_OrdenDetalle_Activity,"Orden Detalle Actualizada",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_OrdenDetalle_Activity,"Orden Detalle Actualizada",Toast.LENGTH_SHORT).show()
                 }
                 else if (response.code() == 401){
-                    Toast.makeText(this@Registro_OrdenDetalle_Activity,"Sesion expirada",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_OrdenDetalle_Activity,"Sesion expirada",Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    Toast.makeText(this@Registro_OrdenDetalle_Activity,"Fallo al traer el item",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_OrdenDetalle_Activity,"Fallo al traer el item",Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -145,7 +145,7 @@ class Registro_OrdenDetalle_Activity : AppCompatActivity() {
 
         result.enqueue(object :  Callback<OrdenDetalleDataCollectionItem> {
             override fun onFailure(call: Call<OrdenDetalleDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Registro_OrdenDetalle_Activity,"Error al encontrar el orden detalle",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_OrdenDetalle_Activity,"Error al encontrar el orden detalle",Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -181,7 +181,7 @@ class Registro_OrdenDetalle_Activity : AppCompatActivity() {
 
                     Toast.makeText(this@Registro_OrdenDetalle_Activity,
                         "Orden detalle encontrado",
-                        Toast.LENGTH_LONG).show()
+                        Toast.LENGTH_SHORT).show()
                 }
             }
         })
@@ -196,7 +196,7 @@ class Registro_OrdenDetalle_Activity : AppCompatActivity() {
 
         result.enqueue(object :  Callback<ResponseBody> {
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Toast.makeText(this@Registro_OrdenDetalle_Activity,"Error al eliminar el orden detalle",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_OrdenDetalle_Activity,"Error al eliminar el orden detalle",Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -204,13 +204,13 @@ class Registro_OrdenDetalle_Activity : AppCompatActivity() {
                 response: Response<ResponseBody>
             ) {
                 if (response.isSuccessful) {
-                    Toast.makeText(this@Registro_OrdenDetalle_Activity,"Orden detalle eliminado",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_OrdenDetalle_Activity,"Orden detalle eliminado",Toast.LENGTH_SHORT).show()
                 }
                 else if (response.code() == 401){
-                    Toast.makeText(this@Registro_OrdenDetalle_Activity,"Sesion expirada",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_OrdenDetalle_Activity,"Sesion expirada",Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    Toast.makeText(this@Registro_OrdenDetalle_Activity,"Fallo al traer el item",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_OrdenDetalle_Activity,"Fallo al traer el item",Toast.LENGTH_SHORT).show()
                 }
             }
         })
@@ -224,7 +224,7 @@ class Registro_OrdenDetalle_Activity : AppCompatActivity() {
 
         result.enqueue(object :  Callback<List<AlmacenDataCollectionItem>> {
             override fun onFailure(call: Call<List<AlmacenDataCollectionItem>>, t: Throwable) {
-                Toast.makeText(this@Registro_OrdenDetalle_Activity,"Error al encontrar almacenes",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_OrdenDetalle_Activity,"Error al encontrar almacenes",Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -239,7 +239,7 @@ class Registro_OrdenDetalle_Activity : AppCompatActivity() {
                 val adapterAlmacenes = ArrayAdapter(this@Registro_OrdenDetalle_Activity, android.R.layout.simple_spinner_item, almacenes)
                 spOrdenDetalleAlmacenID.adapter = adapterAlmacenes
 
-                Toast.makeText(this@Registro_OrdenDetalle_Activity,"Almacenes encontrado",Toast.LENGTH_LONG).show()
+//                Toast.makeText(this@Registro_OrdenDetalle_Activity,"Almacenes encontrado",Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -252,7 +252,7 @@ class Registro_OrdenDetalle_Activity : AppCompatActivity() {
 
         result.enqueue(object :  Callback<List<ProductoDataCollectionItem>> {
             override fun onFailure(call: Call<List<ProductoDataCollectionItem>>, t: Throwable) {
-                Toast.makeText(this@Registro_OrdenDetalle_Activity,"Error al encontrar productos",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_OrdenDetalle_Activity,"Error al encontrar productos",Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -266,7 +266,7 @@ class Registro_OrdenDetalle_Activity : AppCompatActivity() {
                 val adapterProductos = ArrayAdapter(this@Registro_OrdenDetalle_Activity, android.R.layout.simple_spinner_item, productos)
                 spOrdenDetalleProductoID.adapter = adapterProductos
 
-                Toast.makeText(this@Registro_OrdenDetalle_Activity,"Productos encontrados",Toast.LENGTH_LONG).show()
+//                Toast.makeText(this@Registro_OrdenDetalle_Activity,"Productos encontrados",Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -279,7 +279,7 @@ class Registro_OrdenDetalle_Activity : AppCompatActivity() {
 
         result.enqueue(object :  Callback<List<OrdenEncabezadoDataCollectionItem>> {
             override fun onFailure(call: Call<List<OrdenEncabezadoDataCollectionItem>>, t: Throwable) {
-                Toast.makeText(this@Registro_OrdenDetalle_Activity,"Error al encontrar ordenes",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_OrdenDetalle_Activity,"Error al encontrar ordenes",Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -293,7 +293,7 @@ class Registro_OrdenDetalle_Activity : AppCompatActivity() {
                 val adapterOrdenesEncabezado = ArrayAdapter(this@Registro_OrdenDetalle_Activity,android.R.layout.simple_spinner_item, ordenesEncabezado)
                 spOrdenDetalleID.adapter = adapterOrdenesEncabezado
 
-                Toast.makeText(this@Registro_OrdenDetalle_Activity,"Ordenes encontradas",Toast.LENGTH_LONG).show()
+//                Toast.makeText(this@Registro_OrdenDetalle_Activity,"Ordenes encontradas",Toast.LENGTH_SHORT).show()
             }
         })
     }

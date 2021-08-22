@@ -76,9 +76,9 @@ class Registro_Factura_Activity : AppCompatActivity() {
 
         addFactura(facturaInfo) {
             if (it?.facturaId != null) {
-                Toast.makeText(this@Registro_Factura_Activity,"Factura Registada"+it?.facturaId, Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_Factura_Activity,"Factura Registada "+it?.facturaId, Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this@Registro_Factura_Activity,"Error al registrar la factura", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_Factura_Activity,"Error al registrar la factura", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -107,10 +107,10 @@ class Registro_Factura_Activity : AppCompatActivity() {
                     //var errorResponse1: RestApiError? = gson.fromJson(response.errorBody()!!.charStream(), type)
                     val errorResponse = Gson().fromJson(response.errorBody()!!.string()!!, RestApiError::class.java)
 
-                    Toast.makeText(this@Registro_Factura_Activity,errorResponse.errorDetails,Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Factura_Activity,errorResponse.errorDetails,Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    Toast.makeText(this@Registro_Factura_Activity,"Fallo al traer el item",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Factura_Activity,"Fallo al traer el item",Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -135,20 +135,20 @@ class Registro_Factura_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<FacturaDataCollectionItem> {
             override fun onFailure(call: Call<FacturaDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Registro_Factura_Activity,"Error al actualizar la factura",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_Factura_Activity,"Error al actualizar la factura",Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(call: Call<FacturaDataCollectionItem>,
                                     response: Response<FacturaDataCollectionItem>) {
                 if (response.isSuccessful) {
                     val updatedPerson = response.body()!!
-                    Toast.makeText(this@Registro_Factura_Activity,"Factura Actualizada"+response.body()!!.total,Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Factura_Activity,"Factura Actualizada "+response.body()!!.facturaId,Toast.LENGTH_SHORT).show()
                 }
                 else if (response.code() == 401){
-                    Toast.makeText(this@Registro_Factura_Activity,"Sesion expirada",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Factura_Activity,"Sesion expirada",Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    Toast.makeText(this@Registro_Factura_Activity,"Fallo al traer el item",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Factura_Activity,"Fallo al traer el item",Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -163,7 +163,7 @@ class Registro_Factura_Activity : AppCompatActivity() {
         var contadorOrdenes = 0
         result.enqueue(object :  Callback<FacturaDataCollectionItem> {
             override fun onFailure(call: Call<FacturaDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Registro_Factura_Activity,"Error al buscar la factura",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_Factura_Activity,"Error al buscar la factura",Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -185,7 +185,7 @@ class Registro_Factura_Activity : AppCompatActivity() {
                     txtFechaFac.setText(response.body()!!.fechaFactura)
                     txtTotalFac.setText(response.body()!!.total.toString())
                     Toast.makeText(this@Registro_Factura_Activity,
-                        "Factura encontrada" + response.body()!!.facturaId,
+                        "Factura encontrada " + response.body()!!.facturaId,
                         Toast.LENGTH_LONG).show()
                 }
             }
@@ -209,7 +209,7 @@ class Registro_Factura_Activity : AppCompatActivity() {
                 call: Call<List<FacturaDataCollectionItem>>,
                 response: Response<List<FacturaDataCollectionItem>>
             ) {
-                Toast.makeText(this@Registro_Factura_Activity,"Facturas Encontradas",Toast.LENGTH_LONG).show()
+//                Toast.makeText(this@Registro_Factura_Activity,"Facturas Encontradas",Toast.LENGTH_LONG).show()
             }
         })
     }
@@ -223,7 +223,7 @@ class Registro_Factura_Activity : AppCompatActivity() {
 
         result.enqueue(object :  Callback<List<OrdenEncabezadoDataCollectionItem>> {
             override fun onFailure(call: Call<List<OrdenEncabezadoDataCollectionItem>>, t: Throwable) {
-                Toast.makeText(this@Registro_Factura_Activity,"Error al encontrar ordenes",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_Factura_Activity,"Error al encontrar ordenes",Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -238,7 +238,7 @@ class Registro_Factura_Activity : AppCompatActivity() {
                 spFacturaOrdenID.adapter = adapterOrdenes
 
 
-                Toast.makeText(this@Registro_Factura_Activity,"Ordenes encontradas",Toast.LENGTH_LONG).show()
+//                Toast.makeText(this@Registro_Factura_Activity,"Ordenes encontradas",Toast.LENGTH_SHORT).show()
             }
         })
     }

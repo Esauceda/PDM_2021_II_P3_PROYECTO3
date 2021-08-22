@@ -45,7 +45,7 @@ class Buscar_Cliente_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<ClienteDataCollectionItem> {
             override fun onFailure(call: Call<ClienteDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Buscar_Cliente_Activity,"Error", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Buscar_Cliente_Activity,"Error al encontrar el cliente", Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -63,8 +63,8 @@ class Buscar_Cliente_Activity : AppCompatActivity() {
                     txvMostrarPaisCli.setText(response.body()!!.pais)
                     txvMostrarDirCli.setText(response.body()!!.direccion)
                     txvMostrarCatCli.setText(response.body()!!.categoria)
-                    Toast.makeText(this@Buscar_Cliente_Activity, "OK" + response.body()!!.nombre,
-                        Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_Cliente_Activity, "Cliente encontrado " + response.body()!!.nombre,
+                        Toast.LENGTH_SHORT).show()
                 }
             }
         })
@@ -76,7 +76,7 @@ class Buscar_Cliente_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<ResponseBody> {
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Toast.makeText(this@Buscar_Cliente_Activity,"Error", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Buscar_Cliente_Activity,"Error al eliminar el cliente", Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -84,13 +84,13 @@ class Buscar_Cliente_Activity : AppCompatActivity() {
                 response: Response<ResponseBody>
             ) {
                 if (response.isSuccessful) {
-                    Toast.makeText(this@Buscar_Cliente_Activity,"DELETE", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_Cliente_Activity,"Cliente eliminado", Toast.LENGTH_SHORT).show()
                 }
                 else if (response.code() == 401){
-                    Toast.makeText(this@Buscar_Cliente_Activity,"Sesion expirada", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_Cliente_Activity,"Sesion expirada", Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    Toast.makeText(this@Buscar_Cliente_Activity,"Fallo al traer el item", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_Cliente_Activity,"Fallo al traer el item", Toast.LENGTH_SHORT).show()
                 }
             }
         })

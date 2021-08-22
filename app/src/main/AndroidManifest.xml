@@ -13,9 +13,15 @@
         android:theme="@style/Theme.PDM_2021_II_P3_PROYECTO3"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Orden.Eliminar_Orden_Detalle_Activity"
+            android:exported="true" />
+        <activity
+            android:name=".Compra.Eliminar_Compra_Detalle_Activity"
+            android:exported="true" />
+        <activity
             android:name=".GetAllActivity"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".Orden.Buscar_OrdenDetalle_Activity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />

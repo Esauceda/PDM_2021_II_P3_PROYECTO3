@@ -37,31 +37,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txvAlmacenID2" />
 
-    <TextView
-        android:id="@+id/txvProductoAlmacenado2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
-        android:text="Producto Almacenado"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvTelefonoAlmacen2" />
 
     <TextView
         android:id="@+id/txvDireccionAlmacen2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="50dp"
         android:text="Direccion Almacen"
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvProductoAlmacenado2" />
+        app:layout_constraintTop_toBottomOf="@+id/txvTelefonoAlmacen2" />
 
     <TextView
         android:id="@+id/txvEncargado2"
@@ -102,15 +90,15 @@
         android:inputType="number"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/txvMostrarProductoAlmacenado"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtMostrarAlmacenID" />
 
+
     <TextView
-        android:id="@+id/txvMostrarProductoAlmacenado"
+        android:id="@+id/txvMostrarDireccionAlmacen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="40dp"
         android:ems="8"
         android:inputType="textPersonName"
@@ -118,18 +106,6 @@
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txvMostrarTelefonoAlmacen" />
-
-    <TextView
-        android:id="@+id/txvMostrarDireccionAlmacen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:ems="8"
-        android:inputType="textPersonName"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/txvMostrarProductoAlmacenado"
-        app:layout_constraintTop_toBottomOf="@+id/txvMostrarProductoAlmacenado" />
 
     <TextView
         android:id="@+id/txvMostrarEncargado"

@@ -40,7 +40,7 @@ class Buscar_Materia_Prima_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<MateriaPrimaDataCollectionItem> {
             override fun onFailure(call: Call<MateriaPrimaDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Buscar_Materia_Prima_Activity,"Error", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Buscar_Materia_Prima_Activity,"Error al encontrar materia prima", Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -48,7 +48,7 @@ class Buscar_Materia_Prima_Activity : AppCompatActivity() {
                 response: Response<MateriaPrimaDataCollectionItem>
             ) {
                 if (response.code() == 404){
-                    Toast.makeText(this@Buscar_Materia_Prima_Activity, "Materia Prima no existe",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Buscar_Materia_Prima_Activity, "Materia Prima no encontrada",Toast.LENGTH_SHORT).show()
                 }else {
                     txtMostrarMateriaPrimaID.setText(response.body()!!.materiaprimaId.toString())
                     txtMostrarNombreMateria.setText(response.body()!!.nombreMateria)
@@ -57,8 +57,8 @@ class Buscar_Materia_Prima_Activity : AppCompatActivity() {
                     txtMostrarMateriaDescripcion.setText(response.body()!!.descripcion)
                     txtMostrarCantidadMateria.setText(response.body()!!.cantidad.toString())
                     Toast.makeText(this@Buscar_Materia_Prima_Activity,
-                        "OK" + response.body()!!.nombreMateria,
-                        Toast.LENGTH_LONG).show()
+                        "Materia Prima Encontrada " + response.body()!!.nombreMateria,
+                        Toast.LENGTH_SHORT).show()
                 }
             }
         })
@@ -70,7 +70,7 @@ class Buscar_Materia_Prima_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<ResponseBody> {
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Toast.makeText(this@Buscar_Materia_Prima_Activity,"Error", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Buscar_Materia_Prima_Activity,"Error al eliminar la materia prima", Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -78,13 +78,13 @@ class Buscar_Materia_Prima_Activity : AppCompatActivity() {
                 response: Response<ResponseBody>
             ) {
                 if (response.isSuccessful) {
-                    Toast.makeText(this@Buscar_Materia_Prima_Activity,"DELETE", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_Materia_Prima_Activity,"Materia prima eliminada", Toast.LENGTH_SHORT).show()
                 }
                 else if (response.code() == 401){
-                    Toast.makeText(this@Buscar_Materia_Prima_Activity,"Sesion expirada", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_Materia_Prima_Activity,"Sesion expirada", Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    Toast.makeText(this@Buscar_Materia_Prima_Activity,"Fallo al traer el item", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_Materia_Prima_Activity,"Fallo al traer el item", Toast.LENGTH_SHORT).show()
                 }
             }
         })

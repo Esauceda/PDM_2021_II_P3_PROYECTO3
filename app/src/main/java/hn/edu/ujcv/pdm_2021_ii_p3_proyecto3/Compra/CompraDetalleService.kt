@@ -7,6 +7,9 @@ interface CompraDetalleService {
     @GET("compraDetalle")
     fun listCompraDetalle(): Call<List<CompraDetalleDataCollectionItem>>
 
+    @GET("compraDetalle/compraId/{compraId}")
+    fun listCompraDetalleByCompraId(@Path("compraId") compraId: Long): Call<List<CompraDetalleDataCollectionItem>>
+
     @GET("compraDetalle/id/{id}")
     fun getCompraDetalleById(@Path("id")id :Long): Call<CompraDetalleDataCollectionItem>
     @Headers("Content-Type: application/json")

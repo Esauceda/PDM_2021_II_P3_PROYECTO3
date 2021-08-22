@@ -55,7 +55,7 @@ class Buscar_OrdenEncabezado_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<OrdenEncabezadoDataCollectionItem> {
             override fun onFailure(call: Call<OrdenEncabezadoDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Buscar_OrdenEncabezado_Activity,"Error", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Buscar_OrdenEncabezado_Activity,"Error al encontrar Orden Encabezado", Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -63,11 +63,11 @@ class Buscar_OrdenEncabezado_Activity : AppCompatActivity() {
                 response: Response<OrdenEncabezadoDataCollectionItem>
             ) {
                 if (response.code() == 404){
-                    Toast.makeText(this@Buscar_OrdenEncabezado_Activity, "Orden no existe",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Buscar_OrdenEncabezado_Activity, "Orden Encabezado no existe",Toast.LENGTH_SHORT).show()
                 }else if (response.code() == 500){
                     val errorResponse = Gson().fromJson(response.errorBody()!!.string()!!, RestApiError::class.java)
 
-                    Toast.makeText(this@Buscar_OrdenEncabezado_Activity,errorResponse.errorDetails, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_OrdenEncabezado_Activity,errorResponse.errorDetails, Toast.LENGTH_SHORT).show()
                 }else {
                     txvMostrarOrdenID.setText(response.body()!!.ordenId.toString())
                     txvMostrarOrdenEmpleadoID.setText(response.body()!!.empleadoId.toString())
@@ -80,7 +80,7 @@ class Buscar_OrdenEncabezado_Activity : AppCompatActivity() {
 
                     Toast.makeText(this@Buscar_OrdenEncabezado_Activity,
                         "Orden Encabezado encontrado " + response.body()!!.ordenId,
-                        Toast.LENGTH_LONG).show()
+                        Toast.LENGTH_SHORT).show()
                 }
             }
         })
@@ -94,7 +94,7 @@ class Buscar_OrdenEncabezado_Activity : AppCompatActivity() {
 
          result.enqueue(object :  Callback<ResponseBody> {
              override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                 Toast.makeText(this@Buscar_OrdenEncabezado_Activity,"Error",Toast.LENGTH_LONG).show()
+                 Toast.makeText(this@Buscar_OrdenEncabezado_Activity,"Error al eliminar el orden encabezado",Toast.LENGTH_SHORT).show()
              }
 
              override fun onResponse(
@@ -102,12 +102,12 @@ class Buscar_OrdenEncabezado_Activity : AppCompatActivity() {
                  response: Response<ResponseBody>
              ) {
                  if (response.isSuccessful) {
-                     Toast.makeText(this@Buscar_OrdenEncabezado_Activity,"Orden encabezado eliminada",Toast.LENGTH_LONG).show()
+                     Toast.makeText(this@Buscar_OrdenEncabezado_Activity,"Orden encabezado eliminada",Toast.LENGTH_SHORT).show()
                  }
                  else if (response.code() == 401){
-                     Toast.makeText(this@Buscar_OrdenEncabezado_Activity,"Sesion expirada",Toast.LENGTH_LONG).show()
+                     Toast.makeText(this@Buscar_OrdenEncabezado_Activity,"Sesion expirada",Toast.LENGTH_SHORT).show()
                  }else{
-                     Toast.makeText(this@Buscar_OrdenEncabezado_Activity,"Fallo al traer el item",Toast.LENGTH_LONG).show()
+                     Toast.makeText(this@Buscar_OrdenEncabezado_Activity,"Fallo al traer el item",Toast.LENGTH_SHORT).show()
                  }
              }
          })

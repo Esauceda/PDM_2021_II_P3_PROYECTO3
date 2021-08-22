@@ -16,8 +16,9 @@ interface MateriaPrimaService {
     @POST("materiaPrima/addMateria")
     fun addMateria(@Body personData: MateriaPrimaDataCollectionItem): Call<MateriaPrimaDataCollectionItem>
     @Headers("Content-Type: application/json")
-    @PUT("materia")
+    @PUT("materiaPrima")
     fun updateMateria(@Body personData: MateriaPrimaDataCollectionItem): Call<MateriaPrimaDataCollectionItem>
-    @DELETE("materia/delete/{id}")
+
+    @DELETE("materiaPrima/delete/{id}")
     fun deleteMateria(@Path("id") id: Int): Call<ResponseBody>
 }

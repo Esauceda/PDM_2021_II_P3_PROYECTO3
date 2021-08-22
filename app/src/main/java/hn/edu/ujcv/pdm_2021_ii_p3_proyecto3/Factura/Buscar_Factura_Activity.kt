@@ -45,7 +45,7 @@ class Buscar_Factura_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<FacturaDataCollectionItem> {
             override fun onFailure(call: Call<FacturaDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Buscar_Factura_Activity,"Error al buscar la factura", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Buscar_Factura_Activity,"Error al buscar la factura", Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -60,8 +60,8 @@ class Buscar_Factura_Activity : AppCompatActivity() {
                     txvMostrarFechaFac.setText(response.body()!!.fechaFactura)
                     txvMostrarTotalFac.setText(response.body()!!.total.toString())
                     Toast.makeText(this@Buscar_Factura_Activity,
-                        "Factura encontrada" + response.body()!!.facturaId,
-                        Toast.LENGTH_LONG).show()
+                        "Factura encontrada " + response.body()!!.facturaId,
+                        Toast.LENGTH_SHORT).show()
                 }
             }
         })
@@ -75,7 +75,7 @@ class Buscar_Factura_Activity : AppCompatActivity() {
 
         result.enqueue(object :  Callback<ResponseBody> {
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Toast.makeText(this@Buscar_Factura_Activity,"Error al eliminar la factura",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Buscar_Factura_Activity,"Error al eliminar la factura",Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -83,13 +83,13 @@ class Buscar_Factura_Activity : AppCompatActivity() {
                 response: Response<ResponseBody>
             ) {
                 if (response.isSuccessful) {
-                    Toast.makeText(this@Buscar_Factura_Activity,"Factura Eliminada",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_Factura_Activity,"Factura Eliminada",Toast.LENGTH_SHORT).show()
                 }
                 else if (response.code() == 401){
-                    Toast.makeText(this@Buscar_Factura_Activity,"Sesion expirada",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_Factura_Activity,"Sesion expirada",Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    Toast.makeText(this@Buscar_Factura_Activity,"Fallo al traer el item",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_Factura_Activity,"Fallo al traer el item",Toast.LENGTH_SHORT).show()
                 }
             }
         })

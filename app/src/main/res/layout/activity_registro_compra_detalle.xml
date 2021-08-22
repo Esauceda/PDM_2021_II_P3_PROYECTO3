@@ -18,7 +18,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="90dp"
         android:layout_marginBottom="93dp"
-        android:text="Compra Detalle Id"
+        android:text="Compra Id"
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
@@ -92,6 +92,7 @@
         android:layout_marginBottom="60dp"
         android:backgroundTint="@color/black"
         android:hint="Ingrese nombre"
+        android:textColor="@color/black"
         android:textColorHint="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/txtCantidad"
         app:layout_constraintEnd_toEndOf="parent" />

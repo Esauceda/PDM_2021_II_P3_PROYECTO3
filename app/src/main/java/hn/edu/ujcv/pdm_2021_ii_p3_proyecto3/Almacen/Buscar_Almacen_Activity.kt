@@ -46,7 +46,7 @@ class Buscar_Almacen_Activity : AppCompatActivity() {
 
         result.enqueue(object :  Callback<AlmacenDataCollectionItem> {
             override fun onFailure(call: Call<AlmacenDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Buscar_Almacen_Activity,"Error",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Buscar_Almacen_Activity,"Error al traer el almacen",Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -61,8 +61,8 @@ class Buscar_Almacen_Activity : AppCompatActivity() {
                     txvMostrarDireccionAlmacen.setText(response.body()!!.direccion)
                     txvMostrarEncargado.setText(response.body()!!.encargado)
                     Toast.makeText(this@Buscar_Almacen_Activity,
-                        "OK" + response.body()!!.encargado,
-                        Toast.LENGTH_LONG).show()
+                        "Almacen encontrado " + response.body()!!.almacenId,
+                        Toast.LENGTH_SHORT).show()
                 }
             }
         })
@@ -74,7 +74,7 @@ class Buscar_Almacen_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<ResponseBody> {
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Toast.makeText(this@Buscar_Almacen_Activity,"Error",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Buscar_Almacen_Activity,"Error el eliminar el almacen",Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -82,13 +82,13 @@ class Buscar_Almacen_Activity : AppCompatActivity() {
                 response: Response<ResponseBody>
             ) {
                 if (response.isSuccessful) {
-                    Toast.makeText(this@Buscar_Almacen_Activity,"DELETE",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_Almacen_Activity,"Almacen Eliminado",Toast.LENGTH_SHORT).show()
                 }
                 else if (response.code() == 401){
-                    Toast.makeText(this@Buscar_Almacen_Activity,"Sesion expirada",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_Almacen_Activity,"Sesion expirada",Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    Toast.makeText(this@Buscar_Almacen_Activity,"Fallo al traer el item",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_Almacen_Activity,"Fallo al traer el item",Toast.LENGTH_SHORT).show()
                 }
             }
         })

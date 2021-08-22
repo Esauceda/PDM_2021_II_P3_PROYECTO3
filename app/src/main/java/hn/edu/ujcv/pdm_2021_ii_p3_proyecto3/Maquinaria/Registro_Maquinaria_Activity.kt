@@ -64,7 +64,7 @@ class Registro_Maquinaria_Activity : AppCompatActivity() {
 
 
 
-                Toast.makeText(this@Registro_Maquinaria_Activity,"Fabricas encontradas con exito",Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this@Registro_Maquinaria_Activity,"Fabricas encontradas con exito",Toast.LENGTH_SHORT).show()
 
             }
         })
@@ -84,9 +84,9 @@ class Registro_Maquinaria_Activity : AppCompatActivity() {
 
         addMaquinaria(maquinariaInfo) {
             if (it?.maquinaId != null) {
-                Toast.makeText(this@Registro_Maquinaria_Activity,"Maquina registrada"+it?.maquinaId,Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_Maquinaria_Activity,"Maquina registrada",Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this@Registro_Maquinaria_Activity,"Error",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_Maquinaria_Activity,"Error al registrar la maquina",Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -107,7 +107,7 @@ class Registro_Maquinaria_Activity : AppCompatActivity() {
                     onResult(addedMaquinaria)
                 }
                 else if (response.code() == 401){
-                    Toast.makeText(this@Registro_Maquinaria_Activity,"Sesion expirada",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Maquinaria_Activity,"Sesion expirada",Toast.LENGTH_SHORT).show()
                 }
                 else if (response.code() == 500){
                     //val gson = Gson()
@@ -115,10 +115,10 @@ class Registro_Maquinaria_Activity : AppCompatActivity() {
                     //var errorResponse1: RestApiError? = gson.fromJson(response.errorBody()!!.charStream(), type)
                     val errorResponse = Gson().fromJson(response.errorBody()!!.string()!!, RestApiError::class.java)
 
-                    Toast.makeText(this@Registro_Maquinaria_Activity,errorResponse.errorDetails,Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Maquinaria_Activity,errorResponse.errorDetails,Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    Toast.makeText(this@Registro_Maquinaria_Activity,"Fallo al traer el item",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Maquinaria_Activity,"Fallo al traer el item",Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -143,20 +143,20 @@ class Registro_Maquinaria_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<MaquinariaDataCollectionItem> {
             override fun onFailure(call: Call<MaquinariaDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Registro_Maquinaria_Activity,"Error",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_Maquinaria_Activity,"Error al actualizar la maquina",Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(call: Call<MaquinariaDataCollectionItem>,
                                     response: Response<MaquinariaDataCollectionItem>) {
                 if (response.isSuccessful) {
                     val updatedPerson = response.body()!!
-                    Toast.makeText(this@Registro_Maquinaria_Activity,"Actualizado"+response.body()!!.marca,Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Maquinaria_Activity,"Maquina Actualizada "+response.body()!!.maquinaId,Toast.LENGTH_SHORT).show()
                 }
                 else if (response.code() == 401){
-                    Toast.makeText(this@Registro_Maquinaria_Activity,"Sesion expirada",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Maquinaria_Activity,"Sesion expirada",Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    Toast.makeText(this@Registro_Maquinaria_Activity,"Fallo al traer el item",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Maquinaria_Activity,"Fallo al traer el item",Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -171,7 +171,7 @@ class Registro_Maquinaria_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<MaquinariaDataCollectionItem> {
             override fun onFailure(call: Call<MaquinariaDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Registro_Maquinaria_Activity,"No se encontro la maquinaria", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_Maquinaria_Activity,"No se encontro la maquinaria", Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -194,8 +194,8 @@ class Registro_Maquinaria_Activity : AppCompatActivity() {
                     txtHorasUsoMaqui.setText(response.body()!!.horasUso.toString())
                     txtTipoMaquina.setText(response.body()!!.tipoMaquina)
                     Toast.makeText(this@Registro_Maquinaria_Activity,
-                        "Se encontró la maquina con Id" + response.body()!!.maquinaId,
-                        Toast.LENGTH_LONG).show()
+                        "Se encontró la maquina con Id " + response.body()!!.maquinaId,
+                        Toast.LENGTH_SHORT).show()
                 }
             }
         })
@@ -216,7 +216,7 @@ class Registro_Maquinaria_Activity : AppCompatActivity() {
                 call: Call<List<MaquinariaDataCollectionItem>>,
                 response: Response<List<MaquinariaDataCollectionItem>>
             ) {
-                Toast.makeText(this@Registro_Maquinaria_Activity,"Maquinarias encontradas",Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this@Registro_Maquinaria_Activity,"Maquinarias encontradas",Toast.LENGTH_SHORT).show()
             }
         })
     }

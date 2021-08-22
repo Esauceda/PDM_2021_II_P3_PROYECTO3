@@ -44,7 +44,7 @@ class Registro_Almacen_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<AlmacenDataCollectionItem> {
             override fun onFailure(call: Call<AlmacenDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Registro_Almacen_Activity,"Error",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_Almacen_Activity,"Error al actualizar el almacen",Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(call: Call<AlmacenDataCollectionItem>,
@@ -52,13 +52,13 @@ class Registro_Almacen_Activity : AppCompatActivity() {
             ) {
                 if (response.isSuccessful) {
                     val updatedAlmacen = response.body()!!
-                    Toast.makeText(this@Registro_Almacen_Activity,"OK"+response.body()!!.encargado,Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Almacen_Activity,"Almacen Actualizado "+response.body()!!.almacenId,Toast.LENGTH_SHORT).show()
                 }
                 else if (response.code() == 401){
-                    Toast.makeText(this@Registro_Almacen_Activity,"Sesion expirada",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Almacen_Activity,"Sesion expirada",Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    Toast.makeText(this@Registro_Almacen_Activity,"Fallo al traer el item",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Almacen_Activity,"Fallo al traer el item",Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -67,7 +67,7 @@ class Registro_Almacen_Activity : AppCompatActivity() {
 
     private fun callServicePostAlmacen() {
         val almancenInfo = AlmacenDataCollectionItem(
-            almacenId = txtMostrarAlmacenID.text.toString().toInt(),
+            almacenId = null, //txtMostrarAlmacenID.text.toString().toInt(),
             telefono =  txtTelefonoAlmacen.text.toString().toInt(),
             direccion = txtDireccionAlmacen.text.toString(),
             encargado = txtEncargado.text.toString()
@@ -75,9 +75,9 @@ class Registro_Almacen_Activity : AppCompatActivity() {
 
         addAlmacen(almancenInfo) {
             if (it?.almacenId != null) {
-                Toast.makeText(this@Registro_Almacen_Activity,"OK"+it?.almacenId,Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_Almacen_Activity,"Almacen registrado "+it?.almacenId,Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this@Registro_Almacen_Activity,"Error",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_Almacen_Activity,"Error al registrar el almacen",Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -88,7 +88,7 @@ class Registro_Almacen_Activity : AppCompatActivity() {
 
         result.enqueue(object :  Callback<AlmacenDataCollectionItem> {
             override fun onFailure(call: Call<AlmacenDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Registro_Almacen_Activity,"Error",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_Almacen_Activity,"Error al encontar el almacen",Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -103,8 +103,8 @@ class Registro_Almacen_Activity : AppCompatActivity() {
                     txtDireccionAlmacen.setText(response.body()!!.direccion)
                     txtEncargado.setText(response.body()!!.encargado)
                     Toast.makeText(this@Registro_Almacen_Activity,
-                        "OK" + response.body()!!.encargado,
-                        Toast.LENGTH_LONG).show()
+                        "Almacen encontrado " + response.body()!!.almacenId,
+                        Toast.LENGTH_SHORT).show()
                 }
 
             }

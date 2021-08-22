@@ -52,20 +52,20 @@ class Buscar_CompraEncabezado_Activity : AppCompatActivity() {
         var result: Call<ResponseBody> = compraEncabezadoService.deleteCompraEncabezado(txtMostrarCompraEncabezadoID.text.toString().toLong())
 
         result.enqueue(object :  Callback<ResponseBody> { override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-            Toast.makeText(this@Buscar_CompraEncabezado_Activity,"Error",Toast.LENGTH_LONG).show()
+            Toast.makeText(this@Buscar_CompraEncabezado_Activity,"Error al eliminar Compra Encabezado",Toast.LENGTH_SHORT).show()
         }
             override fun onResponse(
                 call: Call<ResponseBody>,
                 response: Response<ResponseBody>
             ) {
                 if (response.isSuccessful) {
-                    Toast.makeText(this@Buscar_CompraEncabezado_Activity,"Orden encabezado eliminada",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_CompraEncabezado_Activity,"Compra encabezado eliminada",Toast.LENGTH_SHORT).show()
                 }
                 else if (response.code() == 401){
-                    Toast.makeText(this@Buscar_CompraEncabezado_Activity,"Sesion expirada",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_CompraEncabezado_Activity,"Sesion expirada",Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    Toast.makeText(this@Buscar_CompraEncabezado_Activity,"Fallo al traer el item",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_CompraEncabezado_Activity,"Fallo al traer el item",Toast.LENGTH_SHORT).show()
                 }
             }
         })
@@ -76,14 +76,15 @@ class Buscar_CompraEncabezado_Activity : AppCompatActivity() {
         var result: Call<CompraEncabezadoDataCollectionItem> = compraEncabezadoService.getCompraEncabezadoById(txtMostrarCompraEncabezadoID.text.toString().toLong())
         result.enqueue(object : Callback<CompraEncabezadoDataCollectionItem> {
             override fun onFailure(call: Call<CompraEncabezadoDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Buscar_CompraEncabezado_Activity,"Error", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Buscar_CompraEncabezado_Activity,"Error al encontrar orden encabezado", Toast.LENGTH_SHORT).show()
             }
             override fun onResponse(
                 call: Call<CompraEncabezadoDataCollectionItem>,
                 response: Response<CompraEncabezadoDataCollectionItem>
             ) {
                 if (response.code() == 404){
-                    Toast.makeText(this@Buscar_CompraEncabezado_Activity,"No existe compra encabezado con este id", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_CompraEncabezado_Activity,
+                        "No existe compra encabezado con este id", Toast.LENGTH_SHORT).show()
                 }else{
                     txtMostrarCompraEncabezadoID.setText(response.body()!!.compraId.toString())
                     txvMostrarProveedorID.setText(response.body()!!.proveedorId.toString())

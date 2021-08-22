@@ -8,9 +8,36 @@
     tools:context=".Orden.Buscar_OrdenDetalle_Activity">
 
     <include
-        layout="@layout/action_bar_toolbar"/>
+        android:id="@+id/include14"
+        layout="@layout/action_bar_toolbar" />
 
-    <TextView
+    <ListView
+        android:id="@+id/lstvOrdenesEncabezado"
+        android:layout_width="409dp"
+        android:layout_height="673dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include14" />
+
+    <Button
+        android:id="@+id/btnEliminarOrdenesDetalle"
+        android:layout_width="146dp"
+        android:layout_height="49dp"
+        android:layout_marginEnd="133dp"
+        android:layout_marginBottom="80dp"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="#52658F"
+        android:text="Eliminar Detalles"
+        android:textSize="17dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!--<TextView
         android:id="@+id/txvOrdenDetalleID2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -170,7 +197,7 @@
         android:text="Buscar"
         android:textSize="17dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

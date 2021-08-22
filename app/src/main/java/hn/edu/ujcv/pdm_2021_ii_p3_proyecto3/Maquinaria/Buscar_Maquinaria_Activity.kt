@@ -45,7 +45,7 @@ class Buscar_Maquinaria_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<MaquinariaDataCollectionItem> {
             override fun onFailure(call: Call<MaquinariaDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Buscar_Maquinaria_Activity,"Error", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Buscar_Maquinaria_Activity,"Error al encontrar la maquina", Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -61,8 +61,8 @@ class Buscar_Maquinaria_Activity : AppCompatActivity() {
                     txvMostrarHorasUsoMaqui.setText(response.body()!!.horasUso.toString())
                     txvMostrarTipoMaquina.setText(response.body()!!.tipoMaquina)
                     Toast.makeText(this@Buscar_Maquinaria_Activity,
-                        "Se encontró la maquina con Id" + response.body()!!.maquinaId,
-                        Toast.LENGTH_LONG).show()
+                        "Se encontró la maquina con Id " + response.body()!!.maquinaId,
+                        Toast.LENGTH_SHORT).show()
                 }
             }
         })
@@ -76,7 +76,7 @@ class Buscar_Maquinaria_Activity : AppCompatActivity() {
 
         result.enqueue(object :  Callback<ResponseBody> {
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Toast.makeText(this@Buscar_Maquinaria_Activity,"Error",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Buscar_Maquinaria_Activity,"Error al eliminar la maquina",Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -84,13 +84,13 @@ class Buscar_Maquinaria_Activity : AppCompatActivity() {
                 response: Response<ResponseBody>
             ) {
                 if (response.isSuccessful) {
-                    Toast.makeText(this@Buscar_Maquinaria_Activity,"Maquinaria Eliminada",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_Maquinaria_Activity,"Maquinaria Eliminada",Toast.LENGTH_SHORT).show()
                 }
                 else if (response.code() == 401){
-                    Toast.makeText(this@Buscar_Maquinaria_Activity,"Sesion expirada",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_Maquinaria_Activity,"Sesion expirada",Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    Toast.makeText(this@Buscar_Maquinaria_Activity,"Fallo al traer el item",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_Maquinaria_Activity,"Fallo al traer el item",Toast.LENGTH_SHORT).show()
                 }
             }
         })

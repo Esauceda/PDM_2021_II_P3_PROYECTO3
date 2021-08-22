@@ -63,7 +63,7 @@ class Registro_Empleado_Activity : AppCompatActivity() {
 
     private fun callServicePostEmpleado() {
         val empleadoInfo = EmpleadoDataCollectionItem(
-            empleadoId =        txtEmpleID.text.toString().toInt(),
+            empleadoId =        null,//txtEmpleID.text.toString().toInt(),
             nombre =            txtEmpleNombre.text.toString(),
             direccion =         txtDireccionEmple.text.toString(),
             telefono =          txtTelEmple.text.toString().toInt(),
@@ -76,9 +76,9 @@ class Registro_Empleado_Activity : AppCompatActivity() {
 
         addEmpleado(empleadoInfo) {
             if (it?.empleadoId != null) {
-                Toast.makeText(this@Registro_Empleado_Activity,"OK"+it?.empleadoId, Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_Empleado_Activity,"Empleado Registrado "+it?.empleadoId, Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this@Registro_Empleado_Activity,"Error", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_Empleado_Activity,"Error al reegistrar el empleado", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -100,16 +100,16 @@ class Registro_Empleado_Activity : AppCompatActivity() {
                     onResult(addedPerson)
                 }
                 else if (response.code() == 401){
-                    Toast.makeText(this@Registro_Empleado_Activity,"Sesion expirada",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Empleado_Activity,"Sesion expirada",Toast.LENGTH_SHORT).show()
                 }
                 else if (response.code() == 500){
 
                     val errorResponse = Gson().fromJson(response.errorBody()!!.string()!!, RestApiError::class.java)
 
-                    Toast.makeText(this@Registro_Empleado_Activity,errorResponse.errorDetails, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Empleado_Activity,errorResponse.errorDetails, Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    Toast.makeText(this@Registro_Empleado_Activity,"Fallo al traer el item", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_Empleado_Activity,"Fallo al traer el item", Toast.LENGTH_SHORT).show()
                 }
             }
 

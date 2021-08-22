@@ -41,7 +41,7 @@ class Buscar_Empleado_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<EmpleadoDataCollectionItem> {
             override fun onFailure(call: Call<EmpleadoDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Buscar_Empleado_Activity,"Error", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Buscar_Empleado_Activity,"Error al encontrar el empleado", Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -60,8 +60,8 @@ class Buscar_Empleado_Activity : AppCompatActivity() {
                     txvMostrarFechaContraEmple2.setText(response.body()!!.fechaContratacion.toString())
                     txvMostrarFechaNaciEmple2.setText(response.body()!!.fechaNacimiento.toString())
                     txvMostrarContraEmple2.setText(response.body()!!.contrasena)
-                    Toast.makeText(this@Buscar_Empleado_Activity, "OK" + response.body()!!.nombre,
-                        Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_Empleado_Activity, "Empleado Encontrado " + response.body()!!.nombre,
+                        Toast.LENGTH_SHORT).show()
                 }
             }
         })
@@ -74,7 +74,7 @@ class Buscar_Empleado_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<ResponseBody> {
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Toast.makeText(this@Buscar_Empleado_Activity,"Error", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Buscar_Empleado_Activity,"Error al eliminar el empleado", Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -82,13 +82,13 @@ class Buscar_Empleado_Activity : AppCompatActivity() {
                 response: Response<ResponseBody>
             ) {
                 if (response.isSuccessful) {
-                    Toast.makeText(this@Buscar_Empleado_Activity,"DELETE", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_Empleado_Activity,"Empleado eliminado", Toast.LENGTH_SHORT).show()
                 }
                 else if (response.code() == 401){
-                    Toast.makeText(this@Buscar_Empleado_Activity,"Sesion expirada", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_Empleado_Activity,"Sesion expirada", Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    Toast.makeText(this@Buscar_Empleado_Activity,"Fallo al traer el item", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Buscar_Empleado_Activity,"Fallo al traer el item", Toast.LENGTH_SHORT).show()
                 }
             }
         })

@@ -84,7 +84,7 @@ class Registro_OrdenEncabezado_Activity : AppCompatActivity() {
    private fun callServicePostPerson() {
         val fecha = "2021-04-10"
         val ordenEncabezadoInfo = OrdenEncabezadoDataCollectionItem(
-            ordenId         = txtOrdenID.text.toString().toInt(),
+            ordenId         = null,//txtOrdenID.text.toString().toInt(),
             empleadoId      = spOrdenEmpleadoID.selectedItem.toString().toInt(),
             clienteId       = spClienteIDOrden.selectedItem.toString().toInt(),
             fechaOrden      = txtFechaOrden.text.toString(),
@@ -96,12 +96,12 @@ class Registro_OrdenEncabezado_Activity : AppCompatActivity() {
 
         addOrdenEncabezado(ordenEncabezadoInfo) {
             if (it?.ordenId!= null) {
-                Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Orden Registrada", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Orden Registrada", Toast.LENGTH_SHORT).show()
 
                 val intent = Intent(this, Registro_OrdenDetalle_Activity::class.java)
                 startActivity(intent)
             } else {
-                Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Error al registrar", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Error al registrar", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -123,16 +123,16 @@ class Registro_OrdenEncabezado_Activity : AppCompatActivity() {
                     onResult(addedPerson)
                 }
                 else if (response.code() == 401){
-                    Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Sesion expirada",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Sesion expirada",Toast.LENGTH_SHORT).show()
                 }
                 else if (response.code() == 500){
 
                     val errorResponse = Gson().fromJson(response.errorBody()!!.string()!!, RestApiError::class.java)
 
-                    Toast.makeText(this@Registro_OrdenEncabezado_Activity,errorResponse.errorDetails, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_OrdenEncabezado_Activity,errorResponse.errorDetails, Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Fallo al traer el item", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Fallo al traer el item", Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -160,24 +160,24 @@ class Registro_OrdenEncabezado_Activity : AppCompatActivity() {
 
         result.enqueue(object : Callback<OrdenEncabezadoDataCollectionItem> {
             override fun onFailure(call: Call<OrdenEncabezadoDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Error",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Error al acatualizar el orden encabezado",Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(call: Call<OrdenEncabezadoDataCollectionItem>,
                                     response: Response<OrdenEncabezadoDataCollectionItem>) {
                 if (response.isSuccessful) {
                     val updatedPerson = response.body()!!
-                    Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Orden Encabezado actualizado",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Orden Encabezado actualizado",Toast.LENGTH_SHORT).show()
                 }
                 else if (response.code() == 401){
-                    Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Sesion expirada",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Sesion expirada",Toast.LENGTH_SHORT).show()
                 }/*else if (response.code() == 500){
 
                     val errorResponse = Gson().fromJson(response.errorBody()!!.string()!!, RestApiError::class.java)
 
                     Toast.makeText(this@Registro_OrdenEncabezado_Activity,errorResponse.errorDetails, Toast.LENGTH_LONG).show()
                 }*/else{
-                    Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Fallo al traer el item",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Fallo al traer el item",Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -194,7 +194,7 @@ class Registro_OrdenEncabezado_Activity : AppCompatActivity() {
 
         result.enqueue(object :  Callback<OrdenEncabezadoDataCollectionItem> {
             override fun onFailure(call: Call<OrdenEncabezadoDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Error",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Error al encontrar el orden encabezado",Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
@@ -203,11 +203,11 @@ class Registro_OrdenEncabezado_Activity : AppCompatActivity() {
             ) {
 
                 if (response.code() == 404){
-                    Toast.makeText(this@Registro_OrdenEncabezado_Activity, "Orden no existe",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Registro_OrdenEncabezado_Activity, "Orden encabezado no existe",Toast.LENGTH_SHORT).show()
                 }else if (response.code() == 500){
                     val errorResponse = Gson().fromJson(response.errorBody()!!.string()!!, RestApiError::class.java)
 
-                    Toast.makeText(this@Registro_OrdenEncabezado_Activity,errorResponse.errorDetails, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Registro_OrdenEncabezado_Activity,errorResponse.errorDetails, Toast.LENGTH_SHORT).show()
                 }else{
                     txtOrdenID.setText(response.body()!!.ordenId.toString())
 
@@ -232,7 +232,7 @@ class Registro_OrdenEncabezado_Activity : AppCompatActivity() {
                     txtTotalOrden.setText(response.body()!!.total.toString())
 
                     Toast.makeText(this@Registro_OrdenEncabezado_Activity,
-                        "Orden Encabezado encontrado "+response.body()!!.ordenId,Toast.LENGTH_LONG).show()
+                        "Orden Encabezado encontrado ",Toast.LENGTH_SHORT).show()
                 }
 
             }
@@ -255,7 +255,7 @@ class Registro_OrdenEncabezado_Activity : AppCompatActivity() {
                 call: Call<List<OrdenEncabezadoDataCollectionItem>>,
                 response: Response<List<OrdenEncabezadoDataCollectionItem>>
             ) {
-                Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Ordenes encontradas",Toast.LENGTH_LONG).show()
+//                Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Ordenes encontradas",Toast.LENGTH_LONG).show()
             }
         })
     }
@@ -284,7 +284,7 @@ class Registro_OrdenEncabezado_Activity : AppCompatActivity() {
                 val adapterEmpleados = ArrayAdapter(this@Registro_OrdenEncabezado_Activity, android.R.layout.simple_spinner_item, empleados)
                 spOrdenEmpleadoID.adapter = adapterEmpleados
 
-                Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Empelados encontrados",Toast.LENGTH_LONG).show()
+//                Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Empelados encontrados",Toast.LENGTH_LONG).show()
             }
         })
     }
@@ -311,7 +311,7 @@ class Registro_OrdenEncabezado_Activity : AppCompatActivity() {
 
                 val adapterEmpleados = ArrayAdapter(this@Registro_OrdenEncabezado_Activity, android.R.layout.simple_spinner_item, clientes)
                 spClienteIDOrden.adapter = adapterEmpleados
-                Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Clientes encontrados",Toast.LENGTH_LONG).show()
+//                Toast.makeText(this@Registro_OrdenEncabezado_Activity,"Clientes encontrados",Toast.LENGTH_LONG).show()
             }
         })
     }
